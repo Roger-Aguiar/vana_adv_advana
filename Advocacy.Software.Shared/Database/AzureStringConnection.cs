@@ -1,18 +1,18 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using MySqlConnector;
 
 namespace Advocacy_Software.Advocacy.Software.Shared
 {
     public static class AzureStringConnection
-    {        
-        public static SqlConnectionStringBuilder GetStringConnection()
+    {           
+        public static MySqlConnectionStringBuilder GetStringConnection()
         {
-            SqlConnectionStringBuilder builder = new()
+            MySqlConnectionStringBuilder builder = new()
             {
-                DataSource = "advocacy.database.windows.net",
-                UserID = "roger",
-                Password = "kK!P7A3USaEB\"B8$",
-                InitialCatalog = "Advocacy_Database",
-                ConnectTimeout = 240
+                Server = "localhost",
+                Database = "advocacy_database",
+                UserID = "root",
+                Password = "983453069",
+                SslMode = MySqlSslMode.Required,
             };
             return builder;
         }

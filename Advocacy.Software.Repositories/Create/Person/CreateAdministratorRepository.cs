@@ -1,8 +1,10 @@
 ﻿using Advocacy_Software.Advocacy.Software.Entities;
 using Advocacy_Software.Advocacy.Software.Shared;
-using Microsoft.Data.SqlClient;
 using System;
 using System.Windows;
+using MySqlConnector;
+using System.IO;
+using iText.IO.Image;
 
 namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
 {
@@ -12,21 +14,24 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
         {
             try
             {
-                using SqlConnection connection = new(AzureStringConnection.GetStringConnection().ToString());
-                SqlCommand sqlCommand = new(sql, connection);
+                using MySqlConnection connection = new(AzureStringConnection.GetStringConnection().ToString());
+
+                MySqlCommand sqlCommand = new(sql, connection);
+
                 sqlCommand.Parameters.AddWithValue("@FullName", signature.FullName);
                 sqlCommand.Parameters.AddWithValue("@Username", signature.Username);
                 sqlCommand.Parameters.AddWithValue("@Email", signature.Email);
                 sqlCommand.Parameters.AddWithValue("@Password", signature.Password);
-                sqlCommand.Parameters.AddWithValue("@GuidSignature", signature.GuidSignature);
+                sqlCommand.Parameters.AddWithValue("@Id", signature.GuidSignature);
                 sqlCommand.Parameters.AddWithValue("@RegisterDate", signature.RegisterDate);
                 sqlCommand.Parameters.AddWithValue("@SignaturePrice", signature.SignaturePrice);
                 sqlCommand.Parameters.AddWithValue("@SignatureType", signature.SignatureType);
-                sqlCommand.Parameters.Add("@ImageProfile", System.Data.SqlDbType.Image, signature.ImageProfile.Length).Value = signature.ImageProfile;
+                sqlCommand.Parameters.AddWithValue("@ImageProfile", Convert.ToBase64String(signature.ImageProfile));
                 sqlCommand.Parameters.AddWithValue("@Genre", signature.Genre);
-                sqlCommand.Parameters.AddWithValue("@DeadlineSignatureDate", signature.DeadlineSignatureDate);
-                sqlCommand.Parameters.Add("@LogoHeader", System.Data.SqlDbType.Image, signature.LogoHeader.Length).Value = signature.LogoHeader;
-                sqlCommand.Parameters.Add("@LogoFooter", System.Data.SqlDbType.Image, signature.LogoFooter.Length).Value = signature.LogoFooter;
+                sqlCommand.Parameters.AddWithValue("@DeadlineSignature", signature.DeadlineSignatureDate);
+                sqlCommand.Parameters.AddWithValue("@ImageHeader", Convert.ToBase64String(signature.LogoHeader));
+                sqlCommand.Parameters.AddWithValue("@ImageFooter", Convert.ToBase64String(signature.LogoFooter));
+
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();
                 connection.Close();

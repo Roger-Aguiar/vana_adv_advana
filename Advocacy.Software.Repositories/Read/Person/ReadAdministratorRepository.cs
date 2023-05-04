@@ -1,8 +1,8 @@
 ﻿using Advocacy_Software.Advocacy.Software.Entities;
 using Advocacy_Software.Advocacy.Software.Shared;
-using Microsoft.Data.SqlClient;
 using System;
 using System.Windows;
+using MySqlConnector;
 
 namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
 {
@@ -14,12 +14,12 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
 
             try
             {
-                using SqlConnection connection = new(AzureStringConnection.GetStringConnection().ToString());
+                using MySqlConnection connection = new(AzureStringConnection.GetStringConnection().ToString());
                 connection.Open();
 
-                using (SqlCommand command = new(sql, connection))
+                using (MySqlCommand command = new(sql, connection))
                 {
-                    using SqlDataReader reader = command.ExecuteReader();
+                    using MySqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         user.IdSignature = reader.GetInt32(0);

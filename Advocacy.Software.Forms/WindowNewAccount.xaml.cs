@@ -22,7 +22,6 @@ namespace Advocacy_Software.Forms
     {
         private bool isValidField = true;
         private Signatures signature = new();
-        private string profilePath;
         private string signatureType;
         string? signatureUpdate = null;
 
@@ -89,31 +88,11 @@ namespace Advocacy_Software.Forms
             ComboBoxGenre.Items.Add("Masculino");
         }
 
-        private void GetImageProfile()
+        private static byte[] PrepareImageToSave(string imagePath)
         {
-            using (var stream = new FileStream(profilePath, FileMode.Open, FileAccess.Read))
-            {
-                using var reader = new BinaryReader(stream);
-                signature.ImageProfile = reader.ReadBytes((int)stream.Length);                
-            };
-        }
-
-        private void GetLogoHeader()
-        {
-            using (var stream = new FileStream(profilePath, FileMode.Open, FileAccess.Read))
-            {
-                using var reader = new BinaryReader(stream);
-                signature.LogoHeader = reader.ReadBytes((int)stream.Length);
-            };
-        }
-
-        private void GetLogoFooter()
-        {
-            using (var stream = new FileStream(profilePath, FileMode.Open, FileAccess.Read))
-            {
-                using var reader = new BinaryReader(stream);
-                signature.LogoFooter = reader.ReadBytes((int)stream.Length);
-            };
+            FileStream fileStream = new(imagePath, FileMode.Open, FileAccess.Read);
+            BinaryReader reader = new(fileStream);
+            return reader.ReadBytes((int)fileStream.Length);
         }
 
         private void ReadTable()
@@ -201,9 +180,6 @@ namespace Advocacy_Software.Forms
 
         private void Create()
         {
-            //Signatures signature = new();
-            
-
             director.Builder = builder;
             if (isValidField == true)
             {
@@ -337,10 +313,7 @@ namespace Advocacy_Software.Forms
         {
             OpenFileDialog openFileDialog = new() { Title = "Selecionar imagem de perfil" };
             openFileDialog.ShowDialog();
-
-            profilePath = openFileDialog.FileName;
-            GetImageProfile();
-
+            signature.ImageProfile = openFileDialog.FileName == "" ? null : PrepareImageToSave(openFileDialog.FileName);
             MessageBox.Show("Sua imagem foi adicionada com sucesso e será exibida como foto de perfil no menu principal!", "Imagem de perfil", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -348,10 +321,7 @@ namespace Advocacy_Software.Forms
         {
             OpenFileDialog openFileDialog = new() { Title = "Selecionar logo para cabeçalho" };
             openFileDialog.ShowDialog();
-
-            profilePath = openFileDialog.FileName;
-            GetLogoHeader();
-
+            signature.LogoHeader = openFileDialog.FileName == "" ? null : PrepareImageToSave(openFileDialog.FileName);
             MessageBox.Show("Sua imagem foi adicionada com sucesso e será adicionada nos cabeçalhos de todos os contratos que você criar!", "Cabeçalho", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -359,10 +329,7 @@ namespace Advocacy_Software.Forms
         {
             OpenFileDialog openFileDialog = new() { Title = "Selecionar logo para rodapé" };
             openFileDialog.ShowDialog();
-
-            profilePath = openFileDialog.FileName;
-            GetLogoFooter();
-
+            signature.LogoFooter = openFileDialog.FileName == "" ? null : PrepareImageToSave(openFileDialog.FileName);
             MessageBox.Show("Sua imagem foi adicionada com sucesso e será adicionada nos rodapés de todos os contratos que você criar!", "Rodapé", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 

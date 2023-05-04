@@ -3,10 +3,9 @@
     public static class SignatureSqlCommands
     {
         public static string Insert() => $@"INSERT INTO Signatures
-            (FullName, Username, Email, Password, GuidSignature, RegisterDate, SignaturePrice, 
-             SignatureType, ImageProfile, Genre, DeadlineSignatureDate, LogoHeader, LogoFooter)
-            VALUES (@FullName, @Username, @Email, @Password, @GuidSignature, @RegisterDate, 
-            @SignaturePrice, @SignatureType, @ImageProfile, @Genre, @DeadlineSignatureDate, @LogoHeader, @LogoFooter);";
+            (FullName, Username, Email, Password, Id, RegisterDate, SignaturePrice, SignatureType, ImageProfile, Genre, DeadlineSignature, ImageHeader, ImageFooter)
+            VALUES (@FullName, @Username, @Email, @Password, @Id, @RegisterDate, @SignaturePrice, @SignatureType, @ImageProfile, @Genre, @DeadlineSignature, @ImageHeader, @ImageFooter);";
+
 
         public static string Select() => "SELECT * FROM Signatures";
 
