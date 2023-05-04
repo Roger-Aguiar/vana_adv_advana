@@ -1,0 +1,54 @@
+﻿<Window x:Name="WindowNewAccount1" x:Class="Advocacy_Software.Forms.WindowNewAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Advocacy_Software.Forms"
+        mc:Ignorable="d"
+        Title="Minha conta" Height="700" Width="1200" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanMinimize" Icon="/Advocacy.Software.Forms/user.png" Background="Lavender" Loaded="WindowNewAccount1_Loaded">
+    <Grid Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="420"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Frame x:Name="FrameSidebar"></Frame>
+
+        <ListBox x:Name="ListBoxOptions" Grid.Column="0" Background="Black" SelectionMode="Single">
+            <ListBoxItem x:Name="ListBoxUsers" Margin="10" HorizontalAlignment="Left" Content="Minha conta" Foreground="Coral" FontWeight="Bold" FontSize="25"/>
+            <ListBoxItem x:Name="ListBoxItemAddProfileImage" Margin="10" HorizontalAlignment="Left" Content="Adicionar imagem de perfil" Foreground="Coral" FontSize="25" Selected="ListBoxItemAddProfileImage_Selected" />
+            <ListBoxItem x:Name="ListBoxItemAddHeaderImage" Margin="10" HorizontalAlignment="Left" Content="Adicionar logo para cabeçalho" Foreground="Coral" FontSize="25" Selected="ListBoxItemAddHeaderImage_Selected" />
+            <ListBoxItem x:Name="ListBoxItemAddFooterImage" Margin="10" HorizontalAlignment="Left" Content="Adicionar logo para rodapé" Foreground="Coral" FontSize="25" Selected="ListBoxItemAddFooterImage_Selected" />
+            <ListBoxItem x:Name="ListBoxItemRegisterAccount" Margin="10" HorizontalAlignment="Left" Content="Salvar" Foreground="Coral" FontSize="25" Selected="ListBoxItemRegisterAccount_Selected_1" ></ListBoxItem>
+            <ListBoxItem x:Name="ListBoxItemExit" Margin="10" HorizontalAlignment="Left" Content="Sair" Foreground="Coral"  FontSize="25" Selected="ListBoxItemExit_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemDeleteAccount" Margin="10" HorizontalAlignment="Left" Content="Deletar" Foreground="Coral" FontSize="25" Selected="ListBoxItemDeleteAccount_Selected" />
+        </ListBox>
+
+        <Border Grid.Column="1" Background="Black" Height="50" VerticalAlignment="Top">
+            <Label Content="Minha conta" Foreground="Lavender" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30"/>
+        </Border>
+        <Label Content="Nome completo:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="10,67,0,0" Grid.Column="1" />
+        <TextBox x:Name="TextBoxFullName" FontSize="20" VerticalAlignment="Top" TextWrapping="Wrap" Margin="262,71,0,0" Grid.Column="1" HorizontalAlignment="Left" Width="455"/>
+        <TextBox x:Name="TextBoxUserName" FontSize="20" VerticalAlignment="Top" TextWrapping="Wrap" Margin="262,113,63,0" Grid.Column="1"/>
+        <Label Content="Usuário:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="10,109,0,0" Grid.Column="1" />
+        <TextBox x:Name="TextBoxEmail" FontSize="20" VerticalAlignment="Top" TextWrapping="Wrap" Margin="262,155,63,0" Grid.Column="1"/>
+        <Label Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="10,151,0,0" Grid.Column="1" />
+        <Label Content="Senha:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="10,191,0,0" Grid.Column="1" />
+        <TextBox x:Name="TextBoxPassword" FontSize="20" VerticalAlignment="Top" TextWrapping="Wrap" Margin="262,195,63,0" Grid.Column="1"/>
+        <ComboBox x:Name="ComboBoxGenre" VerticalAlignment="Top" FontSize="20" Height="29" Margin="262,237,63,0" Grid.Column="1" SelectionChanged="ComboBoxGenre_SelectionChanged" />
+        <Label Content="Gênero:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="10,233,0,0" Grid.Column="1" />
+        <TextBox x:Name="TextBoxGenre" FontSize="20" VerticalAlignment="Top" TextWrapping="Wrap" Margin="262,237,80,0" Grid.Column="1"/>
+        <Label Content="Tipo de assinatura:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="10,274,0,0" Grid.Column="1" />
+        <ComboBox x:Name="ComboBoxSignatureType" VerticalAlignment="Top" FontSize="20" Height="29" Margin="262,278,63,0" Grid.Column="1" SelectionChanged="ComboBoxSignatureType_SelectionChanged"/>
+        <TextBox x:Name="TextBoxSignatureType" FontSize="20" VerticalAlignment="Top" TextWrapping="Wrap" Margin="262,278,80,0" Grid.Column="1"/>
+        <Label Content="Valor:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="10,316,0,0" Grid.Column="1" />
+        <TextBox x:Name="TextBoxSignaturePrice" FontSize="20" VerticalAlignment="Top" IsReadOnly="True" TextWrapping="Wrap" Margin="262,320,63,0" Grid.Column="1"/>
+        <Label Content="Data de cadastro:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="11,358,0,0" Grid.Column="1" />
+        <TextBox x:Name="TextBoxRegisterDate" FontSize="20" VerticalAlignment="Top" IsReadOnly="True" TextWrapping="Wrap" Margin="262,362,63,0" Grid.Column="1"/>
+        <Label Content="Número da matrícula:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="11,442,0,0" Grid.Column="1" />
+        <TextBox x:Name="TextBoxGuidSignature" FontSize="20" VerticalAlignment="Top" IsReadOnly="True" TextWrapping="Wrap" Margin="262,446,63,0" Grid.Column="1"/>
+        <Label Content="Vencimento da assinatura:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="11,400,0,0" Grid.Column="1" />
+        <TextBox x:Name="TextBoxDeadline" FontSize="20" VerticalAlignment="Top" IsReadOnly="True" TextWrapping="Wrap" Margin="262,404,63,0" Grid.Column="1"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,34 @@
+﻿<Window x:Name="WindowMainMenu" x:Class="Advocacy_Software.Forms.WindowMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Advocacy_Software.Forms"
+        mc:Ignorable="d"
+        Title="Menu Principal" Height="700" Width="1200" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanMinimize" Icon="/Advocacy.Software.Forms/2123897_app_essential_menu_ui_icon.png" Loaded="WindowMainMenu_Loaded">
+    <Grid Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="420"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Frame x:Name="FrameSidebar"></Frame>
+
+        <ListBox x:Name="ListBoxOptions" Grid.Column="0" Background="Black" SelectionMode="Single">
+            <ListBoxItem x:Name="ListBoxMainMenu" Margin="10" HorizontalAlignment="Left" Content="MENU PRINCIPAL" Foreground="Coral" FontWeight="Bold" FontSize="25" Selected="ListBoxMainMenu_Selected" />
+            <ListBoxItem x:Name="ListBoxItemRegisterLawyer" Margin="10" HorizontalAlignment="Left" Content="Cadastrar advogado" Foreground="Coral" FontSize="25" Selected="ListBoxItemRegisterLawyer_Selected"></ListBoxItem>
+            <ListBoxItem x:Name="ListBoxItemRegisterCustomer" Margin="10" HorizontalAlignment="Left" Content="Cadastrar cliente" Foreground="Coral" FontSize="25" Selected="ListBoxItemRegisterCustomer_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemRegisterAccountBank" Margin="10" HorizontalAlignment="Left" Content="Cadastrar conta bancária" Foreground="Coral" FontSize="25" Selected="ListBoxItemRegisterAccountBank_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemGenerateHipposuficiencyContract" Margin="10" HorizontalAlignment="Left" Content="Gerar contrato de hipossuficiência" Foreground="Coral" FontSize="25" Selected="ListBoxItemGenerateHipposuficiencyContract_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemGenerateFeesContract" Margin="10" HorizontalAlignment="Left" Content="Gerar contrato de honorários" Foreground="Coral" FontSize="25" Selected="ListBoxItemGenerateFeesContract_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemGenerateAttorney" Margin="10" HorizontalAlignment="Left" Content="Gerar procuração" Foreground="Coral" FontSize="25" Selected="ListBoxItemGenerateAttorney_Selected"></ListBoxItem>
+            <ListBoxItem x:Name="ListBoxItemWindowNewAccount" Margin="10" HorizontalAlignment="Left" Content="Minha conta" Foreground="Coral" FontSize="25" Selected="ListBoxItemWindowNewAccount_Selected"></ListBoxItem>
+            <ListBoxItem x:Name="ListBoxItemExit" Margin="10" HorizontalAlignment="Left" Content="Sair" Foreground="Coral"  FontSize="25" Selected="ListBoxItemExit_Selected"/>
+            
+        </ListBox>
+        
+        <Frame x:Name="FrameForms" Grid.Column="1" NavigationUIVisibility="Hidden" VerticalContentAlignment="Top">
+            
+        </Frame>
+    </Grid>
+</Window>

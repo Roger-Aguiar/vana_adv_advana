@@ -1,0 +1,30 @@
+﻿<Page x:Class="Advocacy_Software.Pages.PageGenerateAttorney"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Advocacy_Software.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="PageGenerateAttorney" Background="Lavender" x:Name="PageAttorneyGenerator" Loaded="PageAttorneyGenerator_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="46"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Background="Black" BorderBrush="Black" BorderThickness="1">
+            <Label Foreground="Lavender"  Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold">Gerador de procuração</Label>
+        </Border>
+        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25">Digite o CPF ou CNPJ do cliente:</Label>
+        <Label Grid.Row="1" Content="Advogado responsável:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="0,96,0,0"></Label>
+        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="0,179,0,0" Content="Poderes específicos:"/>
+        <TextBox x:Name="TextBoxCpfOrCnpj" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" Width="390" Margin="370,8,40,0"/>
+        <TextBox x:Name="TextBoxSpecificPowers" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" Width="390" Margin="370,183,40,0"/>
+
+
+        <Button Grid.Row="1" x:Name="ButtonGenerateAttorney" Content="Gerar Procuração" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" Foreground="Lavender" Background="Black" Click="ButtonGenerateAttorney_Click"></Button>
+        <TextBox x:Name="TextBoxLawyer" IsReadOnly="True" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" Width="390" Margin="371,100,39,0" />
+    </Grid>
+</Page>

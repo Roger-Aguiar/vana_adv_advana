@@ -1,0 +1,28 @@
+﻿<Page x:Class="Advocacy_Software.Pages.PageGenerateHipossuficiencyContract"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Advocacy_Software.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="PageGenerateHipossuficiencyContract" Background="Lavender" x:Name="PageAttorneyHipossuficiencyContract" Loaded="PageAttorneyHipossuficiencyContract_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="46"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Background="Black" BorderBrush="Black" BorderThickness="1">
+            <Label Foreground="Lavender"  Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold">Contrato de hipossuficiência</Label>
+        </Border>
+        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25">Digite o CPF ou CNPJ do cliente:</Label>
+        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="0,95,0,0">Selecione um advogado da lista:</Label>
+        <TextBox x:Name="TextBoxCpfOrCnpj" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" Width="390" Margin="370,8,40,0"/>
+
+
+        <Button Grid.Row="1" x:Name="ButtonGenerateHipossuficiencyContract" Content="Gerar contrato de hipossuficiência" FontSize="35" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Foreground="Lavender" Background="Black" Margin="0,209,0,0" Click="ButtonGenerateHipossuficiencyContract_Click"></Button>
+        <TextBox x:Name="TextBoxLawyer" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" Width="390" Margin="371,103,39,0" IsReadOnly="True"/>
+    </Grid>
+</Page>

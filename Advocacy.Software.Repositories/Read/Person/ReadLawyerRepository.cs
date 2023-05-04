@@ -1,0 +1,56 @@
+﻿using Advocacy_Software.Advocacy.Software.Entities;
+using Advocacy_Software.Advocacy.Software.Shared;
+using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.Windows;
+
+namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
+{
+    public static class ReadLawyerRepository
+    {
+        public static List<Lawyer> Select(string sql)
+        {
+            var lawyers = new List<Lawyer>();
+
+            try
+            {
+                using SqlConnection connection = new(AzureStringConnection.GetStringConnection().ToString());
+                connection.Open();
+                using (SqlCommand command = new(sql, connection))
+                {
+                    using SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        lawyers.Add(new Lawyer()
+                        {
+                            IdLawyer = reader.GetInt32(0),
+                            Name = reader.GetString(1),
+                            Nationality = reader.GetString(2),
+                            CivilStatus = reader.GetString(3),
+                            Profession = reader.GetString(4),
+                            IdentityLawyer = reader.GetString(5),
+                            Phone = reader.GetString(6),
+                            Email = reader.GetString(7),
+                            OabNumber = reader.GetString(8),
+                            RegisterDate = reader.GetString(9).ToString(),
+                            LastUpdate = reader.GetString(10).ToString(),
+                            Id = reader.GetString(11),
+                            IdAddress = reader.GetInt32(12),
+                            UfOab = reader.GetString(13),
+                            CpfOrCnpj = reader.GetString(14),
+                            IdSignature = reader.GetInt32(15),
+                            AppPassword = reader.GetString(16)
+                        });
+                    }
+                };
+                connection.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return lawyers;
+        }
+    }
+}

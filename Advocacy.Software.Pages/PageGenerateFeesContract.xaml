@@ -1,0 +1,47 @@
+﻿<Page x:Name="PageFeesContractGenerator" x:Class="Advocacy_Software.Pages.PageGenerateFeesContract"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Advocacy_Software.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="800"
+      Title="PageGenerateFeesContract" Background="Lavender" Loaded="PageFeesContractGenerator_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="46"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Background="Black" BorderBrush="Black" BorderThickness="1">
+            <Label Foreground="Lavender"  Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold">Contrato de honorários</Label>
+        </Border>
+        <TextBox x:Name="TextBoxCpfOrCnpj" TabIndex="0" TextWrapping="Wrap" Height="25" FontSize="15" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Margin="309,10,191,0"/>
+        <Label Content="CPF ou CNPJ:" Margin="9,10,0,0" FontSize="15" Height="30" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="294"/>
+        <Label Content="Nome da ação: " FontSize="15" Margin="9,72,496,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxActionName" TabIndex="1" TextWrapping="Wrap" Height="25" FontSize="15" Margin="309,75,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Valor total do serviço: " FontSize="15" Margin="9,102,496,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxTotalValue" TabIndex="2" TextWrapping="Wrap" Height="25" FontSize="15" Margin="309,105,191,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Honorários de êxito (%): apenas números&#xD;&#xA; " FontSize="15" Margin="9,132,496,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxSuccessFees" TabIndex="3" TextWrapping="Wrap" Height="25" FontSize="15" Margin="309,135,191,0" Grid.Row="1" VerticalAlignment="Top"/>
+
+        <Label Content="Advogado responsável:" FontSize="15" Margin="9,40,496,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Selecione uma forma de pagamento:" FontSize="15" Margin="9,162,496,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ComboBoxPaymentType" TabIndex="4" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="309,165,0,0" FontSize="15" Height="25" Width="300"/>
+        <Label Content="Número de parcelas:" FontSize="15" Margin="9,221,496,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxInstallmentsNumber" TabIndex="6" TextWrapping="Wrap" Height="26" FontSize="15" Margin="309,225,191,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Valor de entrada:" FontSize="15" Margin="9,251,585,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxInitialValue" TabIndex="7" TextWrapping="Wrap" Height="26" FontSize="15" Margin="309,256,191,0" Grid.Row="1" VerticalAlignment="Top"/>
+
+        <Label Content="Selecione uma conta bancária:" FontSize="15" Margin="9,192,496,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ComboBoxBankAccount" TabIndex="5" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="309,195,0,0" FontSize="15" Height="25" Width="300"/>
+        <Label Content="Selecione um estado:" FontSize="15" Margin="9,284,496,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ComboBoxStates" TabIndex="8" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="309,287,0,0" FontSize="15" Height="25" Width="300" SelectionChanged="ComboBoxStates_SelectionChanged"/>
+        <Label Content="Selecione uma cidade:" FontSize="15" Margin="9,314,496,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ComboBoxCities" TabIndex="9" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="309,317,0,0" FontSize="15" Height="25" Width="300"/>
+        <Button x:Name="ButtonGenerateFeesContract" Content="Gerar contrato de honorários" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" FontSize="30" Foreground="Lavender" Background="Black" Margin="0,397,0,0" Width="500" Click="ButtonGenerateFeesContract_Click"/>
+        <TextBox x:Name="TextBoxLawyer" TextWrapping="Wrap" Height="26" FontSize="15" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Margin="309,42,0,0"/>
+
+
+    </Grid>
+</Page>

@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <StartupObject>Advocacy_Software.App</StartupObject>
+    <ApplicationIcon>Advocacy.Software.Shared\Icons\2315987_court_justice_law_lawyer_icon.ico</ApplicationIcon>
+    <SignAssembly>False</SignAssembly>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Advocacy.Software.Concrete.Builders\Contract\**" />
+    <Compile Remove="Advocacy.Software.Interfaces\**" />
+    <EmbeddedResource Remove="Advocacy.Software.Concrete.Builders\Contract\**" />
+    <EmbeddedResource Remove="Advocacy.Software.Interfaces\**" />
+    <None Remove="Advocacy.Software.Concrete.Builders\Contract\**" />
+    <None Remove="Advocacy.Software.Interfaces\**" />
+    <Page Remove="Advocacy.Software.Concrete.Builders\Contract\**" />
+    <Page Remove="Advocacy.Software.Interfaces\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="2123897_app_essential_menu_ui_icon.png" />
+    <None Remove="Advocacy.Software.Forms\2123897_app_essential_menu_ui_icon.png" />
+    <None Remove="Advocacy.Software.Forms\user.png" />
+    <None Remove="perfil.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="VSLangProj">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>7</VersionMajor>
+      <Guid>49a1950e-3e35-4595-8cb9-920c64c44d67</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Advocacy.Software.Shared\Icons\2315987_court_justice_law_lawyer_icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="itext7" Version="7.2.5" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="2123897_app_essential_menu_ui_icon.png" />
+    <Resource Include="Advocacy.Software.Forms\2123897_app_essential_menu_ui_icon.png" />
+    <Resource Include="Advocacy.Software.Forms\user.png" />
+    <Resource Include="perfil.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Advocacy.Software.Pages\PageGenerateHipossuficiencyContract.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Advocacy.Software.Pages\PageGenerateFeesContract.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Advocacy.Software.Pages\PageRegisterNewUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Advocacy.Software.Pages\PageRegisterCustomer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Advocacy.Software.Pages\PageRegisterBankAccount.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>

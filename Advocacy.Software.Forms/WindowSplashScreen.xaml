@@ -1,0 +1,15 @@
+﻿<Window x:Class="Advocacy_Software.Forms.WindowSplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Advocacy_Software.Forms"
+        mc:Ignorable="d"
+        Title="WindowSplashScreen" Height="458" Width="710" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="C:\dev\Vana_Assis\Advocacy.Software.Shared\Images\logo.png"></ImageBrush>
+        </Grid.Background>
+        <Label Content="Desenvolvido por Roger Aguiar - https://www.linkedin.com/in/roger-aguiar/" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,449,0,0" Foreground="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
+    </Grid>
+</Window>

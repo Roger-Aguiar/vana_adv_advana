@@ -1,0 +1,48 @@
+﻿<Page x:Name="PageBankAccount" x:Class="Advocacy_Software.Pages.PageRegisterBankAccount"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Advocacy_Software.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="PageRegisterBankAccount" Background="Lavender" Loaded="PageBankAccount_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="46"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Background="Black" BorderBrush="Black" BorderThickness="1">
+            <Label Foreground="Lavender"  Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold">Cadastro de contas bancárias</Label>
+        </Border>
+        <Label Content="Agência: " FontSize="15" Margin="12,101,610,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxAgencyNumber" TabIndex="2" TextWrapping="Wrap" Height="25" FontSize="15" Margin="223,104,377,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Titular: " FontSize="15" Margin="12,10,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Tipo de conta: " FontSize="15" Margin="10,41,685,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ComboBoxAccountType" TabIndex="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="223,43,0,0" FontSize="15" Height="25" Width="567" SelectionChanged="ComboBoxAccountType_SelectionChanged"/>
+        <Label Content="Conta: " FontSize="15" Margin="10,131,612,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxAccountNumber" TabIndex="3" TextWrapping="Wrap" Height="26" FontSize="15" Margin="224,134,377,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="PIX: " FontSize="15" Margin="12,161,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxPix" TabIndex="4" TextWrapping="Wrap" Height="26" FontSize="15" Margin="224,165,377,0" Grid.Row="1" VerticalAlignment="Top"/>
+
+        <Border Grid.Row="1" Background="Black" Height="31" VerticalAlignment="Bottom"></Border>
+
+        <Button Grid.Row="1" x:Name="ButtonAdd" TabIndex="7" Background ="Lavender"  Foreground="Black"  Width="200"  Content="Novo" VerticalAlignment="Bottom" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="10, 0, 0, 0" Click="ButtonAdd_Click" ></Button>
+        <Button Grid.Row="1" x:Name="ButtonSave" TabIndex="6" Background ="Lavender"  Foreground="Black"  Width="200"  Content="Salvar" VerticalAlignment="Bottom" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Click="ButtonSave_Click"></Button>
+        <Button Grid.Row="1" x:Name="ButtonDelete" TabIndex="8" Background ="Lavender"  Foreground="Black"  Width="200"  Content="Deletar" VerticalAlignment="Bottom" HorizontalAlignment="Right" HorizontalContentAlignment="Center" FontSize="20" Margin="0, 0, 10, 0" Click="ButtonDelete_Click"></Button>
+        <Label Content="Banco: " FontSize="15" Margin="10,71,685,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ComboBoxBankName" TabIndex="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="223,73,0,0" FontSize="15" Height="25" Width="567" SelectionChanged="ComboBoxBankName_SelectionChanged"/>
+        <Label Content="Tipo de chave PIX: " FontSize="15" Margin="11,194,684,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ComboBoxPixType" TabIndex="5" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="224,196,0,0" FontSize="15" Height="25" Width="567" SelectionChanged="ComboBoxPixType_SelectionChanged"/>
+        <Label Content="Selecione uma conta bancária da lista para exibir os dados no formulário: " FontSize="15" Margin="12,277,292,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ComboBoxBankAccount" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="12,312,0,0" FontSize="15" Height="25" Width="567" SelectionChanged="ComboBoxBankAccount_SelectionChanged"/>
+        <TextBox x:Name="TextBoxUserAccount" IsReadOnly="True" TextWrapping="Wrap" Height="25" FontSize="15" Margin="223,13,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="567"/>
+        <TextBox x:Name="TextBoxAccountType" IsReadOnly="True" TextWrapping="Wrap" Height="25" FontSize="15" Margin="223,43,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="550"/>
+        <TextBox x:Name="TextBoxBankName" IsReadOnly="True" TextWrapping="Wrap" Height="25" FontSize="15" Margin="223,73,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="550"/>
+        <TextBox x:Name="TextBoxPixType" IsReadOnly="True" TextWrapping="Wrap" Height="26" FontSize="15" Margin="224,196,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="550"/>
+        <TextBox x:Name="TextBoxBankAccount" IsReadOnly="True" TextWrapping="Wrap" Height="25" FontSize="15" Margin="12,312,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="550"/>
+        <Label Content="ID da conta: " FontSize="15" Margin="12,229,683,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxIdGuid" IsReadOnly="True" TextWrapping="Wrap" Height="26" FontSize="15" Margin="224,227,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="550"/>
+    </Grid>
+</Page>
