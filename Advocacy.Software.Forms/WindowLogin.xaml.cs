@@ -18,10 +18,10 @@ namespace Advocacy_Software.Forms
         
         public WindowLogin()
         {
-            /*WindowSplashScreen splashScreen = new();
+            WindowSplashScreen splashScreen = new();
             splashScreen.Show();
             System.Threading.Thread.Sleep(5000);
-            splashScreen.Close();*/
+            splashScreen.Close();
             InitializeComponent();
         }
 

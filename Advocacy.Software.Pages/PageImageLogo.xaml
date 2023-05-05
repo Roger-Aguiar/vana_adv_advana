@@ -5,12 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Advocacy_Software.Advocacy.Software.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="PageImageLogo" Background="White" Loaded="PageImageLogo1_Loaded">
 
     <Grid>
         <Border BorderThickness="2" BorderBrush="Black">
-            <Image x:Name="ImageLogo" ></Image>    
+            <Image x:Name="ImageLogo" Stretch="Fill" Source="/Advocacy.Software.Pages/LOGO PARA DESKTOP.jpg" ></Image>    
         </Border>
         
     </Grid>

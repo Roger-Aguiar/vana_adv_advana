@@ -1,4 +1,6 @@
 ﻿using Advocacy_Software.Advocacy.Software.Entities;
+using iText.Kernel.Pdf;
+using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,8 +25,13 @@ namespace Advocacy_Software.Advocacy.Software.Pages
         {
             using (var stream = new MemoryStream(Signature.ImageProfile))
             {
-                ImageLogo.Stretch = Stretch.Fill;
-                ImageLogo.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                //ImageLogo.Stretch = Stretch.Fill;               
+                //ImageLogo.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                /*var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = stream;
+                bitmapImage.EndInit();
+                ImageLogo.Source = bitmapImage;*/
             };
         }
     }

@@ -8,7 +8,7 @@
         Title="WindowSplashScreen" Height="458" Width="710" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="C:\dev\Vana_Assis\Advocacy.Software.Shared\Images\logo.png"></ImageBrush>
+            <ImageBrush Stretch="Fill" ImageSource="/Advocacy.Software.Forms/LOGO PARA DESKTOP.jpg"></ImageBrush>
         </Grid.Background>
         <Label Content="Desenvolvido por Roger Aguiar - https://www.linkedin.com/in/roger-aguiar/" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,449,0,0" Foreground="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
     </Grid>

@@ -25,7 +25,9 @@
   <ItemGroup>
     <None Remove="2123897_app_essential_menu_ui_icon.png" />
     <None Remove="Advocacy.Software.Forms\2123897_app_essential_menu_ui_icon.png" />
+    <None Remove="Advocacy.Software.Forms\LOGO PARA DESKTOP.jpg" />
     <None Remove="Advocacy.Software.Forms\user.png" />
+    <None Remove="Advocacy.Software.Pages\LOGO PARA DESKTOP.jpg" />
     <None Remove="perfil.png" />
   </ItemGroup>
 
@@ -54,7 +56,9 @@
   <ItemGroup>
     <Resource Include="2123897_app_essential_menu_ui_icon.png" />
     <Resource Include="Advocacy.Software.Forms\2123897_app_essential_menu_ui_icon.png" />
+    <Resource Include="Advocacy.Software.Forms\LOGO PARA DESKTOP.jpg" />
     <Resource Include="Advocacy.Software.Forms\user.png" />
+    <Resource Include="Advocacy.Software.Pages\LOGO PARA DESKTOP.jpg" />
     <Resource Include="perfil.png" />
   </ItemGroup>
 

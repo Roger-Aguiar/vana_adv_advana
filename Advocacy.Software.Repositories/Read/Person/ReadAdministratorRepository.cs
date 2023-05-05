@@ -27,15 +27,15 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
                         user.Username = reader.GetString(2);
                         user.Email = reader.GetString(3);
                         user.Password = reader.GetString(4);
-                        user.GuidSignature = reader.GetString(5);
-                        user.RegisterDate = reader.GetString(6);
-                        user.SignaturePrice = reader.GetDecimal(7);
-                        user.SignatureType = reader.GetString(8);
+                        user.RegisterDate = reader.GetString(5);
+                        user.SignaturePrice = reader.GetDecimal(6);
+                        user.SignatureType = reader.GetString(7);
+                        user.Genre = reader.GetString(8);
+                        user.DeadlineSignatureDate = reader.GetString(9);
                         user.ImageProfile = (!Convert.IsDBNull(reader["ImageProfile"])) ? (byte[])reader["ImageProfile"] : null;
-                        user.Genre = reader.GetString(10);
-                        user.LogoHeader = (!Convert.IsDBNull(reader["LogoHeader"])) ? (byte[])reader["LogoHeader"] : null;
-                        user.LogoFooter = (!Convert.IsDBNull(reader["LogoFooter"])) ? (byte[])reader["LogoFooter"] : null;
-                        user.DeadlineSignatureDate = reader.GetString(11);
+                        user.LogoHeader = (!Convert.IsDBNull(reader["ImageHeader"])) ? (byte[])reader["ImageHeader"] : null;
+                        user.LogoFooter = (!Convert.IsDBNull(reader["ImageFooter"])) ? (byte[])reader["ImageFooter"] : null;
+                        user.GuidSignature = reader.GetString(13);    
                     }
                 };
                 connection.Close();
