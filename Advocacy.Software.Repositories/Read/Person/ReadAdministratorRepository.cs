@@ -32,9 +32,9 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
                         user.SignatureType = reader.GetString(7);
                         user.Genre = reader.GetString(8);
                         user.DeadlineSignatureDate = reader.GetString(9);
-                        user.ImageProfile = (!Convert.IsDBNull(reader["ImageProfile"])) ? (byte[])reader["ImageProfile"] : null;
-                        user.LogoHeader = (!Convert.IsDBNull(reader["ImageHeader"])) ? (byte[])reader["ImageHeader"] : null;
-                        user.LogoFooter = (!Convert.IsDBNull(reader["ImageFooter"])) ? (byte[])reader["ImageFooter"] : null;
+                        user.ImageProfile = (string?)reader["ImageProfile"];
+                        user.LogoHeader = (string?)reader["ImageHeader"];
+                        user.LogoFooter = (string?)reader["ImageFooter"];
                         user.GuidSignature = reader.GetString(13);    
                     }
                 };

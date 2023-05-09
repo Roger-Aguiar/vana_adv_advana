@@ -10,7 +10,7 @@
 
     <Grid>
         <Border BorderThickness="2" BorderBrush="Black">
-            <Image x:Name="ImageLogo" Stretch="Fill" Source="/Advocacy.Software.Pages/LOGO PARA DESKTOP.jpg" ></Image>    
+            <Image x:Name="ImageLogo" Stretch="Fill"></Image>    
         </Border>
         
     </Grid>

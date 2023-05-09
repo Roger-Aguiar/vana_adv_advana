@@ -6,7 +6,6 @@ using System.Globalization;
 using Advocacy_Software.Advocacy.Software.Director.Person;
 using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
 using Microsoft.Win32;
-using System.IO;
 using Advocacy_Software.Advocacy.Software.Shared;
 using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
 using Advocacy_Software.Advocacy.Software.Entities;
@@ -86,13 +85,6 @@ namespace Advocacy_Software.Forms
         {
             ComboBoxGenre.Items.Add("Feminino");
             ComboBoxGenre.Items.Add("Masculino");
-        }
-
-        private static byte[] PrepareImageToSave(string imagePath)
-        {
-            FileStream fileStream = new(imagePath, FileMode.Open, FileAccess.Read);
-            BinaryReader reader = new(fileStream);
-            return reader.ReadBytes((int)fileStream.Length);
         }
 
         private void ReadTable()
@@ -313,7 +305,7 @@ namespace Advocacy_Software.Forms
         {
             OpenFileDialog openFileDialog = new() { Title = "Selecionar imagem de perfil" };
             openFileDialog.ShowDialog();
-            signature.ImageProfile = openFileDialog.FileName == "" ? null : PrepareImageToSave(openFileDialog.FileName);
+            signature.ImageProfile = openFileDialog.FileName == "" ? null : openFileDialog.FileName;
             MessageBox.Show("Sua imagem foi adicionada com sucesso e será exibida como foto de perfil no menu principal!", "Imagem de perfil", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -321,7 +313,7 @@ namespace Advocacy_Software.Forms
         {
             OpenFileDialog openFileDialog = new() { Title = "Selecionar logo para cabeçalho" };
             openFileDialog.ShowDialog();
-            signature.LogoHeader = openFileDialog.FileName == "" ? null : PrepareImageToSave(openFileDialog.FileName);
+            signature.LogoHeader = openFileDialog.FileName == "" ? null : openFileDialog.FileName;
             MessageBox.Show("Sua imagem foi adicionada com sucesso e será adicionada nos cabeçalhos de todos os contratos que você criar!", "Cabeçalho", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -329,7 +321,7 @@ namespace Advocacy_Software.Forms
         {
             OpenFileDialog openFileDialog = new() { Title = "Selecionar logo para rodapé" };
             openFileDialog.ShowDialog();
-            signature.LogoFooter = openFileDialog.FileName == "" ? null : PrepareImageToSave(openFileDialog.FileName);
+            signature.LogoFooter = openFileDialog.FileName == "" ? null : openFileDialog.FileName;
             MessageBox.Show("Sua imagem foi adicionada com sucesso e será adicionada nos rodapés de todos os contratos que você criar!", "Rodapé", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 

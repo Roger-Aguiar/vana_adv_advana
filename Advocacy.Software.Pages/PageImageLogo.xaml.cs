@@ -1,10 +1,7 @@
 ﻿using Advocacy_Software.Advocacy.Software.Entities;
-using iText.Kernel.Pdf;
 using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Advocacy_Software.Advocacy.Software.Pages
@@ -23,16 +20,8 @@ namespace Advocacy_Software.Advocacy.Software.Pages
 
         private void PageImageLogo1_Loaded(object sender, RoutedEventArgs e)
         {
-            using (var stream = new MemoryStream(Signature.ImageProfile))
-            {
-                //ImageLogo.Stretch = Stretch.Fill;               
-                //ImageLogo.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
-                /*var bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.StreamSource = stream;
-                bitmapImage.EndInit();
-                ImageLogo.Source = bitmapImage;*/
-            };
+            if(Signature.ImageProfile != null) 
+                ImageLogo.Source = new BitmapImage(new Uri(Signature.ImageProfile));
         }
     }
 }

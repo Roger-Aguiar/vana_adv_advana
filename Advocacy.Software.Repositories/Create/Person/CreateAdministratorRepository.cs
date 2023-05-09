@@ -3,8 +3,6 @@ using Advocacy_Software.Advocacy.Software.Shared;
 using System;
 using System.Windows;
 using MySqlConnector;
-using System.IO;
-using iText.IO.Image;
 
 namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
 {
@@ -26,11 +24,11 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
                 sqlCommand.Parameters.AddWithValue("@RegisterDate", signature.RegisterDate);
                 sqlCommand.Parameters.AddWithValue("@SignaturePrice", signature.SignaturePrice);
                 sqlCommand.Parameters.AddWithValue("@SignatureType", signature.SignatureType);
-                sqlCommand.Parameters.AddWithValue("@ImageProfile", Convert.ToBase64String(signature.ImageProfile));
+                sqlCommand.Parameters.AddWithValue("@ImageProfile", signature.ImageProfile);
                 sqlCommand.Parameters.AddWithValue("@Genre", signature.Genre);
                 sqlCommand.Parameters.AddWithValue("@DeadlineSignature", signature.DeadlineSignatureDate);
-                sqlCommand.Parameters.AddWithValue("@ImageHeader", Convert.ToBase64String(signature.LogoHeader));
-                sqlCommand.Parameters.AddWithValue("@ImageFooter", Convert.ToBase64String(signature.LogoFooter));
+                sqlCommand.Parameters.AddWithValue("@ImageHeader", signature.LogoHeader);
+                sqlCommand.Parameters.AddWithValue("@ImageFooter", signature.LogoFooter);
 
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();
