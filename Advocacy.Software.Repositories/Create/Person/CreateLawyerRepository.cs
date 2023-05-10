@@ -16,7 +16,6 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
                 MySqlCommand sqlCommand = new(sql, connection);
                 sqlCommand.Parameters.Add(new MySqlParameter("@Name", lawyer.Name));
                 sqlCommand.Parameters.Add(new MySqlParameter("@Nationality", lawyer.Nationality));
-                sqlCommand.Parameters.Add(new MySqlParameter("@CpfOrCnpj", lawyer.CpfOrCnpj));
                 sqlCommand.Parameters.Add(new MySqlParameter("@CivilStatus", lawyer.CivilStatus));
                 sqlCommand.Parameters.Add(new MySqlParameter("@Profession", lawyer.Profession));
                 sqlCommand.Parameters.Add(new MySqlParameter("@Email", lawyer.Email));

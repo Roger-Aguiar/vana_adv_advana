@@ -7,7 +7,6 @@
         public string? Nationality { get; set; }
         public string? CivilStatus { get; set; }
         public string? Profession { get; set; }
-        public string? CpfOrCnpj { get; set; }
         public string? Phone { get; set; }
         public string? Email { get; set; }
         public string? RegisterDate { get; set; }

@@ -6,7 +6,6 @@ using Advocacy_Software.Advocacy.Software.Concrete.Builders.State;
 using Advocacy_Software.Advocacy.Software.Director.Person;
 using Advocacy_Software.Advocacy.Software.Entities;
 using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-using Advocacy_Software.Advocacy.Software.Shared.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -187,7 +186,6 @@ namespace Advocacy_Software.Pages
             {
                 TextBoxName.Text = lawyers[index].Name;
                 TextBoxNationality.Text = lawyers[index].Nationality;
-                TextBoxCpfOrCnpj.Text = lawyers[index].CpfOrCnpj?.Length == 11 ? Convert.ToInt64(lawyers[index].CpfOrCnpj).ToString(@"000\.000\.000-00") : Convert.ToInt64(lawyers[index].CpfOrCnpj).ToString(@"00\.000\.000/0000-00");
                 TextBoxCivilStatus.Text = lawyers[index].CivilStatus;
                 TextBoxProfession.Text = lawyers[index].Profession;
                 TextBoxOabNumber.Text = lawyers[index].OabNumber;                
@@ -236,11 +234,8 @@ namespace Advocacy_Software.Pages
 
         private void FillFields()
         {
-            var cpfOrCnpj = new string((from c in TextBoxCpfOrCnpj.Text where char.IsWhiteSpace(c) || char.IsLetterOrDigit(c) select c).ToArray());
-
             lawyer.Name = ValidateFields("Nome", TextBoxName.Text) == false ? null : TextBoxName.Text;
             lawyer.Nationality = ValidateFields("Nacionalidade", TextBoxNationality.Text) == false ? null : TextBoxNationality.Text;
-            lawyer.CpfOrCnpj = ValidateFields("CPF ou CNPJ", cpfOrCnpj) == false ? null : cpfOrCnpj;
             lawyer.CivilStatus = ValidateFields("Estado civil", TextBoxCivilStatus.Text) == false ? null : TextBoxCivilStatus.Text;
             lawyer.Profession = ValidateFields("Profissão", TextBoxProfession.Text) == false ? null : TextBoxProfession.Text;
             lawyer.OabNumber = ValidateFields("Número da OAB", TextBoxOabNumber.Text) == false ? null : TextBoxOabNumber.Text;
@@ -281,9 +276,7 @@ namespace Advocacy_Software.Pages
         {
             TextBoxName.Clear();
             TextBoxNationality.Clear();
-            TextBoxIdentityLawyer.Clear();
             TextBoxEmail.Clear();
-            TextBoxCpfOrCnpj.Clear();
             TextBoxCivilStatus.Clear();
             TextBoxProfession.Clear();
             TextBoxAddress.Clear();
@@ -410,22 +403,11 @@ namespace Advocacy_Software.Pages
 
             if (isValidFields)
             {
-                PersonalDocumentValidator validator = new(lawyer.CpfOrCnpj);
-                bool isValidDocument;
-                isValidDocument = lawyer.CpfOrCnpj.Trim().Length == 11 ? validator.ValidateCPF() : validator.ValidateCNPJ();
-               
-                if (isValidDocument)
-                {
-                    if (update == false)
-                        Create();
-                    else
-                        Update();
-                }
+                if (update == false)
+                    Create();
                 else
-                {
-                    MessageBox.Show("CPF ou CNPJ inválido! Tente novamente!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
-                    TextBoxCpfOrCnpj.Focus();
-                }
+                    Update();
+               
             }
             validFields.Clear();
         }

@@ -31,15 +31,14 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
                             Profession = reader.GetString(4),
                             Phone = reader.GetString(5),
                             Email = reader.GetString(6),
-                            OabNumber = reader.GetString(7),
-                            RegisterDate = reader.GetString(8).ToString(),
-                            LastUpdate = reader.GetString(9).ToString(),
-                            Id = reader.GetString(10),
-                            IdAddress = reader.GetInt32(11),
-                            UfOab = reader.GetString(12),
-                            CpfOrCnpj = reader.GetString(13),
-                            IdSignature = reader.GetInt32(14),
-                            AppPassword = reader.GetString(15)
+                            RegisterDate = reader.GetString(7).ToString(),
+                            LastUpdate = reader.GetString(8).ToString(),
+                            OabNumber = reader.GetString(9),
+                            UfOab = reader.GetString(10),
+                            Id = reader.GetString(11),
+                            IdSignature = reader.GetInt32(12),
+                            IdAddress = reader.GetInt32(13),                           
+                            AppPassword = reader.GetString(14)
                         });
                     }
                 };
