@@ -1,7 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
-using System;
+﻿using System;
 using System.Windows;
 using Advocacy_Software.Advocacy.Software.Shared;
+using MySqlConnector;
 
 namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
 {
@@ -11,12 +11,11 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
         {
             try
             {
-                using SqlConnection connection = new(AzureStringConnection.GetStringConnection().ToString());
+                using MySqlConnection connection = new(AzureStringConnection.GetStringConnection().ToString());
                 connection.Open();
-                using (SqlCommand command = new(sql, connection))
+                using (MySqlCommand command = new(sql, connection))
                 {
                     command.ExecuteNonQuery();
-
                 };
                 connection.Close();
 

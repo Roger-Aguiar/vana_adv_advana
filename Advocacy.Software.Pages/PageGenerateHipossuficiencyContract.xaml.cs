@@ -9,7 +9,6 @@ using System.Windows.Controls;
 using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
 using Advocacy_Software.Advocacy.Software.Shared.Utils;
 using Advocacy_Software.Advocacy.Software.Shared;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Advocacy_Software.Pages
 {
@@ -54,7 +53,7 @@ namespace Advocacy_Software.Pages
 
         private void ButtonGenerateHipossuficiencyContract_Click(object sender, RoutedEventArgs e)
         {
-            if(TextBoxCpfOrCnpj.Text.IsNullOrEmpty())
+            if (TextBoxCpfOrCnpj.Text == null || TextBoxCpfOrCnpj.Text == "")
             {
                 MessageBox.Show("Campo CPF ou CNPJ é de preenchimento obrigatório!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 TextBoxCpfOrCnpj.Focus();

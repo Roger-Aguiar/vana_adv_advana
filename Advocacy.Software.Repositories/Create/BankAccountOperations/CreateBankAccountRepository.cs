@@ -1,8 +1,8 @@
 ﻿using Advocacy_Software.Advocacy.Software.Entities;
 using Advocacy_Software.Advocacy.Software.Shared;
-using Microsoft.Data.SqlClient;
 using System;
 using System.Windows;
+using MySqlConnector;
 
 namespace Advocacy_Software.Advocacy.Software.Repositories.Create.BankAccountOperations
 {
@@ -12,18 +12,18 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Create.BankAccountOpe
         {
             try
             {
-                using SqlConnection connection = new(AzureStringConnection.GetStringConnection().ToString());
+                using MySqlConnection connection = new(AzureStringConnection.GetStringConnection().ToString());
 
-                SqlCommand sqlCommand = new(sql, connection);
-                sqlCommand.Parameters.Add(new SqlParameter("@BankName", bank.BankName));
-                sqlCommand.Parameters.Add(new SqlParameter("@AccountType", bank.AccountType));
-                sqlCommand.Parameters.Add(new SqlParameter("@AgencyNumber", bank.AgencyNumber));
-                sqlCommand.Parameters.Add(new SqlParameter("@AccountNumber", bank.AccountNumber));
-                sqlCommand.Parameters.Add(new SqlParameter("@Pix", bank.Pix));
-                sqlCommand.Parameters.Add(new SqlParameter("@IdLawyer", bank.IdLawyer));
-                sqlCommand.Parameters.Add(new SqlParameter("@Id", bank.Id));
-                sqlCommand.Parameters.Add(new SqlParameter("@PixType", bank.PixType));
-                sqlCommand.Parameters.Add(new SqlParameter("@IdSignature", bank.IdSignature));
+                MySqlCommand sqlCommand = new(sql, connection);
+                sqlCommand.Parameters.Add(new MySqlParameter("@BankName", bank.BankName));
+                sqlCommand.Parameters.Add(new MySqlParameter("@AccountType", bank.AccountType));
+                sqlCommand.Parameters.Add(new MySqlParameter("@AgencyNumber", bank.AgencyNumber));
+                sqlCommand.Parameters.Add(new MySqlParameter("@AccountNumber", bank.AccountNumber));
+                sqlCommand.Parameters.Add(new MySqlParameter("@Pix", bank.Pix));
+                sqlCommand.Parameters.Add(new MySqlParameter("@IdLawyer", bank.IdLawyer));
+                sqlCommand.Parameters.Add(new MySqlParameter("@Id", bank.Id));
+                sqlCommand.Parameters.Add(new MySqlParameter("@PixType", bank.PixType));
+                sqlCommand.Parameters.Add(new MySqlParameter("@IdSignature", bank.IdSignature));
 
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();
