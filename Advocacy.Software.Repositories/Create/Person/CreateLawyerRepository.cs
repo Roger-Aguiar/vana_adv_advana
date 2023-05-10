@@ -27,8 +27,7 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
                 sqlCommand.Parameters.Add(new MySqlParameter("@IdAddress", lawyer.IdAddress));
                 sqlCommand.Parameters.Add(new MySqlParameter("@IdSignature", lawyer.IdSignature));
                 sqlCommand.Parameters.Add(new MySqlParameter("@OabNumber", lawyer.OabNumber));
-                sqlCommand.Parameters.Add(new MySqlParameter("@UfOab", lawyer.UfOab));
-                sqlCommand.Parameters.Add(new MySqlParameter("@IdentityLawyer", lawyer.IdentityLawyer));
+                sqlCommand.Parameters.Add(new MySqlParameter("@OabUf", lawyer.UfOab));
                 sqlCommand.Parameters.Add(new MySqlParameter("@AppPassword", lawyer.AppPassword));
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();

@@ -29,18 +29,17 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
                             Nationality = reader.GetString(2),
                             CivilStatus = reader.GetString(3),
                             Profession = reader.GetString(4),
-                            IdentityLawyer = reader.GetString(5),
-                            Phone = reader.GetString(6),
-                            Email = reader.GetString(7),
-                            OabNumber = reader.GetString(8),
-                            RegisterDate = reader.GetString(9).ToString(),
-                            LastUpdate = reader.GetString(10).ToString(),
-                            Id = reader.GetString(11),
-                            IdAddress = reader.GetInt32(12),
-                            UfOab = reader.GetString(13),
-                            CpfOrCnpj = reader.GetString(14),
-                            IdSignature = reader.GetInt32(15),
-                            AppPassword = reader.GetString(16)
+                            Phone = reader.GetString(5),
+                            Email = reader.GetString(6),
+                            OabNumber = reader.GetString(7),
+                            RegisterDate = reader.GetString(8).ToString(),
+                            LastUpdate = reader.GetString(9).ToString(),
+                            Id = reader.GetString(10),
+                            IdAddress = reader.GetInt32(11),
+                            UfOab = reader.GetString(12),
+                            CpfOrCnpj = reader.GetString(13),
+                            IdSignature = reader.GetInt32(14),
+                            AppPassword = reader.GetString(15)
                         });
                     }
                 };
