@@ -19,7 +19,7 @@ namespace Advocacy_Software.Advocacy.Software.Shared.SqlCommands
         Profession = '{lawyer.Profession}',  
         Phone = '{lawyer.Phone}', Email = '{lawyer.Email}', RegisterDate = '{lawyer.RegisterDate}', LastUpdate = '{lawyer.LastUpdate}', 
         Id = '{lawyer.Id}', IdAddress = {lawyer.IdAddress}, OabNumber = '{lawyer.OabNumber}', OabUf = '{lawyer.UfOab}',
-        IdSignature = {lawyer.IdSignature} 
+        IdSignature = {lawyer.IdSignature}, AppPassword = '{lawyer.AppPassword}' 
         WHERE Id = '{lawyer.Id}' AND IdSignature = {lawyer.IdSignature}";
 
         public static string Delete(Lawyer lawyer) => $"DELETE FROM Lawyers WHERE IdAddress = {lawyer.IdAddress} AND IdSignature = {lawyer.IdSignature} AND Id = '{lawyer.Id}'";
