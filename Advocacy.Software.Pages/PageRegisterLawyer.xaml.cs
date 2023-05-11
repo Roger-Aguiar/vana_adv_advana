@@ -199,6 +199,7 @@ namespace Advocacy_Software.Pages
                 TextBoxNeighbourhood.Text = address.Neighbourhood;
                 TextBoxComplement.Text = address.Complement;
                 TextBoxZipCode.Text = Convert.ToInt64(address.ZipCode).ToString(@"00000-000");
+                TextBoxAppPassword.Text = lawyers[index].AppPassword;
 
                 ComboBoxUfOab.Items.Insert(0, lawyers[index].UfOab);
                 ComboBoxUfOab.Text = lawyers[index].UfOab.ToString();                 

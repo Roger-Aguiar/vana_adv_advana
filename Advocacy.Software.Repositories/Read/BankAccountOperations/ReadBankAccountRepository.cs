@@ -25,14 +25,14 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Read.BankAccountOpera
                         accounts.Add(new BankAccount()
                         {
                             IdBankAccount = reader.GetInt32(0),
-                            AccountType = reader.GetString(1),
-                            AgencyNumber = reader.GetString(2),
-                            BankName = reader.GetString(3),
-                            IdLawyer = reader.GetInt32(4),
-                            AccountNumber = reader.GetString(5),
-                            Pix = reader.GetString(6),
+                            BankName = reader.GetString(1),
+                            AccountType = reader.GetString(2),
+                            AgencyNumber = reader.GetString(3),                          
+                            AccountNumber = reader.GetString(4),
+                            Pix = reader.GetString(5),
+                            PixType = reader.GetString(6),                                                                             
                             Id = reader.GetString(7),
-                            PixType = reader.GetString(8),
+                            IdLawyer = reader.GetInt32(8),     
                             IdSignature = reader.GetInt32(9)
                         });
                     }
