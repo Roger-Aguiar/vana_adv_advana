@@ -29,7 +29,7 @@ namespace Advocacy_Software.Advocacy.Software.Shared.Utils
                     Image? imageFooter = attorney.Signature.LogoFooter != null ? new Image(ImageDataFactory.Create(attorney.Signature.LogoFooter)).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER) : null;
                     documentHeader.SetMargins(0, 0, 0, 0);
                     document.SetMargins(130, 50, 130, 50);
-                    documentFooter.SetMargins(700, 0, 0, 0);
+                    documentFooter.SetMargins(765, 0, 0, 0);
                     documentHeader.Add(imageHeader);
                     documentFooter.Add(imageFooter);
                 }
@@ -67,7 +67,7 @@ namespace Advocacy_Software.Advocacy.Software.Shared.Utils
 
                 document.Add(format.SetBody($"{attorney.CityLawyer[0].City}, {DateTime.Now.ToString("D", (new CultureInfo("pt-BR")))}"));
 
-                document.Add(new Paragraph("\n"));
+                document.Add(new Paragraph("\n\n"));
 
                 document.Add(format.SetTitle("___________________________________________________________"));
 

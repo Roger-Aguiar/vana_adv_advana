@@ -96,20 +96,27 @@ namespace Advocacy_Software.Pages
             directorLawyer.Builder = lawyerBuilder;
             directorLawyer.Read(LawyerSqlCommands.Read(lawyer));
             contract.Customer = customerBuilder.CustomersList;
-            contract.Lawyer = lawyerBuilder.Lawyers;
-            directorAddress.Read(AddressSqlCommands.Read(contract.Lawyer[0].Id));
-            contract.AddressLawyer = addressBuilder.Address;
-            directorAddress.Read(AddressSqlCommands.Read(contract.Customer[0].Id));
-            contract.AddressCustomer = addressBuilder.Address;
-            directorCity.Read(CitySqlCommands.Read(contract.AddressLawyer.IdCity));
-            contract.CityLawyer = cityBuilder.CitiesList;
-            directorCity.Read(CitySqlCommands.Read(contract.AddressCustomer.IdCity));
-            contract.CityCustomer = cityBuilder.CitiesList;
+            if(contract.Customer.Count > 0)
+            {
+                contract.Lawyer = lawyerBuilder.Lawyers;
+                directorAddress.Read(AddressSqlCommands.Read(contract.Lawyer[0].Id));
+                contract.AddressLawyer = addressBuilder.Address;
+                directorAddress.Read(AddressSqlCommands.Read(contract.Customer[0].Id));
+                contract.AddressCustomer = addressBuilder.Address;
+                directorCity.Read(CitySqlCommands.Read(contract.AddressLawyer.IdCity));
+                contract.CityLawyer = cityBuilder.CitiesList;
+                directorCity.Read(CitySqlCommands.Read(contract.AddressCustomer.IdCity));
+                contract.CityCustomer = cityBuilder.CitiesList;
 
-            directorState.Read(StateSqlCommands.Select(contract.CityLawyer[0].IdState));
-            contract.UfLawyer = stateBuilder.State[0].State;
-            directorState.Read(StateSqlCommands.Select(contract.CityCustomer[0].IdState));
-            contract.UfCustomer = stateBuilder.State[0].State;
+                directorState.Read(StateSqlCommands.Select(contract.CityLawyer[0].IdState));
+                contract.UfLawyer = stateBuilder.State[0].State;
+                directorState.Read(StateSqlCommands.Select(contract.CityCustomer[0].IdState));
+                contract.UfCustomer = stateBuilder.State[0].State;
+            }
+            else 
+            {
+                MessageBox.Show("CPF ou CNPJ inválido! Verifique os dados e tente novamente.", "Cliente não encontrado", MessageBoxButton.OK, MessageBoxImage.Error);
+            }            
         }
         
         private void FillComboBoxStates()

@@ -16,7 +16,7 @@
         public static string Update(int id) => $@"UPDATE Signatures
             SET Username = @Username, Password = @Password, RegisterDate = @RegisterDate, 
             SignaturePrice = @SignaturePrice, SignatureType = @SignatureType, ImageProfile = @ImageProfile, 
-            DeadlineSignatureDate = @DeadlineSignatureDate, LogoHeader = @LogoHeader, LogoFooter = @LogoFooter
+            DeadlineSignature = @DeadlineSignature, ImageHeader = @ImageHeader, ImageFooter = @ImageFooter
             WHERE IdSignature = {id};";
     }
 }

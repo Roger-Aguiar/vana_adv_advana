@@ -28,8 +28,8 @@ namespace Advocacy_Software.Advocacy.Software.Shared.Utils
                     Image? imageHeader = contract.Signature.LogoHeader != null ? new Image(ImageDataFactory.Create(contract.Signature.LogoHeader)).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER) : null;
                     Image? imageFooter = contract.Signature.LogoFooter != null ? new Image(ImageDataFactory.Create(contract.Signature.LogoFooter)).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER) : null;
                     documentHeader.SetMargins(0, 0, 0, 0);
-                    document.SetMargins(130, 50, 130, 50);
-                    documentFooter.SetMargins(700, 0, 0, 0);
+                    document.SetMargins(130, 50, 70, 50);
+                    documentFooter.SetMargins(765, 0, 0, 0);
                     documentHeader.Add(imageHeader);
                     documentFooter.Add(imageFooter);
                 }
@@ -59,7 +59,7 @@ namespace Advocacy_Software.Advocacy.Software.Shared.Utils
 
                 document.Add(format.SetBodyAsJustified("2.1 A advogada poderá solicitar ao contratante os documentos mencionados na cláusula anterior por meio telefônico, por e-mail (o qual deverá ser previamente informado pelo cliente. Ficando, ainda, sob sua responsabilidade a verificação de sua caixa eletrônica), ou por whatsapp - devendo o cliente fornecer a documentação ou informações solicitadas em um prazo de até 48h levando-se em consideração o bom andamento da causa, exceto se um prazo menor for convencionado."));
 
-                document.SetMargins(70, 50, 130, 50);
+                document.SetMargins(70, 50, 50, 50);
 
                 document.Add(format.SetBodyAsJustified("2.2 O contratante poderá esclarecer todas as suas dúvidas referentes ao presente contrato, sobre a ação mencionada no item 1.1 da Cláusula I pessoalmente (mediante agendamento de horário) ou, por meio eletrônico (por meio de e-mail – tendo a advogada um prazo de até 48h para resposta). Não serão prestadas quaisquer informações e/ou esclarecimentos por meio de whatsapp."));
 
@@ -162,7 +162,7 @@ namespace Advocacy_Software.Advocacy.Software.Shared.Utils
                     {
                         paymentDetails = $" pagos no 5º dia útil de todo mês via PIX: {Convert.ToInt64(contract.BankAccount[0].Pix).ToString(@"00\.000\.000/0000-00")} - Tipo de chave: {contract.BankAccount[0].PixType}";
                     }
-                    else if (contract.BankAccount[0].PixType == "Telefone")
+                    else if (contract.BankAccount[0].PixType == "Número de telefone celular")
                     {
                         paymentDetails = contract.BankAccount[0].Pix?.Length == 11 ? $" pagos no 5º dia útil de todo mês via PIX: {Convert.ToInt64(contract.BankAccount[0].Pix):(00)00000-0000} - Tipo de chave: {contract.BankAccount[0].PixType}" : $" pagos no 5º dia útil de todo mês via PIX: {Convert.ToInt64(contract.BankAccount[0].Pix):(00)0000-0000} - Tipo de chave: {contract.BankAccount[0].PixType}";
                     }

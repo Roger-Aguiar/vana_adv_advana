@@ -68,34 +68,43 @@ namespace Advocacy_Software.Pages
             directorCustomer.Read(CustomerSqlCommands.Read(TextBoxCpfOrCnpj.Text, signature.IdSignature));
             directorLawyer.Builder = lawyerBuilder;
             directorLawyer.Read(LawyerSqlCommands.Read(lawyer));
-            attorney.Customer = customerBuilder.CustomersList[0];
-            attorney.Lawyer = lawyerBuilder.Lawyers[0];
-            directorAddress.Read(AddressSqlCommands.Read(attorney.Lawyer.Id));
-            attorney.AddressLawyer = addressBuilder.Address;
-            directorAddress.Read(AddressSqlCommands.Read(attorney.Customer.Id));
-            attorney.AddressCustomer = addressBuilder.Address;
-            directorCity.Read(CitySqlCommands.Read(attorney.AddressLawyer.IdCity));
-            attorney.CityLawyer = cityBuilder.CitiesList;
-            directorCity.Read(CitySqlCommands.Read(attorney.AddressCustomer.IdCity));
-            attorney.CityCustomer = cityBuilder.CitiesList;
 
-            directorState.Read(StateSqlCommands.Select(attorney.CityLawyer[0].IdState));
-            attorney.UfLawyer = stateBuilder.State[0].State;
-            directorState.Read(StateSqlCommands.Select(attorney.CityCustomer[0].IdState));
-            attorney.UfCustomer = stateBuilder.State[0].State;
-
-            attorney.PdfPath = SaveFile.Save("Salvar procuração");
-            AttorneyGenerator attorneyGenerator = new();
-            attorneyGenerator.GenerateAttorney(attorney);
-
-            var result = MessageBox.Show("Procuração gerada com sucesso! Deseja enviar a procuração por email para assinatura?", "Procuração", MessageBoxButton.YesNo, MessageBoxImage.Information);
-
-            if (result == MessageBoxResult.Yes)
+            if(customerBuilder.CustomersList.Count > 0)
             {
-                EmailSent email = new(attorney);
-                attorney.Subject = "procuração";                
-                email.SendAttorneyByEmail();
+                attorney.Customer = customerBuilder.CustomersList[0];
+                attorney.Lawyer = lawyerBuilder.Lawyers[0];
+                directorAddress.Read(AddressSqlCommands.Read(attorney.Lawyer.Id));
+                attorney.AddressLawyer = addressBuilder.Address;
+                directorAddress.Read(AddressSqlCommands.Read(attorney.Customer.Id));
+                attorney.AddressCustomer = addressBuilder.Address;
+                directorCity.Read(CitySqlCommands.Read(attorney.AddressLawyer.IdCity));
+                attorney.CityLawyer = cityBuilder.CitiesList;
+                directorCity.Read(CitySqlCommands.Read(attorney.AddressCustomer.IdCity));
+                attorney.CityCustomer = cityBuilder.CitiesList;
+
+                directorState.Read(StateSqlCommands.Select(attorney.CityLawyer[0].IdState));
+                attorney.UfLawyer = stateBuilder.State[0].State;
+                directorState.Read(StateSqlCommands.Select(attorney.CityCustomer[0].IdState));
+                attorney.UfCustomer = stateBuilder.State[0].State;
+
+                attorney.PdfPath = SaveFile.Save("Salvar procuração");
+                AttorneyGenerator attorneyGenerator = new();
+                attorneyGenerator.GenerateAttorney(attorney);
+
+                var result = MessageBox.Show("Procuração gerada com sucesso! Deseja enviar a procuração por email para assinatura?", "Procuração", MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    EmailSent email = new(attorney);
+                    attorney.Subject = "procuração";
+                    email.SendAttorneyByEmail();
+                }
             }
+            else
+            {
+                MessageBox.Show("CPF ou CNPJ inválido! Verifique os dados e tente novamente.", "Cliente não encontrado", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
         private void PageAttorneyGenerator_Loaded(object sender, RoutedEventArgs e)

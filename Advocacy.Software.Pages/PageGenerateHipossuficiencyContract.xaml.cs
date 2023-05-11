@@ -69,36 +69,43 @@ namespace Advocacy_Software.Pages
 
                 directorCustomer.Read(CustomerSqlCommands.Read(TextBoxCpfOrCnpj.Text, signature.IdSignature));
                 contract.Customer = customerBuilder.CustomersList;
-                directorAddress.Read(AddressSqlCommands.Read(contract.Customer[0].Id));
-                contract.AddressCustomer = addressBuilder.Address;
-                directorCity.Read(CitySqlCommands.Read(contract.AddressCustomer.IdCity));
-                contract.City = cityBuilder.CitiesList;
-                directorState.Read(StateSqlCommands.Select(contract.City[0].IdState));
-                contract.UfCustomer = stateBuilder.State[0].State;
-
-                directorAddress.Read(AddressSqlCommands.Read(contract.Lawyer[0].Id));
-                contract.AddressLawyer = addressBuilder.Address;
-                directorCity.Read(CitySqlCommands.Read(contract.AddressLawyer.IdCity));
-                contract.CityLawyer = cityBuilder.CitiesList;
-                directorState.Read(StateSqlCommands.Select(contract.CityLawyer[0].IdState));
-                contract.UfLawyer = stateBuilder.State[0].State;
-
-                contract.PdfFile = SaveFile.Save("Salvar contrato de hipossuficiência");
-                if(contract.PdfFile != null)
+                
+                if(contract.Customer.Count > 0)
                 {
-                    HipossuficiencyContract contractGenerator = new();
-                    contractGenerator.GenerateContract(contract);
+                    directorAddress.Read(AddressSqlCommands.Read(contract.Customer[0].Id));
+                    contract.AddressCustomer = addressBuilder.Address;
+                    directorCity.Read(CitySqlCommands.Read(contract.AddressCustomer.IdCity));
+                    contract.City = cityBuilder.CitiesList;
+                    directorState.Read(StateSqlCommands.Select(contract.City[0].IdState));
+                    contract.UfCustomer = stateBuilder.State[0].State;
 
-                    var result = MessageBox.Show("Contrato de hipossuficiência gerado com sucesso! Deseja enviar o contrato por email para assinatura?", "Contrato de hipossuficiência", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                    directorAddress.Read(AddressSqlCommands.Read(contract.Lawyer[0].Id));
+                    contract.AddressLawyer = addressBuilder.Address;
+                    directorCity.Read(CitySqlCommands.Read(contract.AddressLawyer.IdCity));
+                    contract.CityLawyer = cityBuilder.CitiesList;
+                    directorState.Read(StateSqlCommands.Select(contract.CityLawyer[0].IdState));
+                    contract.UfLawyer = stateBuilder.State[0].State;
 
-                    if (result == MessageBoxResult.Yes)
+                    contract.PdfFile = SaveFile.Save("Salvar contrato de hipossuficiência");
+                    if (contract.PdfFile != null)
                     {
-                        EmailSent email = new(contract);
-                        contract.Subject = "contrato de hipossuficiência";
-                        email.SendFeesHippossuficiencyContractByEmail();
+                        HipossuficiencyContract contractGenerator = new();
+                        contractGenerator.GenerateContract(contract);
+
+                        var result = MessageBox.Show("Contrato de hipossuficiência gerado com sucesso! Deseja enviar o contrato por email para assinatura?", "Contrato de hipossuficiência", MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            EmailSent email = new(contract);
+                            contract.Subject = "contrato de hipossuficiência";
+                            email.SendFeesHippossuficiencyContractByEmail();
+                        }
                     }
                 }
-                
+                else
+                {
+                    MessageBox.Show("CPF ou CNPJ inválido! Verifique os dados e tente novamente.", "Cliente não encontrado", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }            
         }
 

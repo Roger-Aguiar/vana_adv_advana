@@ -29,7 +29,7 @@ namespace Advocacy_Software.Advocacy.Software.Shared.Utils
                     Image? imageFooter = contract.Signature.LogoFooter != null ? new Image(ImageDataFactory.Create(contract.Signature.LogoFooter)).SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER) : null;
                     documentHeader.SetMargins(0, 0, 0, 0);
                     document.SetMargins(130, 50, 130, 50);
-                    documentFooter.SetMargins(700, 0, 0, 0);
+                    documentFooter.SetMargins(765, 0, 0, 0);
                     documentHeader.Add(imageHeader);
                     documentFooter.Add(imageFooter);
                 }
