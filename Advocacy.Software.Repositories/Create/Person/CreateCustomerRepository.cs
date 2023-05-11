@@ -26,7 +26,7 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
                 sqlCommand.Parameters.Add(new MySqlParameter("@Id", customer.Id));
                 sqlCommand.Parameters.Add(new MySqlParameter("@IdAddress", customer.IdAddress));
                 sqlCommand.Parameters.Add(new MySqlParameter("@IdSignature", customer.IdSignature));
-                sqlCommand.Parameters.Add(new MySqlParameter("@IdentityLawyer", customer.IdentityCustomer));
+                sqlCommand.Parameters.Add(new MySqlParameter("@RG", customer.IdentityCustomer));
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();
                 MessageBox.Show("Operação realizada com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);

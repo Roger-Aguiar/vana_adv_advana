@@ -5,7 +5,7 @@ namespace Advocacy_Software.Advocacy.Software.Shared.SqlCommands
     public static class CustomerSqlCommands
     {
         public static string Create(Customers customer) => $@"INSERT INTO Customers 
-        (Name, Nationality, CivilStatus, Profession, IdentityCustomer, CpfOrCnpj, Phone, Email, 
+        (Name, Nationality, CivilStatus, Profession, RG, CpfOrCnpj, Phone, Email, 
         RegisterDate, LastUpdate, Id, IdAddress, IdSignature) 
         VALUES ('{customer.Name}', '{customer.Nationality}', '{customer.CivilStatus}', '{customer.Profession}', 
         '{customer.IdentityCustomer}', '{customer.CpfOrCnpj}', '{customer.Phone}', '{customer.Email}', 
@@ -16,7 +16,7 @@ namespace Advocacy_Software.Advocacy.Software.Shared.SqlCommands
 
         public static string Update(Customers customer) => $@"UPDATE Customers 
         SET Name = '{customer.Name}', Nationality = '{customer.Nationality}', CivilStatus = '{customer.CivilStatus}', 
-        Profession = '{customer.Profession}', IdentityCustomer = '{customer.IdentityCustomer}', CpfOrCnpj = '{customer.CpfOrCnpj}', 
+        Profession = '{customer.Profession}', RG = '{customer.IdentityCustomer}', CpfOrCnpj = '{customer.CpfOrCnpj}', 
         Phone = '{customer.Phone}', Email = '{customer.Email}', RegisterDate = '{customer.RegisterDate}', LastUpdate = '{customer.LastUpdate}', 
         Id = '{customer.Id}', IdAddress = {customer.IdAddress}, IdSignature = {customer.IdSignature} 
         WHERE Id = '{customer.Id}' AND IdSignature = {customer.IdSignature}";

@@ -35,9 +35,9 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
                             Email = reader.GetString(8),
                             RegisterDate = reader.GetString(9).ToString(),
                             LastUpdate = reader.GetString(10).ToString(),
-                            Id = reader.GetString(11),
-                            IdAddress = reader.GetInt32(12),                            
-                            IdSignature = reader.GetInt32(13)
+                            Id = reader.GetString(11),                                                        
+                            IdSignature = reader.GetInt32(12),
+                            IdAddress = reader.GetInt32(13)
                         });
                     }
                 };
