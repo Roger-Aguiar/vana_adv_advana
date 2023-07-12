@@ -2,8 +2,8 @@
 {
     public class StateSqlCommands
     {
-        public static string GetIdState(string state) => $"SELECT * FROM States WHERE State = '{state}'";
+        public static string GetIdState(string state) => $"SELECT * FROM states WHERE State = '{state}'";
         
-        public static string Select(int IdState) => $"SELECT * FROM States WHERE IdState = {IdState}";
+        public static string Select(int IdState) => $"SELECT * FROM states WHERE IdState = {IdState}";
     }
 }

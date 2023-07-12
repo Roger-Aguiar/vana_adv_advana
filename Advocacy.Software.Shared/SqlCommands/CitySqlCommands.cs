@@ -2,10 +2,10 @@
 {
     public static class CitySqlCommands
     {
-        public static string GetIdCity(string city) => $"SELECT * FROM Cities WHERE City = '{city}'";
+        public static string GetIdCity(string city) => $"SELECT * FROM cities WHERE City = '{city}'";
 
-        public static string GetCitiesById(int idState) => $"SELECT * FROM Cities WHERE IdState = {idState}";
+        public static string GetCitiesById(int idState) => $"SELECT * FROM cities WHERE IdState = {idState}";
 
-        public static string Read(int IdCity) => $"SELECT * FROM Cities WHERE IdCity = {IdCity}";
+        public static string Read(int IdCity) => $"SELECT * FROM cities WHERE IdCity = {IdCity}";
     }
 }

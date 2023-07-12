@@ -8,7 +8,7 @@ namespace Advocacy_Software.Advocacy.Software.Shared
         {
             MySqlConnectionStringBuilder builder = new()
             {
-                Server = "localhost",
+                Server = "35.224.1.120",
                 Database = "advocacy_database",
                 UserID = "root",
                 Password = "983453069",
