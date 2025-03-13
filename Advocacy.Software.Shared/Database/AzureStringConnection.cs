@@ -1,6 +1,6 @@
 ﻿using MySqlConnector;
 
-namespace Advocacy_Software.Advocacy.Software.Shared
+namespace Advocacy_Software.Advocacy.Software.Shared.Database
 {
     public static class AzureStringConnection
     {           

@@ -1,5 +1,5 @@
 ﻿using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared;
+using Advocacy_Software.Advocacy.Software.Shared.Database;
 using System;
 using System.Collections.Generic;
 using System.Windows;
