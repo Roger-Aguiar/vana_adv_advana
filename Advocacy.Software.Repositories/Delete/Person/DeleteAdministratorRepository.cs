@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using Advocacy_Software.Advocacy.Software.Shared;
+using Advocacy_Software.Advocacy.Software.Shared.Database;
 using MySqlConnector;
 
 namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person

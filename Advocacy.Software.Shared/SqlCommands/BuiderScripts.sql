@@ -127,8 +127,8 @@ VALUES ('AC'), ('AL'), ('AP'), ('AM'), ('BA'),
        ('CE'), ('DF'), ('ES'), ('GO'), ('MA'),
 	   ('MT'), ('MS'), ('MG'), ('PA'), ('PB'),
 	   ('PR'), ('PE'), ('PI'), ('RJ'), ('RN'),
-	   ('RS'), ('RO'), ('RR'), ('SC'), ('SP'),
-	   ('SO'), ('TO');
+	   ('RS'), ('RO'), ('RR'), ('SC'), ('SE'),
+	   ('SP'), ('SO'), ('TO');
 
 INSERT INTO States
 VALUES ('SE')
@@ -155,7 +155,7 @@ SELECT IdState FROM States WHERE State = 'MG';
 SELECT * FROM States;
 
 SELECT * FROM Cities;
-SELECT IdCity FROM Cities WHERE City = 'Acrelândia';
+SELECT IdCity FROM Cities WHERE City = 'Acrelï¿½ndia';
 
 SELECT * FROM Address;
 
@@ -268,7 +268,7 @@ SELECT * FROM Lawyers WHERE IdLawyer = 2
 DELETE BankAccount WHERE IdBankAccount = 7;
 
 UPDATE BankAccount 
-SET BankName = '237 – Banco Bradesco S.A.', AccountType = 'Conta corrente', AgencyNumber = '1234', 
+SET BankName = '237 ï¿½ Banco Bradesco S.A.', AccountType = 'Conta corrente', AgencyNumber = '1234', 
 AccountNumber = '1003818-9', Pix = '31983453069'
 WHERE Id = '2913a171-0573-466b-be91-577a3b98113c';
 
@@ -280,7 +280,7 @@ INSERT INTO Signatures (FullName, Username, Email, Password, GuidSignature, Regi
 VALUES ('Roger Silva Santos Aguiar', 'Roger Aguiar', 'rogerdaviola@yahoo.com.br', '123', '132e89de-a13f-476c-841d-8b2da79f699e', '23-03-2023', '100', 'Mensal', 'C:/dev/Vana_Assis/images', 'Masculino', 'Administrador');
 
 UPDATE Signatures
-SET UserType = 'Usuário'
+SET UserType = 'Usuï¿½rio'
 WHERE IdSignature = 4;
 
 DELETE FROM Signatures;
@@ -360,7 +360,7 @@ DELETE FROM Address
 WHERE IdAddress = 60 AND Id = '7cb800df-0af1-4e09-a077-63f9c467815d';
 
 -- DELETE FROM Lawyers
--- WHERE IdAddress = 50 AND CivilStatus = 'Viúvo';
+-- WHERE IdAddress = 50 AND CivilStatus = 'Viï¿½vo';
 
 DELETE FROM Signatures WHERE IdSignature = 13;
 SELECT * FROM Customers;

@@ -1,9 +1,9 @@
 ﻿using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using MySqlConnector;
+using Advocacy_Software.Advocacy.Software.Shared.Database;
 
 namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Address
 {

@@ -1,8 +1,8 @@
 ﻿using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared;
 using System;
 using System.Windows;
 using MySqlConnector;
+using Advocacy_Software.Advocacy.Software.Shared.Database;
 
 namespace Advocacy_Software.Advocacy.Software.Repositories.Create.BankAccountOperations
 {
