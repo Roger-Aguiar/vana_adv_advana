@@ -5,7 +5,6 @@ using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
 using Advocacy_Software.Advocacy.Software.Concrete.Builders.State;
 using Advocacy_Software.Advocacy.Software.Director.Person;
 using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared;
 using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
 using Advocacy_Software.Advocacy.Software.Shared.Utils;
 using System;
@@ -226,14 +225,8 @@ namespace Advocacy_Software.Pages
                 {
                     contract.PdfPath = SaveFile.Save("Salvar contrato de honorários");
                     FeesContractGenerator.GenerateContract(contract);
-                    var result = MessageBox.Show("Contrato de honorários gerado com sucesso! Deseja enviar o contrato por email para assinatura?", "Contrato de honorários", MessageBoxButton.YesNo, MessageBoxImage.Information);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        EmailSent email = new(contract);
-                        contract.Subject = "contrato de honorários";
-                        email.SendFeesContractByEmail();
-                    }
+                    MessageBox.Show("Contrato de honorários gerado com sucesso!", "Contrato de honorários", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                                        
                 }
             }
         }

@@ -56,32 +56,12 @@ namespace Advocacy_Software.Forms
             director.Read(SignatureSqlCommands.SelectByEmail(TextBoxUserName.Text));
 
             if (builder.User.Email == TextBoxUserName.Text && builder.User.Password == UserPassword.Password)
-            { 
-                if (DateTime.Now.Date <= DateTime.ParseExact(builder.User.DeadlineSignatureDate, "dd/MM/yyyy", CultureInfo.InvariantCulture).Date)
-                {
-                    builder.User.Update = true;
-                    this.Hide();
-                    WindowMenu menu = new(builder.User);
-                    menu.Closed += (s, args) => this.Close();
-                    menu.Show();
-                }
-                else
-                {
-                    var result = MessageBox.Show($"Sua licença expirou em {builder.User.DeadlineSignatureDate}! Para continuar tendo acesso ao sistema, você precisa renovar sua assinatura, deseja renová-la agora?", "Assinatura expirada", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                    
-                    if(result == MessageBoxResult.Yes)
-                    {
-                        builder.User.SignatureType = "";
-                        builder.User.SignaturePrice = 0;
-                        builder.User.RegisterDate = DateTime.Now.ToString("dd/MM/yyyy");
-                        builder.User.DeadlineSignatureDate = "";
-                        builder.User.Update = true;
-                        this.Hide();
-                        WindowNewAccount form = new(builder.User);
-                        form.Closed += (s, args) => this.Close();
-                        form.Show();
-                    }                   
-                }
+            {
+                builder.User.Update = true;
+                this.Hide();
+                WindowMenu menu = new(builder.User);
+                menu.Closed += (s, args) => this.Close();
+                menu.Show();                
             }
             else
             {

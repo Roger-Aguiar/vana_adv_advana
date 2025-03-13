@@ -4,7 +4,6 @@ using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
 using Advocacy_Software.Advocacy.Software.Concrete.Builders.State;
 using Advocacy_Software.Advocacy.Software.Director.Person;
 using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared;
 using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
 using Advocacy_Software.Advocacy.Software.Shared.Utils;
 using System.Collections.Generic;
@@ -91,14 +90,8 @@ namespace Advocacy_Software.Pages
                 AttorneyGenerator attorneyGenerator = new();
                 attorneyGenerator.GenerateAttorney(attorney);
 
-                var result = MessageBox.Show("Procuração gerada com sucesso! Deseja enviar a procuração por email para assinatura?", "Procuração", MessageBoxButton.YesNo, MessageBoxImage.Information);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    EmailSent email = new(attorney);
-                    attorney.Subject = "procuração";
-                    email.SendAttorneyByEmail();
-                }
+                MessageBox.Show("Procuração gerada com sucesso!", "Procuração", MessageBoxButton.OK, MessageBoxImage.Information);
+                                
             }
             else
             {

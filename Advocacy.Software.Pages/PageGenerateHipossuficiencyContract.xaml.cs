@@ -8,7 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
 using Advocacy_Software.Advocacy.Software.Shared.Utils;
-using Advocacy_Software.Advocacy.Software.Shared;
 
 namespace Advocacy_Software.Pages
 {
@@ -92,14 +91,7 @@ namespace Advocacy_Software.Pages
                         HipossuficiencyContract contractGenerator = new();
                         contractGenerator.GenerateContract(contract);
 
-                        var result = MessageBox.Show("Contrato de hipossuficiência gerado com sucesso! Deseja enviar o contrato por email para assinatura?", "Contrato de hipossuficiência", MessageBoxButton.YesNo, MessageBoxImage.Information);
-
-                        if (result == MessageBoxResult.Yes)
-                        {
-                            EmailSent email = new(contract);
-                            contract.Subject = "contrato de hipossuficiência";
-                            email.SendFeesHippossuficiencyContractByEmail();
-                        }
+                        MessageBox.Show("Contrato de hipossuficiência gerado com sucesso!", "Contrato de hipossuficiência", MessageBoxButton.YesNo, MessageBoxImage.Information);                        
                     }
                 }
                 else
