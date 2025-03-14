@@ -6,7 +6,13 @@ namespace Advocacy_Software.Advocacy.Software.Shared.Database
     {           
         public static MySqlConnectionStringBuilder GetStringConnection()
         {
-            MySqlConnectionStringBuilder builder = new()
+            var builder = GetStringConnectionWeb();
+            return builder;
+        }
+
+        private static MySqlConnectionStringBuilder GetStringConnectionLocalhost()
+        {
+            return new()
             {
                 Server = "localhost",
                 Database = "advocacy_database",
@@ -14,7 +20,18 @@ namespace Advocacy_Software.Advocacy.Software.Shared.Database
                 Password = "983453069",
                 SslMode = MySqlSslMode.Required,
             };
-            return builder;
+        }
+
+        private static MySqlConnectionStringBuilder GetStringConnectionWeb()
+        {
+            return new()
+            {
+                Server = "bjthjgepvhxsr8sdyoxt-mysql.services.clever-cloud.com",
+                Database = "bjthjgepvhxsr8sdyoxt",
+                UserID = "ui514qgguvqlvged",
+                Password = "jakXPMWnOZIgmNWQnRvf",
+                SslMode = MySqlSslMode.Required,
+            };
         }
     }
 }
