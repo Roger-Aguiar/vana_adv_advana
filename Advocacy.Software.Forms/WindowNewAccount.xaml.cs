@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using Microsoft.VisualBasic;
 using System.Globalization;
 using Advocacy_Software.Advocacy.Software.Director.Person;
 using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
 using Microsoft.Win32;
-using Advocacy_Software.Advocacy.Software.Shared;
 using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
 using Advocacy_Software.Advocacy.Software.Entities;
 using Advocacy_Software.Advocacy.Software.Concrete.Builders.BankAccountBuilder;
