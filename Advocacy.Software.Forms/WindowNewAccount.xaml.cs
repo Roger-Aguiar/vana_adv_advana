@@ -182,51 +182,25 @@ namespace Advocacy_Software.Forms
                     MessageBox.Show("Já existe uma conta associada a este email! Favor tentar com um novo email!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
-                {
-                    EmailSent email = new(signature);
-                    signature.VerificationCode = Guid.NewGuid().ToString().Substring(0, 6);
-                    email.SendVerificationCodeByEmail();
-                    var verificationCode = Interaction.InputBox($"Digite o código de 6 dígitos enviado para o email {signature.Email} para confirmar sua assinatura:", "Confirmação de assinatura", "", Convert.ToInt32(this.Left + (this.Width / 2) - 200), Convert.ToInt32(this.Top + (this.Height / 2) - 100));
-
-                    if (verificationCode == signature.VerificationCode)
-                    {
-                        director.Create(signature);
-                        MessageBox.Show("Assinatura confirmada! Agora você tem acesso completo ao sistema! Acabamos de enviar um email para você com os dados completos de sua assinatura!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
-                        email.SendSignConfirmationByEmail();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Código de verificação inválido, clique em \"Salvar\" no menu à esquerda para gerar um novo código!", "Erro de verificação", MessageBoxButton.OK, MessageBoxImage.Error); ;
-                    }
+                {                    
+                    director.Create(signature);
+                    MessageBox.Show("Assinatura confirmada! Agora você tem acesso completo ao sistema! Acabamos de enviar um email para você com os dados completos de sua assinatura!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);                  
                 }
             }
         }
 
         private void Update()
         {
-            director.Builder = builder;
-            EmailSent email = new(signature);
-            signature.VerificationCode = Guid.NewGuid().ToString().Substring(0, 6);
-            email.SendVerificationCodeByEmail();
-            var verificationCode = Interaction.InputBox($"Digite o código de 6 dígitos enviado para o email {signature.Email} para confirmar que é realmente você quem está fazendo essa alteração:", "Confirmação de assinatura", "", Convert.ToInt32(this.Left + (this.Width / 2) - 200), Convert.ToInt32(this.Top + (this.Height / 2) - 100));
-
-            if (verificationCode == signature.VerificationCode)
-            {                
-                if (signatureUpdate != TextBoxSignatureType.Text)
-                {
-                    email.SendUpdateConfirmationByEmail(false);                    
-                    MessageBox.Show($"Alteração de plano realizada com sucesso! Enviamos um email para {signature.Email} com todos os detalhes de sua assinatura!", "Dados alterados", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else
-                {
-                    MessageBox.Show($"Dados alterados com sucesso!", "Dados alterados", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                director.Update(signature);
+            director.Builder = builder;               
+            if (signatureUpdate != TextBoxSignatureType.Text)
+            {                    
+                MessageBox.Show($"Alteração de plano realizada com sucesso! Enviamos um email para {signature.Email} com todos os detalhes de sua assinatura!", "Dados alterados", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Código de verificação inválido, clique em \"Salvar\" no menu à esquerda para gerar um novo código!", "Erro de verificação", MessageBoxButton.OK, MessageBoxImage.Error); ;
-            }
+                MessageBox.Show($"Dados alterados com sucesso!", "Dados alterados", MessageBoxButton.OK, MessageBoxImage.Information);
+                director.Update(signature);
+            }  
         }
 
         private void DeleteCustomers()
@@ -337,9 +311,7 @@ namespace Advocacy_Software.Forms
                 DeleteBankAccount();
                 DeleteAddress();
                 director.Delete(SignatureSqlCommands.DeleteUser(signature.IdSignature));
-                MessageBox.Show("Sua assinatura foi cancelada! Você receberá um email confirmando o cancelamento.", "Cancelamento", MessageBoxButton.OK, MessageBoxImage.Information);
-                EmailSent email = new(signature);                
-                email.SendDeleteAccountConfirmationByEmail();
+                MessageBox.Show("Sua assinatura foi cancelada com sucesso!", "Cancelamento", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
         }
