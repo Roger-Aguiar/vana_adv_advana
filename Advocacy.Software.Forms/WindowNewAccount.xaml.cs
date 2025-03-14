@@ -184,7 +184,7 @@ namespace Advocacy_Software.Forms
                 else
                 {                    
                     director.Create(signature);
-                    MessageBox.Show("Assinatura confirmada! Agora você tem acesso completo ao sistema! Acabamos de enviar um email para você com os dados completos de sua assinatura!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);                  
+                    MessageBox.Show("Assinatura confirmada! Agora você tem acesso completo ao sistema!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);                  
                 }
             }
         }
@@ -279,7 +279,7 @@ namespace Advocacy_Software.Forms
         {
             OpenFileDialog openFileDialog = new() { Title = "Selecionar imagem de perfil" };
             openFileDialog.ShowDialog();
-            signature.ImageProfile = openFileDialog.FileName == "" ? null : openFileDialog.FileName;
+            signature.ImageProfile = openFileDialog.FileName == "" ? "" : openFileDialog.FileName;
             MessageBox.Show("Sua imagem foi adicionada com sucesso e será exibida como foto de perfil no menu principal!", "Imagem de perfil", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 

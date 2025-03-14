@@ -23,7 +23,7 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
                 sqlCommand.Parameters.AddWithValue("@Id", signature.GuidSignature);
                 sqlCommand.Parameters.AddWithValue("@RegisterDate", signature.RegisterDate);
                 sqlCommand.Parameters.AddWithValue("@SignaturePrice", signature.SignaturePrice);
-                sqlCommand.Parameters.AddWithValue("@SignatureType", signature.SignatureType);
+                sqlCommand.Parameters.AddWithValue("@SignatureType", signature.SignatureType);                
                 sqlCommand.Parameters.AddWithValue("@ImageProfile", signature.ImageProfile);
                 sqlCommand.Parameters.AddWithValue("@Genre", signature.Genre);
                 sqlCommand.Parameters.AddWithValue("@DeadlineSignature", signature.DeadlineSignatureDate);
