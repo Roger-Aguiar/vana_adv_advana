@@ -8,7 +8,7 @@
         Title="Acesso ao sistema" Height="371" Width="390" ResizeMode="CanMinimize" Icon="/Advocacy.Software.Forms/user.png" WindowStartupLocation="CenterScreen" Loaded="WindowLogin1_Loaded">
     <Grid Margin="15">
         <Label Content="Bem vindo" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="25"/>
-        <Label Content="Usuário" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="0,48,0,0"/>
+        <Label Content="Email cadastrado" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="0,48,0,0"/>
         <TextBox x:Name="TextBoxUserName" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" TextWrapping="Wrap" Width="340" Margin="0,85,0,0"/>
         <Label Content="Senha" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="0,114,0,0"/>
         <PasswordBox x:Name="UserPassword" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Width="340" Margin="0,151,0,0"/>
