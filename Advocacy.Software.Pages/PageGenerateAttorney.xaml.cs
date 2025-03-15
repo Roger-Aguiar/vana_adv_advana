@@ -1,22 +1,11 @@
-﻿using Advocacy_Software.Advocacy.Software.Concrete.Builders.Address;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.City;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.State;
-using Advocacy_Software.Advocacy.Software.Director.Person;
-using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-using Advocacy_Software.Advocacy.Software.Shared.Utils;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace Advocacy_Software.Pages
+﻿namespace Advocacy_Software.Pages
 {
     /// <summary>
     /// Interaction logic for PageGenerateAttorney.xaml
     /// </summary>
     public partial class PageGenerateAttorney : Page
-    {        
+    {
+        #region Variables
         private Director directorLawyer = new();
         private Director directorCustomer = new();
         private Director directorCity = new();
@@ -33,6 +22,8 @@ namespace Advocacy_Software.Pages
         private List<Lawyer> lawyerList = new();
         private Lawyer lawyer = new();
         private AttorneyEntity attorney = new();
+
+        #endregion
 
         public PageGenerateAttorney(Signatures signature)
         {
@@ -52,6 +43,8 @@ namespace Advocacy_Software.Pages
         }
 
         #endregion
+
+        #region Events
 
         private void ButtonGenerateAttorney_Click(object sender, RoutedEventArgs e)
         {
@@ -104,5 +97,7 @@ namespace Advocacy_Software.Pages
         {
             FillComboBoxLawyers();
         }
+
+        #endregion
     }
 }

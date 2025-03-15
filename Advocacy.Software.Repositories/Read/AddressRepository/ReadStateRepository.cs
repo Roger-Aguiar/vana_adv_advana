@@ -1,11 +1,4 @@
-﻿using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared.Database;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using MySqlConnector;
-
-namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Address
+﻿namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Address
 {
     public static class ReadStateRepository
     {           

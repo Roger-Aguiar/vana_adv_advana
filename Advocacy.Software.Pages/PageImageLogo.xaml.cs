@@ -1,10 +1,4 @@
-﻿using Advocacy_Software.Advocacy.Software.Entities;
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-
-namespace Advocacy_Software.Advocacy.Software.Pages
+﻿namespace Advocacy_Software.Advocacy.Software.Pages
 {
     /// <summary>
     /// Interaction logic for PageImageLogo.xaml

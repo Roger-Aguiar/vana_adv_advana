@@ -1,13 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Windows;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
-using Advocacy_Software.Advocacy.Software.Director.Person;
-using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-using Microsoft.VisualBasic;
-
-namespace Advocacy_Software.Forms
+﻿namespace Advocacy_Software.Forms
 {
     /// <summary>
     /// Interaction logic for WindowLogin.xaml
@@ -27,11 +18,18 @@ namespace Advocacy_Software.Forms
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            var resetPassword = Interaction.InputBox("Digite o email que você usa para acessar o sistema:", "Recuperação de senha", "", Convert.ToInt32(this.Left + (this.Width / 2) - 200), Convert.ToInt32(this.Top + (this.Height / 2) - 100));
+            var resetPassword = Interaction.InputBox("Digite o email que você usa para acessar o sistema:", 
+                "Recuperação de senha", "", 
+                Convert.ToInt32(this.Left + (this.Width / 2) - 200), 
+                Convert.ToInt32(this.Top + (this.Height / 2) - 100));
             if(resetPassword != "")
             {
                 signature.Password = Guid.NewGuid().ToString().Substring(0, 12);
-                MessageBox.Show($"Enviamos uma nova senha com 12 caracteres para você para o email \"{resetPassword}\" para que você possa recuperar seu acesso, a qual será usada a partir de agora para você acessar o sistema! Caso não consiga visualizar seu email na caixa de entrada, confira sua caixa de spam!", "Recuperação de acesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"Enviamos uma nova senha com 12 caracteres para você para o email " +
+                    $"\"{resetPassword}\" para que você possa recuperar seu acesso, a qual será usada a " +
+                    $"partir de agora para você acessar o sistema! Caso não consiga visualizar seu email na " +
+                    $"caixa de entrada, confira sua caixa de spam!", "Recuperação de acesso", 
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {

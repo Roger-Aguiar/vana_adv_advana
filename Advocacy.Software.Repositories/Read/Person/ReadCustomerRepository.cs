@@ -1,11 +1,4 @@
-﻿using Advocacy_Software.Advocacy.Software.Entities;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using MySqlConnector;
-using Advocacy_Software.Advocacy.Software.Shared.Database;
-
-namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
+﻿namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
 {
     public class ReadCustomerRepository
     {

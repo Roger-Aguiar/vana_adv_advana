@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Advocacy_Software.Advocacy.Software.Shared.Utils
+﻿namespace Advocacy_Software.Advocacy.Software.Shared.Utils
 {
     public class PersonalDocumentValidator
     {

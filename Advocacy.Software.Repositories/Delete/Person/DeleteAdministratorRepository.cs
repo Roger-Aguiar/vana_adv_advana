@@ -1,9 +1,4 @@
-﻿using System;
-using System.Windows;
-using Advocacy_Software.Advocacy.Software.Shared.Database;
-using MySqlConnector;
-
-namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
+﻿namespace Advocacy_Software.Advocacy.Software.Repositories.Create.Person
 {
     public static class DeleteAdministratorRepository
     {

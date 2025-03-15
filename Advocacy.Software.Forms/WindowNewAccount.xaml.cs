@@ -1,22 +1,12 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Globalization;
-using Advocacy_Software.Advocacy.Software.Director.Person;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
-using Microsoft.Win32;
-using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.BankAccountBuilder;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.Address;
-
-namespace Advocacy_Software.Forms
+﻿namespace Advocacy_Software.Forms
 {
     /// <summary>
     /// Interaction logic for WindowMenu.xaml
     /// </summary>
     public partial class WindowNewAccount : Window
     {
+        #region Variables
+
         private bool isValidField = true;
         private Signatures signature = new();
         private string signatureType;
@@ -24,7 +14,8 @@ namespace Advocacy_Software.Forms
 
         Director director = new();
         ConcreteSignatureBuilder builder = new();
-        
+
+        #endregion
         public WindowNewAccount()
         {
             InitializeComponent();
@@ -235,6 +226,8 @@ namespace Advocacy_Software.Forms
 
         #endregion
 
+        #region Events
+
         private void ListBoxItemExit_Selected(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -318,5 +311,7 @@ namespace Advocacy_Software.Forms
         {
             ReadTable();
         }
+
+        #endregion
     }
 }

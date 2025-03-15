@@ -1,11 +1,4 @@
-﻿using Advocacy_Software.Advocacy.Software.Builders;
-using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Repositories.Create.Address;
-using Advocacy_Software.Advocacy.Software.Repositories.Delete;
-using Advocacy_Software.Advocacy.Software.Repositories.Read.AddressRepository;
-using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-
-namespace Advocacy_Software.Advocacy.Software.Concrete.Builders.Address
+﻿namespace Advocacy_Software.Advocacy.Software.Concrete.Builders.Address
 {
     public class ConcreteAddressBuilder : IBuilder
     {

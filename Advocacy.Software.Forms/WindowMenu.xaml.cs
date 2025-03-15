@@ -1,9 +1,4 @@
-﻿using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Pages;
-using Advocacy_Software.Pages;
-using System.Windows;
-
-namespace Advocacy_Software.Forms
+﻿namespace Advocacy_Software.Forms
 {
     /// <summary>
     /// Interaction logic for WindowMenu.xaml
