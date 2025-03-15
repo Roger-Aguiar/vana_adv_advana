@@ -1,10 +1,4 @@
-﻿using Advocacy_Software.Advocacy.Software.Entities;
-using System;
-using System.Windows;
-using MySqlConnector;
-using Advocacy_Software.Advocacy.Software.Shared.Database;
-
-namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
+﻿namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
 {
     public static class ReadAdministratorRepository
     {
@@ -32,7 +26,7 @@ namespace Advocacy_Software.Advocacy.Software.Repositories.Read.Person
                         user.SignatureType = reader.GetString(7);
                         user.Genre = reader.GetString(8);
                         user.DeadlineSignatureDate = reader.GetString(9);
-                        user.ImageProfile = (string?)reader["ImageProfile"];
+                        user.ImageProfile = reader["ImageProfile"] is DBNull ? null : reader.GetString(10);
                         user.LogoHeader = (string?)reader["ImageHeader"];
                         user.LogoFooter = (string?)reader["ImageFooter"];
                         user.GuidSignature = reader.GetString(13);    

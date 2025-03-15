@@ -1,24 +1,12 @@
-﻿using Advocacy_Software.Advocacy.Software.Concrete.Builders.Address;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.BankAccountBuilder;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.City;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.State;
-using Advocacy_Software.Advocacy.Software.Director.Person;
-using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace Advocacy_Software.Pages
+﻿namespace Advocacy_Software.Pages
 {
     /// <summary>
     /// Interaction logic for PageRegisterLawyer.xaml
     /// </summary>
     public partial class PageRegisterLawyer : Page
     {
+        #region Variables
+
         private Signatures signature = new();        
         
         private List<Cities> cities = new();
@@ -43,6 +31,8 @@ namespace Advocacy_Software.Pages
         private ConcreteAddressBuilder addressBuilder = new();
         private ConcreteBankAccountBuilder bankAccountBuilder = new();
 
+        #endregion
+
         public PageRegisterLawyer(Signatures signature)
         {
             this.signature = signature;
@@ -51,8 +41,7 @@ namespace Advocacy_Software.Pages
                              
         
         #region Private methods
-
-        
+                
         private void LoadResources()
         {
             FillComboBoxStates();
@@ -380,6 +369,8 @@ namespace Advocacy_Software.Pages
 
         #endregion
 
+        #region Events
+
         private void ButtonNew_Click(object sender, RoutedEventArgs e)
         {
             update = false;
@@ -427,5 +418,7 @@ namespace Advocacy_Software.Pages
         {
             LoadResources();
         }
+
+        #endregion
     }
 }

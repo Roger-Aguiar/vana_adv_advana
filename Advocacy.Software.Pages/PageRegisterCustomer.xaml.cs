@@ -1,24 +1,12 @@
-﻿using Advocacy_Software.Advocacy.Software.Concrete.Builders.Address;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.City;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.State;
-using Advocacy_Software.Advocacy.Software.Director.Person;
-using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-using Advocacy_Software.Advocacy.Software.Shared.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace Advocacy_Software.Pages
+﻿namespace Advocacy_Software.Pages
 {
     /// <summary>
     /// Interaction logic for PageRegisterCustomer.xaml
     /// </summary>
     public partial class PageRegisterCustomer : Page
     {
+        #region Variables
+
         private Signatures signature = new();
 
         private List<Cities> cities = new();
@@ -40,6 +28,8 @@ namespace Advocacy_Software.Pages
         private ConcreteStateBuilder stateBuilder = new();
         private ConcreteCustomerBuilder customerBuilder = new();
         private ConcreteAddressBuilder addressBuilder = new();
+
+        #endregion
 
         public PageRegisterCustomer(Signatures signature) 
         {
@@ -387,6 +377,8 @@ namespace Advocacy_Software.Pages
 
         #endregion
 
+        #region Events
+
         private void ComboBoxUf_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FillComboBoxCities();
@@ -457,5 +449,7 @@ namespace Advocacy_Software.Pages
             }
             validFields.Clear();
         }
+
+        #endregion
     }
 }

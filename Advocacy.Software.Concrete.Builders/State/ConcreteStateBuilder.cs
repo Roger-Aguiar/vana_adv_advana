@@ -1,10 +1,4 @@
-﻿using Advocacy_Software.Advocacy.Software.Builders;
-using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Repositories.Read.Address;
-using System;
-using System.Collections.Generic;
-
-namespace Advocacy_Software.Advocacy.Software.Concrete.Builders.State
+﻿namespace Advocacy_Software.Advocacy.Software.Concrete.Builders.State
 {
     public class ConcreteStateBuilder : IBuilder
     {        

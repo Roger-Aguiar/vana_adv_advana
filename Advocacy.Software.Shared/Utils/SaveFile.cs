@@ -1,6 +1,4 @@
-﻿using Microsoft.Win32;
-
-namespace Advocacy_Software.Advocacy.Software.Shared.Utils
+﻿namespace Advocacy_Software.Advocacy.Software.Shared.Utils
 {
     public class SaveFile
     {

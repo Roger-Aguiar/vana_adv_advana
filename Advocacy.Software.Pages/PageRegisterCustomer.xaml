@@ -44,7 +44,7 @@
         <Label Content="Complemento: " FontSize="15" Margin="12,372,610,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxComplement" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,375,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="CEP: " FontSize="15" Margin="12,404,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxZipCode" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,406,378,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxZipCode" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,406,378,0" Grid.Row="1" VerticalAlignment="Top" MaxLength="8"/>
         <Label Content="Telefone: " FontSize="15" Margin="12,435,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxPhoneNumber" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,437,378,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="Data de cadastro: " FontSize="15" Margin="12,466,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
