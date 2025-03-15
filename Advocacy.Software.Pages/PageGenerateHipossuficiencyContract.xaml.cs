@@ -1,22 +1,12 @@
-﻿using Advocacy_Software.Advocacy.Software.Concrete.Builders.Address;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.City;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.State;
-using Advocacy_Software.Advocacy.Software.Director.Person;
-using Advocacy_Software.Advocacy.Software.Entities;
-using System.Windows;
-using System.Windows.Controls;
-using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-using Advocacy_Software.Advocacy.Software.Shared.Utils;
-using Advocacy_Software.Advocacy.Software.Shared;
-
-namespace Advocacy_Software.Pages
+﻿namespace Advocacy_Software.Pages
 {
     /// <summary>
     /// Interaction logic for PageGenerateHipossuficiencyContract.xaml
     /// </summary>
     public partial class PageGenerateHipossuficiencyContract : Page
     {
+        #region Variables
+
         private Director directorLawyer = new();
         private Director directorCustomer = new();
         private Director directorCity = new();
@@ -31,6 +21,8 @@ namespace Advocacy_Software.Pages
 
         private Signatures signature = new();
         private HipossuficiencyEntity contract = new();
+
+        #endregion
 
         public PageGenerateHipossuficiencyContract(Signatures signature)
         {
@@ -50,6 +42,8 @@ namespace Advocacy_Software.Pages
         }
 
         #endregion
+
+        #region Events
 
         private void ButtonGenerateHipossuficiencyContract_Click(object sender, RoutedEventArgs e)
         {
@@ -92,14 +86,7 @@ namespace Advocacy_Software.Pages
                         HipossuficiencyContract contractGenerator = new();
                         contractGenerator.GenerateContract(contract);
 
-                        var result = MessageBox.Show("Contrato de hipossuficiência gerado com sucesso! Deseja enviar o contrato por email para assinatura?", "Contrato de hipossuficiência", MessageBoxButton.YesNo, MessageBoxImage.Information);
-
-                        if (result == MessageBoxResult.Yes)
-                        {
-                            EmailSent email = new(contract);
-                            contract.Subject = "contrato de hipossuficiência";
-                            email.SendFeesHippossuficiencyContractByEmail();
-                        }
+                        MessageBox.Show("Contrato de hipossuficiência gerado com sucesso!", "Contrato de hipossuficiência", MessageBoxButton.OK, MessageBoxImage.Information);                        
                     }
                 }
                 else
@@ -113,5 +100,7 @@ namespace Advocacy_Software.Pages
         {
             FillTextBoxLawyer();
         }
+
+        #endregion
     }
 }

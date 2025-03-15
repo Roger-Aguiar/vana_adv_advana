@@ -1,8 +1,4 @@
-﻿using iText.IO.Font.Constants;
-using iText.Kernel.Font;
-using iText.Layout.Element;
-
-namespace Advocacy_Software.Advocacy.Software.Shared.Utils
+﻿namespace Advocacy_Software.Advocacy.Software.Shared.Utils
 {
     public class DocumentFormat
     {

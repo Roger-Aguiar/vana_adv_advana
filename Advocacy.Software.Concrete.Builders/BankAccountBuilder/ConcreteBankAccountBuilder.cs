@@ -1,13 +1,4 @@
-﻿using Advocacy_Software.Advocacy.Software.Builders;
-using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Repositories.Create.BankAccountOperations;
-using Advocacy_Software.Advocacy.Software.Repositories.Delete;
-using Advocacy_Software.Advocacy.Software.Repositories.Read.BankAccountOperations;
-using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-using System;
-using System.Collections.Generic;
-
-namespace Advocacy_Software.Advocacy.Software.Concrete.Builders.BankAccountBuilder
+﻿namespace Advocacy_Software.Advocacy.Software.Concrete.Builders.BankAccountBuilder
 {
     public class ConcreteBankAccountBuilder : IBuilder
     {

@@ -1,14 +1,4 @@
-﻿using iText.Kernel.Geom;
-using iText.Kernel.Pdf;
-using iText.Layout.Element;
-using System;
-using System.Globalization;
-using iText.Layout;
-using iText.Kernel.Events;
-using iText.IO.Image;
-using Advocacy_Software.Advocacy.Software.Entities;
-
-namespace Advocacy_Software.Advocacy.Software.Shared.Utils
+﻿namespace Advocacy_Software.Advocacy.Software.Shared.Utils
 {
     public class HipossuficiencyContract
     {

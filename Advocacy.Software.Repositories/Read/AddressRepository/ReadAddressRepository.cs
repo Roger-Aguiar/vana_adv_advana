@@ -1,10 +1,4 @@
-﻿using System.Windows;
-using System;
-using Advocacy_Software.Advocacy.Software.Entities;
-using MySqlConnector;
-using Advocacy_Software.Advocacy.Software.Shared.Database;
-
-namespace Advocacy_Software.Advocacy.Software.Repositories.Read.AddressRepository
+﻿namespace Advocacy_Software.Advocacy.Software.Repositories.Read.AddressRepository
 {
     public static class ReadAddressRepository
     {

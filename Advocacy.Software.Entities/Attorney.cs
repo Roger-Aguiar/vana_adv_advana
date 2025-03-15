@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Advocacy_Software.Advocacy.Software.Entities
+﻿namespace Advocacy_Software.Advocacy.Software.Entities
 {
     public class AttorneyEntity
     {

@@ -1,20 +1,12 @@
-﻿using Advocacy_Software.Advocacy.Software.Concrete.Builders.BankAccountBuilder;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
-using Advocacy_Software.Advocacy.Software.Director.Person;
-using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace Advocacy_Software.Pages
+﻿namespace Advocacy_Software.Pages
 {
     /// <summary>
     /// Interaction logic for PageRegisterLawyer.xaml
     /// </summary>
     public partial class PageRegisterBankAccount : Page
-    {        
+    {
+        #region Variables
+
         private Director directorLawyer = new();
         private Director directorBankAccount = new();
 
@@ -29,12 +21,15 @@ namespace Advocacy_Software.Pages
         private int index = 0;
         public Signatures Signature { get; set; }
 
+        #endregion
+
         public PageRegisterBankAccount(Signatures signature)
         {
             Signature = signature;
             InitializeComponent();
         }
 
+        #region Private methods
         private string FormatPix()
         {
             string pixFormat;
@@ -55,9 +50,7 @@ namespace Advocacy_Software.Pages
             }
             return pixFormat;
         }
-
-        #region Private methods
-
+                
         private void FillTextBoxUserAccount()
         {
             directorLawyer.Builder = lawyerBuilder;
@@ -345,6 +338,7 @@ namespace Advocacy_Software.Pages
 
         #endregion
 
+        #region Events
         private void PageBankAccount_Loaded(object sender, RoutedEventArgs e)
         {
             FillTextBoxUserAccount();
@@ -420,6 +414,8 @@ namespace Advocacy_Software.Pages
         {
             if(ComboBoxAccountType.SelectedIndex >= 0)
                 TextBoxAccountType.Text = ComboBoxAccountType.SelectedItem.ToString();
-        }                
+        }
+
+        #endregion
     }
 }

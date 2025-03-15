@@ -1,14 +1,4 @@
-﻿using iText.Kernel.Geom;
-using iText.Kernel.Pdf;
-using iText.Layout.Element;
-using System;
-using iText.Layout;
-using iText.IO.Image;
-using iText.Kernel.Events;
-using Advocacy_Software.Advocacy.Software.Entities;
-using System.Globalization;
-
-namespace Advocacy_Software.Advocacy.Software.Shared.Utils
+﻿namespace Advocacy_Software.Advocacy.Software.Shared.Utils
 {
     public class AttorneyGenerator
     {        

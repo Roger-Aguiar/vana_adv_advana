@@ -1,6 +1,4 @@
-﻿using Advocacy_Software.Advocacy.Software.Builders;
-
-namespace Advocacy_Software.Advocacy.Software.Director.Person
+﻿namespace Advocacy_Software.Advocacy.Software.Director.Person
 {
     public class Director
     {

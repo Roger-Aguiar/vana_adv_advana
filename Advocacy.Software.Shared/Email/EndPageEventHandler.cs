@@ -1,13 +1,4 @@
-﻿using iText.IO.Font.Constants;
-using iText.Kernel.Events;
-using iText.Kernel.Font;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using System.Windows;
-using System.IO;
-using Advocacy_Software.Advocacy.Software.Entities;
-
-public class EndPageEventHandler : IEventHandler
+﻿public class EndPageEventHandler : IEventHandler
 {
     protected Document document;
     protected PdfDocument pdfDocument;

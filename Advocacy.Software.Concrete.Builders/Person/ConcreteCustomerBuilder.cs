@@ -1,12 +1,4 @@
-﻿using Advocacy_Software.Advocacy.Software.Builders;
-using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Repositories.Create.Person;
-using Advocacy_Software.Advocacy.Software.Repositories.Delete;
-using Advocacy_Software.Advocacy.Software.Repositories.Read.Person;
-using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-using System.Collections.Generic;
-
-namespace Advocacy_Software.Advocacy.Software.Concrete.Builders.Person
+﻿namespace Advocacy_Software.Advocacy.Software.Concrete.Builders.Person
 {
     public class ConcreteCustomerBuilder : IBuilder
     {

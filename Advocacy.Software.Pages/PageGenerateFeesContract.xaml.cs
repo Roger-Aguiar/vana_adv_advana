@@ -1,25 +1,12 @@
-﻿using Advocacy_Software.Advocacy.Software.Concrete.Builders.Address;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.BankAccountBuilder;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.City;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.Person;
-using Advocacy_Software.Advocacy.Software.Concrete.Builders.State;
-using Advocacy_Software.Advocacy.Software.Director.Person;
-using Advocacy_Software.Advocacy.Software.Entities;
-using Advocacy_Software.Advocacy.Software.Shared;
-using Advocacy_Software.Advocacy.Software.Shared.SqlCommands;
-using Advocacy_Software.Advocacy.Software.Shared.Utils;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace Advocacy_Software.Pages
+﻿namespace Advocacy_Software.Pages
 {
     /// <summary>
     /// Interaction logic for PageRegisterCustomer.xaml
     /// </summary>
     public partial class PageGenerateFeesContract : Page
     {
+        #region Variables
+
         private readonly Signatures Signature = new();
         private Director directorLawyer = new();
         private Director directorCustomer = new();
@@ -40,6 +27,8 @@ namespace Advocacy_Software.Pages
         private List<Cities> cities = new();
         private List<States> states = new();
         private List<bool> validFields = new();
+
+        #endregion
 
         public PageGenerateFeesContract(Signatures signature) 
         {
@@ -206,6 +195,7 @@ namespace Advocacy_Software.Pages
 
         #endregion
 
+        #region Events
         private void ButtonGenerateFeesContract_Click(object sender, RoutedEventArgs e)
         {      
             bool isValidFields = true;
@@ -226,14 +216,8 @@ namespace Advocacy_Software.Pages
                 {
                     contract.PdfPath = SaveFile.Save("Salvar contrato de honorários");
                     FeesContractGenerator.GenerateContract(contract);
-                    var result = MessageBox.Show("Contrato de honorários gerado com sucesso! Deseja enviar o contrato por email para assinatura?", "Contrato de honorários", MessageBoxButton.YesNo, MessageBoxImage.Information);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        EmailSent email = new(contract);
-                        contract.Subject = "contrato de honorários";
-                        email.SendFeesContractByEmail();
-                    }
+                    MessageBox.Show("Contrato de honorários gerado com sucesso!", "Contrato de honorários", MessageBoxButton.OK, MessageBoxImage.Information);
+                                        
                 }
             }
         }
@@ -247,5 +231,6 @@ namespace Advocacy_Software.Pages
         {
             FillComboBoxCities();
         }
+        #endregion
     }
 }
