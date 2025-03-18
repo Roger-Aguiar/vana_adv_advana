@@ -6,8 +6,8 @@ namespace Advocacy_Software.Advocacy.Software.Shared.Database
     {           
         public static MySqlConnectionStringBuilder GetStringConnection()
         {
-            var builder = GetStringConnectionWeb();
-            //var builder = GetStringConnectionLocalhost();
+            //var builder = GetStringConnectionWeb();
+            var builder = GetStringConnectionLocalhost();
             return builder;
         }
 

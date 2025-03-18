@@ -214,10 +214,10 @@
             {                 
                 if(contract.Customer.Count > 0)
                 {
+                    FeesContractGenerator generate = new();
                     contract.PdfPath = SaveFile.Save("Salvar contrato de honorários");
-                    FeesContractGenerator.GenerateContract(contract);
-                    MessageBox.Show("Contrato de honorários gerado com sucesso!", "Contrato de honorários", MessageBoxButton.OK, MessageBoxImage.Information);
-                                        
+                    generate.GenerateContract(contract);
+                    MessageBox.Show("Contrato de honorários gerado com sucesso!", "Contrato de honorários", MessageBoxButton.OK, MessageBoxImage.Information);                                        
                 }
             }
         }

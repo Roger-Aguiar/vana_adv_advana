@@ -1,12 +1,14 @@
 ﻿namespace Advocacy_Software.Advocacy.Software.Shared.Utils
 {
-    public static class FeesContractGenerator
-    {        
-        public static void GenerateContract(FeesContractEntity contract)
+    public class FeesContractGenerator
+    {
+        private DocumentFormat format = new();
+
+        public void GenerateContract(FeesContractEntity contract)
         {
             using (PdfWriter pdfWriter = new(contract.PdfPath, new WriterProperties().SetPdfVersion(PdfVersion.PDF_2_0)))
             {
-                DocumentFormat format = new();
+                
                 PdfDocument pdfDocument = new(pdfWriter);
                 Document document = new(pdfDocument, PageSize.A4);
 
@@ -109,15 +111,15 @@
                 document.Add(format.SetTitle("\n\n_________________________________________________________"));
 
                 var CpfOrCnpj = contract.Customer[0].CpfOrCnpj?.Length == 11 ? "CPF: " + Convert.ToInt64(contract.Customer[0].CpfOrCnpj).ToString(@"000\.000\.000-00") : "CNPJ" + Convert.ToInt64(contract.Customer[0].CpfOrCnpj).ToString(@"00\.000\.000/0000-00");
-
+                
                 document.Add(format.SetBody($"{contract.Customer[0].Name?.ToUpper()}\nRG: {contract.Customer[0].IdentityCustomer}\n{CpfOrCnpj}"));
-
+                
                 document.Close();
                 pdfDocument.Close();
             };
         }
 
-        private static string SetCustomerBody(FeesContractEntity contract)
+        private string SetCustomerBody(FeesContractEntity contract)
         {
             string CpfOrCnpj = contract.Customer[0].CpfOrCnpj.Length == 11 ? "CPF: " + Convert.ToInt64(contract.Customer[0].CpfOrCnpj).ToString(@"000\.000\.000-00") : "CNPF" + Convert.ToInt64(contract.Customer[0].CpfOrCnpj).ToString(@"00\.000\.000/0000-00");
             string phone = contract.Customer[0].Phone.Length == 11 ? Convert.ToInt64(contract.Customer[0].Phone).ToString(@"(00)00000-0000") : Convert.ToInt64(contract.Customer[0].Phone).ToString(@"(00)0000-0000");
@@ -126,7 +128,7 @@
             return $"{contract.Customer[0].Name.ToUpper()}, {contract.Customer[0].Nationality}, {contract.Customer[0].CivilStatus}, {contract.Customer[0].Profession}, portador(a) do RG: {contract.Customer[0].IdentityCustomer}, {CpfOrCnpj}, residente na {contract.AddressCustomer.Street}, {contract.AddressCustomer.Number}, {contract.AddressCustomer.Neighbourhood}, {contract.CityCustomer[0].City} - {contract.UfCustomer}, {complement} CEP: {zipCode}, Telefone: {phone}, email: {contract.Customer[0].Email}";
         }
 
-        private static string SetLawyerBody(FeesContractEntity contract)
+        private string SetLawyerBody(FeesContractEntity contract)
         { 
             string phone = contract.Lawyer[0].Phone?.Length == 11 ? Convert.ToInt64(contract.Lawyer[0].Phone).ToString(@"(00)00000-0000") : Convert.ToInt64(contract.Lawyer[0].Phone).ToString(@"(00)0000-0000");
             string zipCode = Convert.ToInt64(contract.AddressLawyer.ZipCode).ToString(@"00000-000");
