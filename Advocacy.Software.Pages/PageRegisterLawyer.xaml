@@ -52,7 +52,7 @@
         <Label Content="Número de registro: " FontSize="15" Margin="10,562,584,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxGuidId" IsReadOnly="True" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,564,10,0" Grid.Row="1" VerticalAlignment="Top"/>
 
-        <Border Grid.Row="1" Background="Black" Height="30" VerticalAlignment="Bottom" />
+        <Border Grid.Row="1" Background="DarkGray" Height="30" VerticalAlignment="Bottom" />
 
         <Button x:Name="ButtonNew" Height="30" Content="Novo" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="10,0,0,0" Background="Lavender" Click="ButtonNew_Click"/>
         <Button x:Name="ButtonSave" Height="30" Content="Salvar" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="200" FontSize="20" Background="Lavender" Click="ButtonSave_Click" Margin="0,634,0,0"/>
