@@ -40,3 +40,6 @@ global using Advocacy_Software.Advocacy.Software.Repositories.Read.BankAccountOp
 global using Advocacy_Software.Advocacy.Software.Repositories.Read.Address;
 global using Advocacy_Software.Advocacy.Software.Repositories.Create.Person;
 global using Advocacy_Software.Advocacy.Software.Repositories.Read.Person;
+global using System.Net;
+global using System.Net.Mail;
+global using System.Threading.Tasks;

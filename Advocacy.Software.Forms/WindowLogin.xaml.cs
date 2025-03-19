@@ -30,6 +30,8 @@
                     $"partir de agora para você acessar o sistema! Caso não consiga visualizar seu email na " +
                     $"caixa de entrada, confira sua caixa de spam!", "Recuperação de acesso", 
                     MessageBoxButton.OK, MessageBoxImage.Information);
+                //Colocar o envio de email aqui
+                //Chamar a classe EmailService
             }
             else
             {
