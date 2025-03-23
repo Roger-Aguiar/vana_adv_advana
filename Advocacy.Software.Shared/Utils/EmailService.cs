@@ -1,11 +1,11 @@
 ﻿public class EmailService
 {
     private const string SmtpServer = "smtp.gmail.com";
-    private const int SmtpPort = 587; // Use 465 para SSL
+    private const int SmtpPort = 587;
     private const string SubjectEmail = "rogervisualstudio@gmail.com";
     private const string Senha = "jdzz jicj ixkn bzyg";
 
-    public async Task<bool> SendRecoveryEmailAsync(string destinationEmail, string password)
+    public async Task<bool> SendRecoveryEmailAsync(string name, string destinationEmail, string password)
     {
         try
         {
@@ -17,9 +17,9 @@
             {
                 From = new MailAddress(SubjectEmail, "Suporte AdvFlow"),
                 Subject = "Recuperação de Senha",
-                Body = $"Olá,<br><br>Você solicitou a recuperação da sua senha. " +
-                $"Segue a sua senha que foi cadastrada no momento da assinatura:<br><br>{password}" +
-                $"Se não foi você, ignore este e-mail.",
+                Body = $"Olá {name}!<br>Você solicitou a recuperação da sua senha. " +
+                $"Segue a sua senha que foi cadastrada no momento da assinatura:<br><br>Senha: {password}" +
+                $"<br><br>Se não foi você, ignore este e-mail.<br><br>Atenciosamente, <br>Equipe de suporte AdvFlow!",
                 IsBodyHtml = true
             };
 

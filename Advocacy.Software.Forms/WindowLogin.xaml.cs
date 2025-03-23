@@ -5,7 +5,6 @@
     /// </summary>
     public partial class WindowLogin : Window
     {
-        private Signatures signature = new();
         
         public WindowLogin()
         {
@@ -18,25 +17,11 @@
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            var resetPassword = Interaction.InputBox("Digite o email que você usa para acessar o sistema:", 
-                "Recuperação de senha", "", 
-                Convert.ToInt32(this.Left + (this.Width / 2) - 200), 
-                Convert.ToInt32(this.Top + (this.Height / 2) - 100));
-            if(resetPassword != "")
-            {
-                signature.Password = Guid.NewGuid().ToString().Substring(0, 12);
-                MessageBox.Show($"Enviamos uma nova senha com 12 caracteres para você para o email " +
-                    $"\"{resetPassword}\" para que você possa recuperar seu acesso, a qual será usada a " +
-                    $"partir de agora para você acessar o sistema! Caso não consiga visualizar seu email na " +
-                    $"caixa de entrada, confira sua caixa de spam!", "Recuperação de acesso", 
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-                //Colocar o envio de email aqui
-                //Chamar a classe EmailService
-            }
-            else
-            {
-                MessageBox.Show("Você não digitou seu email, favor tentar novamente!", "Recuperação de acesso", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            this.Hide();
+            InputBox form = new();
+            form.Closed += (s, args) => this.Close();
+            form.Show();
+
         }
 
         private void HyperlinkNewUser_Click(object sender, RoutedEventArgs e)
