@@ -155,7 +155,15 @@
             switch (contract.PaymentType)
             {
                 case "Depósito bancário":
-                    paymentDetails = $@" depositados no 5º dia útil de todo mês na {contract.BankAccount[0].AccountType?.ToLower()} {contract.BankAccount[0].AccountNumber}, agência {contract.BankAccount[0].AgencyNumber}, {contract.BankAccount[0].BankName}";
+                    if (contract.InstallmentsNumber == 1)
+                    {
+                        paymentDetails = $@"b) Deverá ser depositado na {contract.BankAccount[0].AccountType?.ToLower()} : {contract.BankAccount[0].AccountNumber}, agência {contract.BankAccount[0].AgencyNumber}, {contract.BankAccount[0].BankName}";
+                    }
+                    else
+                    {
+                        paymentDetails = $@" depositados no 5º dia útil de todo mês na {contract.BankAccount[0].AccountType?.ToLower()} {contract.BankAccount[0].AccountNumber}, agência {contract.BankAccount[0].AgencyNumber}, {contract.BankAccount[0].BankName}";
+                    }
+                    
                     break;
                 case "Pix":
                     if(contract.InstallmentsNumber == 1)
@@ -207,7 +215,14 @@
                     }                    
                     break;
                 default:
-                    paymentDetails = " pagos no 5º dia útil de todo mês via boleto bancário, que será enviado por email ou WhatsApp.";
+                    if (contract.InstallmentsNumber == 1)
+                    {
+                        paymentDetails = "b) Deverá ser pago via boleto, que será enviado por email ou WhatsApp.";
+                    }
+                    else
+                    {
+                        paymentDetails = "pagos no 5º dia útil de todo mês via boleto bancário, que será enviado por email ou WhatsApp.";
+                    }
                     break;
             }
 
