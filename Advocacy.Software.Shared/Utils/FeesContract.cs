@@ -73,7 +73,19 @@
                 {
                     document.Add(format.SetBodyAsJustified($"CLÁUSULA V - Pelos serviços prestados e especificados neste contrato, o(a) advogado(a) receberá a título de honorários, o valor de {String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", contract.TotalServiceValue)}, devendo estes serem pagos da seguinte forma:"));
                     document.Add(format.SetBodyAsJustified($"a) Entrada no valor {String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", contract.InitialValue)}"));
-                    document.Add(format.SetBodyAsJustified($"b) {contract.InstallmentsNumber} parcelas de {String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", ((contract.TotalServiceValue - contract.InitialValue) / contract.InstallmentsNumber))}, a serem {SetBankAccountData(contract)}"));
+                    decimal numberOfPayments = 0;
+
+                    if(contract.InstallmentsNumber > 1)
+                    {
+                        numberOfPayments = (contract.TotalServiceValue - contract.InitialValue) / contract.InstallmentsNumber;
+                        document.Add(format.SetBodyAsJustified($"b) {contract.InstallmentsNumber} " +
+                        $"parcelas de {String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", numberOfPayments)} " +
+                        $"a serem {SetBankAccountData(contract)}"));
+                    } 
+                    else
+                    {
+                        document.Add(format.SetBodyAsJustified($"{SetBankAccountData(contract)}"));
+                    }                    
                 }
 
                 document.Add(format.SetBodyAsJustified($"Além disso, o(a) contratado(a) receberá, no êxito, a título de honorários, {contract.SuccessFees}% ({contract.SuccessFees} por cento) sobre o proveito final da ação."));
@@ -146,18 +158,53 @@
                     paymentDetails = $@" depositados no 5º dia útil de todo mês na {contract.BankAccount[0].AccountType?.ToLower()} {contract.BankAccount[0].AccountNumber}, agência {contract.BankAccount[0].AgencyNumber}, {contract.BankAccount[0].BankName}";
                     break;
                 case "Pix":
-                    if (contract.BankAccount[0].PixType == "CPF")
+                    if(contract.InstallmentsNumber == 1)
                     {
-                        paymentDetails = $" pagos no 5º dia útil de todo mês via PIX: {Convert.ToInt64(contract.BankAccount[0].Pix).ToString(@"000\.000\.000-00")} - Tipo de chave: {contract.BankAccount[0].PixType}";
+                        if (contract.BankAccount[0].PixType == "CPF")
+                        {
+                            paymentDetails = $"b) Deve ser pago via PIX: {Convert.ToInt64(contract.BankAccount[0].Pix)
+                                .ToString(@"000\.000\.000-00")} - Tipo de chave: {contract.BankAccount[0].PixType}.";
+                        }
+                        else if (contract.BankAccount[0].PixType == "CNPJ")
+                        {
+                            paymentDetails = $"b) Deve ser pago via PIX: {Convert.ToInt64(contract.BankAccount[0].Pix)
+                                .ToString(@"00\.000\.000/0000-00")} - " +
+                                $"Tipo de chave: {contract.BankAccount[0].PixType}.";
+                        }
+                        else if (contract.BankAccount[0].PixType == "Número de telefone celular")
+                        {
+                            paymentDetails = contract.BankAccount[0].Pix?.Length == 11 ? $"b) Deve ser pago via PIX: " +
+                                $"{Convert.ToInt64(contract.BankAccount[0].Pix):(00)00000-0000} - " +
+                                $"Tipo de chave: {contract.BankAccount[0].PixType}." : 
+                                $"b) Deve ser pago via PIX: " +
+                                $"{Convert.ToInt64(contract.BankAccount[0].Pix):(00)0000-0000} - Tipo de chave: " +
+                                $"{contract.BankAccount[0].PixType}. Chave pix: {contract.BankAccount[0].Pix}";
+                        }
                     }
-                    else if (contract.BankAccount[0].PixType == "CNPJ")
+                    else
                     {
-                        paymentDetails = $" pagos no 5º dia útil de todo mês via PIX: {Convert.ToInt64(contract.BankAccount[0].Pix).ToString(@"00\.000\.000/0000-00")} - Tipo de chave: {contract.BankAccount[0].PixType}";
-                    }
-                    else if (contract.BankAccount[0].PixType == "Número de telefone celular")
-                    {
-                        paymentDetails = contract.BankAccount[0].Pix?.Length == 11 ? $" pagos no 5º dia útil de todo mês via PIX: {Convert.ToInt64(contract.BankAccount[0].Pix):(00)00000-0000} - Tipo de chave: {contract.BankAccount[0].PixType}" : $" pagos no 5º dia útil de todo mês via PIX: {Convert.ToInt64(contract.BankAccount[0].Pix):(00)0000-0000} - Tipo de chave: {contract.BankAccount[0].PixType}";
-                    }
+                        if (contract.BankAccount[0].PixType == "CPF")
+                        {
+                            paymentDetails = $" pagos no 5º dia útil de todo mês via PIX: " +
+                                $"{Convert.ToInt64(contract.BankAccount[0].Pix).ToString(@"000\.000\.000-00")} - " +
+                                $"Tipo de chave: {contract.BankAccount[0].PixType}.";
+                        }
+                        else if (contract.BankAccount[0].PixType == "CNPJ")
+                        {
+                            paymentDetails = $" pagos no 5º dia útil de todo mês via PIX: " +
+                                $"{Convert.ToInt64(contract.BankAccount[0].Pix).ToString(@"00\.000\.000/0000-00")} - " +
+                                $"Tipo de chave: {contract.BankAccount[0].PixType}";
+                        }
+                        else if (contract.BankAccount[0].PixType == "Número de telefone celular")
+                        {
+                            paymentDetails = contract.BankAccount[0].Pix?.Length == 11 ? 
+                                $" pagos no 5º dia útil de todo mês via PIX: " +
+                                $"{Convert.ToInt64(contract.BankAccount[0].Pix):(00)00000-0000} - " +
+                                $"Tipo de chave: {contract.BankAccount[0].PixType}" : 
+                                $" pagos no 5º dia útil de todo mês via PIX: " + $"{Convert.ToInt64(contract.BankAccount[0].Pix):(00)0000-0000} - " + 
+                                $"Tipo de chave: {contract.BankAccount[0].PixType}";
+                        }
+                    }                    
                     break;
                 default:
                     paymentDetails = " pagos no 5º dia útil de todo mês via boleto bancário, que será enviado por email ou WhatsApp.";
