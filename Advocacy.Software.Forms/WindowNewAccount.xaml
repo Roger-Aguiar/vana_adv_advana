@@ -14,14 +14,14 @@
 
         <Frame x:Name="FrameSidebar"></Frame>
 
-        <ListBox x:Name="ListBoxOptions" Grid.Column="0" Background="Black" SelectionMode="Single">
-            <ListBoxItem x:Name="ListBoxUsers" Margin="10" HorizontalAlignment="Left" Content="Minha conta" Foreground="Coral" FontWeight="Bold" FontSize="25"/>
-            <ListBoxItem x:Name="ListBoxItemAddProfileImage" Margin="10" HorizontalAlignment="Left" Content="Adicionar imagem de perfil" Foreground="Coral" FontSize="25" Selected="ListBoxItemAddProfileImage_Selected" />
-            <ListBoxItem x:Name="ListBoxItemAddHeaderImage" Margin="10" HorizontalAlignment="Left" Content="Adicionar logo para cabeçalho" Foreground="Coral" FontSize="25" Selected="ListBoxItemAddHeaderImage_Selected" />
-            <ListBoxItem x:Name="ListBoxItemAddFooterImage" Margin="10" HorizontalAlignment="Left" Content="Adicionar logo para rodapé" Foreground="Coral" FontSize="25" Selected="ListBoxItemAddFooterImage_Selected" />
-            <ListBoxItem x:Name="ListBoxItemRegisterAccount" Margin="10" HorizontalAlignment="Left" Content="Salvar" Foreground="Coral" FontSize="25" Selected="ListBoxItemRegisterAccount_Selected_1" ></ListBoxItem>
-            <ListBoxItem x:Name="ListBoxItemExit" Margin="10" HorizontalAlignment="Left" Content="Sair" Foreground="Coral"  FontSize="25" Selected="ListBoxItemExit_Selected"/>
-            <ListBoxItem x:Name="ListBoxItemDeleteAccount" Margin="10" HorizontalAlignment="Left" Content="Deletar" Foreground="Coral" FontSize="25" Selected="ListBoxItemDeleteAccount_Selected" />
+        <ListBox x:Name="ListBoxOptions" Grid.Column="0" Background="DarkGray" SelectionMode="Single">
+            <ListBoxItem x:Name="ListBoxUsers" Margin="10" Content="Minha conta" FontWeight="Bold" FontSize="25"/>
+            <ListBoxItem x:Name="ListBoxItemAddProfileImage" Margin="10" Content="Adicionar imagem de perfil" FontSize="25" Selected="ListBoxItemAddProfileImage_Selected" />
+            <ListBoxItem x:Name="ListBoxItemAddHeaderImage" Margin="10" Content="Adicionar logo para cabeçalho" FontSize="25" Selected="ListBoxItemAddHeaderImage_Selected" />
+            <ListBoxItem x:Name="ListBoxItemAddFooterImage" Margin="10" Content="Adicionar logo para rodapé" FontSize="25" Selected="ListBoxItemAddFooterImage_Selected" />
+            <ListBoxItem x:Name="ListBoxItemRegisterAccount" Margin="10" Content="Salvar" FontSize="25" Selected="ListBoxItemRegisterAccount_Selected_1" />
+            <ListBoxItem x:Name="ListBoxItemExit" Margin="10" Content="Sair"  FontSize="25" Selected="ListBoxItemExit_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemDeleteAccount" Margin="10" Content="Deletar" FontSize="25" Selected="ListBoxItemDeleteAccount_Selected" />
         </ListBox>
 
         <Border Grid.Column="1" Background="Black" Height="50" VerticalAlignment="Top">

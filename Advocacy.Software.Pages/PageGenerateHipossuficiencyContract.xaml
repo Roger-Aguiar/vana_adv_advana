@@ -22,7 +22,7 @@
         <TextBox x:Name="TextBoxCpfOrCnpj" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" Width="390" Margin="370,8,40,0"/>
 
 
-        <Button Grid.Row="1" x:Name="ButtonGenerateHipossuficiencyContract" Content="Gerar contrato de hipossuficiência" FontSize="35" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Foreground="Lavender" Background="Black" Margin="0,209,0,0" Click="ButtonGenerateHipossuficiencyContract_Click"></Button>
+        <Button Grid.Row="1" x:Name="ButtonGenerateHipossuficiencyContract" Content="Gerar contrato de hipossuficiência" FontSize="35" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Background="DarkGray" Margin="0,209,0,0" Click="ButtonGenerateHipossuficiencyContract_Click"/>
         <TextBox x:Name="TextBoxLawyer" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" Width="390" Margin="371,103,39,0" IsReadOnly="True"/>
     </Grid>
 </Page>

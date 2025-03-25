@@ -26,7 +26,7 @@
         <Label Content="PIX: " FontSize="15" Margin="12,161,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxPix" TabIndex="4" TextWrapping="Wrap" Height="26" FontSize="15" Margin="224,165,377,0" Grid.Row="1" VerticalAlignment="Top"/>
 
-        <Border Grid.Row="1" Background="Black" Height="31" VerticalAlignment="Bottom"></Border>
+        <Border Grid.Row="1" Background="DarkGray" Height="31" VerticalAlignment="Bottom"></Border>
 
         <Button Grid.Row="1" x:Name="ButtonAdd" TabIndex="7" Background ="Lavender"  Foreground="Black"  Width="200"  Content="Novo" VerticalAlignment="Bottom" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20" Margin="10, 0, 0, 0" Click="ButtonAdd_Click" ></Button>
         <Button Grid.Row="1" x:Name="ButtonSave" TabIndex="6" Background ="Lavender"  Foreground="Black"  Width="200"  Content="Salvar" VerticalAlignment="Bottom" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Click="ButtonSave_Click"></Button>

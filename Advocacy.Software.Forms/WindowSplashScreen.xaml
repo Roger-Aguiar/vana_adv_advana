@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Advocacy_Software.Forms"
         mc:Ignorable="d"
-        Title="WindowSplashScreen" Height="458" Width="710" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="WindowSplashScreen" Height="600" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="/Advocacy.Software.Forms/LOGO PARA DESKTOP.jpg"></ImageBrush>
+            <ImageBrush Stretch="Fill" ImageSource="/Advocacy.Software.Forms/AdvFlow.jpg"></ImageBrush>
         </Grid.Background>
-        <Label Content="Desenvolvido por Roger Aguiar - https://www.linkedin.com/in/roger-aguiar/" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,449,0,0" Foreground="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"/>
+        
     </Grid>
 </Window>

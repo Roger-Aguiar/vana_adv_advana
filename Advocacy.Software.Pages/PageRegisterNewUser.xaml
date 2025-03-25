@@ -18,7 +18,7 @@
             <Label Foreground="Lavender"  Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold">Meus usuários</Label>
         </Border>
 
-        <Border Grid.Row="2" Background="Black"></Border>
+        <Border Grid.Row="2" Background="DarkGray"></Border>
 
         <ListBoxItem Grid.Row="2" x:Name="ListBoxAdd" Background ="Lavender"  Foreground="Black"  Width="200"  Content="Novo" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="20"></ListBoxItem>
         <ListBoxItem Grid.Row="2" x:Name="ListBoxSave" Background ="Lavender"  Foreground="Black"  Width="200"  Content="Salvar" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"></ListBoxItem>
