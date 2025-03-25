@@ -39,7 +39,7 @@
         <ComboBox x:Name="ComboBoxStates" TabIndex="8" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="309,287,0,0" FontSize="15" Height="25" Width="300" SelectionChanged="ComboBoxStates_SelectionChanged"/>
         <Label Content="Selecione uma cidade:" FontSize="15" Margin="9,314,496,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
         <ComboBox x:Name="ComboBoxCities" TabIndex="9" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="309,317,0,0" FontSize="15" Height="25" Width="300"/>
-        <Button x:Name="ButtonGenerateFeesContract" Content="Gerar contrato de honorários" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" FontSize="30" Foreground="Lavender" Background="Black" Margin="0,397,0,0" Width="500" Click="ButtonGenerateFeesContract_Click"/>
+        <Button x:Name="ButtonGenerateFeesContract" Content="Gerar contrato de honorários" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" FontSize="30" Background="DarkGray" Margin="0,397,0,0" Width="500" Click="ButtonGenerateFeesContract_Click"/>
         <TextBox x:Name="TextBoxLawyer" TextWrapping="Wrap" Height="26" FontSize="15" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Margin="309,42,0,0"/>
 
 

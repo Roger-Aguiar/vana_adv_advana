@@ -11,24 +11,24 @@
             <ColumnDefinition Width="420"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
         <Frame x:Name="FrameSidebar"></Frame>
 
-        <ListBox x:Name="ListBoxOptions" Grid.Column="0" Background="Black" SelectionMode="Single">
-            <ListBoxItem x:Name="ListBoxMainMenu" Margin="10" HorizontalAlignment="Left" Content="MENU PRINCIPAL" Foreground="Coral" FontWeight="Bold" FontSize="25" Selected="ListBoxMainMenu_Selected" />
-            <ListBoxItem x:Name="ListBoxItemRegisterLawyer" Margin="10" HorizontalAlignment="Left" Content="Cadastrar advogado" Foreground="Coral" FontSize="25" Selected="ListBoxItemRegisterLawyer_Selected"></ListBoxItem>
-            <ListBoxItem x:Name="ListBoxItemRegisterCustomer" Margin="10" HorizontalAlignment="Left" Content="Cadastrar cliente" Foreground="Coral" FontSize="25" Selected="ListBoxItemRegisterCustomer_Selected"/>
-            <ListBoxItem x:Name="ListBoxItemRegisterAccountBank" Margin="10" HorizontalAlignment="Left" Content="Cadastrar conta bancária" Foreground="Coral" FontSize="25" Selected="ListBoxItemRegisterAccountBank_Selected"/>
-            <ListBoxItem x:Name="ListBoxItemGenerateHipposuficiencyContract" Margin="10" HorizontalAlignment="Left" Content="Gerar contrato de hipossuficiência" Foreground="Coral" FontSize="25" Selected="ListBoxItemGenerateHipposuficiencyContract_Selected"/>
-            <ListBoxItem x:Name="ListBoxItemGenerateFeesContract" Margin="10" HorizontalAlignment="Left" Content="Gerar contrato de honorários" Foreground="Coral" FontSize="25" Selected="ListBoxItemGenerateFeesContract_Selected"/>
-            <ListBoxItem x:Name="ListBoxItemGenerateAttorney" Margin="10" HorizontalAlignment="Left" Content="Gerar procuração" Foreground="Coral" FontSize="25" Selected="ListBoxItemGenerateAttorney_Selected"></ListBoxItem>
-            <ListBoxItem x:Name="ListBoxItemWindowNewAccount" Margin="10" HorizontalAlignment="Left" Content="Minha conta" Foreground="Coral" FontSize="25" Selected="ListBoxItemWindowNewAccount_Selected"></ListBoxItem>
-            <ListBoxItem x:Name="ListBoxItemExit" Margin="10" HorizontalAlignment="Left" Content="Sair" Foreground="Coral"  FontSize="25" Selected="ListBoxItemExit_Selected"/>
-            
+        <ListBox x:Name="ListBoxOptions" Grid.Column="0" Background="DarkGray" SelectionMode="Single">
+            <ListBoxItem x:Name="ListBoxMainMenu" Margin="10" HorizontalAlignment="Left" Content="MENU PRINCIPAL" Foreground="Black"  FontWeight="Bold" FontSize="25" Selected="ListBoxMainMenu_Selected" />
+            <ListBoxItem x:Name="ListBoxItemRegisterLawyer" Margin="10" HorizontalAlignment="Left" Content="Cadastro de advogado" FontSize="25" Selected="ListBoxItemRegisterLawyer_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemRegisterCustomer" Margin="10" HorizontalAlignment="Left" Content="Cadastro de clientes" FontSize="25" Selected="ListBoxItemRegisterCustomer_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemRegisterAccountBank" Margin="10" HorizontalAlignment="Left" Content="Cadastro de conta bancária" FontSize="25" Selected="ListBoxItemRegisterAccountBank_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemGenerateHipposuficiencyContract" Margin="10" HorizontalAlignment="Left" Content="Gerar contrato de hipossuficiência" FontSize="25" Selected="ListBoxItemGenerateHipposuficiencyContract_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemGenerateFeesContract" Margin="10" HorizontalAlignment="Left" Content="Gerar contrato de honorários" FontSize="25" Selected="ListBoxItemGenerateFeesContract_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemGenerateAttorney" Margin="10" HorizontalAlignment="Left" Content="Gerar procuração" FontSize="25" Selected="ListBoxItemGenerateAttorney_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemWindowNewAccount" Margin="10" HorizontalAlignment="Left" Content="Minha conta" FontSize="25" Selected="ListBoxItemWindowNewAccount_Selected"/>
+            <ListBoxItem x:Name="ListBoxItemExit" Margin="10" HorizontalAlignment="Left" Content="Sair"  FontSize="25" Selected="ListBoxItemExit_Selected"/>
+
         </ListBox>
-        
+
         <Frame x:Name="FrameForms" Grid.Column="1" NavigationUIVisibility="Hidden" VerticalContentAlignment="Top">
-            
+
         </Frame>
     </Grid>
 </Window>

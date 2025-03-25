@@ -1,4 +1,4 @@
-﻿namespace Advocacy_Software.Advocacy.Software.Director.Person
+﻿namespace Advocacy_Software.Advocacy.Software.DirectorClass.Person
 {
     public class Director
     {

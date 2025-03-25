@@ -69,7 +69,7 @@
             contract.TotalServiceValue = ValidateFields("Valor total do serviço", TextBoxTotalValue.Text) == false ? 0 : Convert.ToDecimal(TextBoxTotalValue.Text);
             contract.SuccessFees = ValidateFields("Honorários de êxito", TextBoxSuccessFees.Text) == false ? null : TextBoxSuccessFees.Text;
             contract.InstallmentsNumber = TextBoxInstallmentsNumber.Text == "" ? 1 : Convert.ToInt32(TextBoxInstallmentsNumber.Text);
-            contract.InitialValue = TextBoxInitialValue.Text == "" ? 0 : Convert.ToDecimal(TextBoxInitialValue.Text);
+            contract.InitialValue = TextBoxInitialValue.Text == "" ? contract.TotalServiceValue : Convert.ToDecimal(TextBoxInitialValue.Text);
             contract.Uf = ValidateFields("Selecione um estado", ComboBoxStates.Text) == false ? null : ComboBoxStates.Text;
             contract.City = ValidateFields("Selecione uma cidade", ComboBoxCities.Text) == false ? null : ComboBoxCities.Text;
             contract.PaymentType = ValidateFields("Selecione uma forma de pagamento", ComboBoxPaymentType.SelectedItem.ToString()) == false ? null : ComboBoxPaymentType.SelectedItem.ToString();
@@ -160,7 +160,6 @@
 
         private void FillComboBoxPaymentType()
         {
-            ComboBoxPaymentType.Items.Add("À vista");
             ComboBoxPaymentType.Items.Add("Boleto");
             ComboBoxPaymentType.Items.Add("Depósito bancário");
             ComboBoxPaymentType.Items.Add("Pix");
@@ -214,10 +213,10 @@
             {                 
                 if(contract.Customer.Count > 0)
                 {
+                    FeesContractGenerator generate = new();
                     contract.PdfPath = SaveFile.Save("Salvar contrato de honorários");
-                    FeesContractGenerator.GenerateContract(contract);
-                    MessageBox.Show("Contrato de honorários gerado com sucesso!", "Contrato de honorários", MessageBoxButton.OK, MessageBoxImage.Information);
-                                        
+                    generate.GenerateContract(contract);
+                    MessageBox.Show("Contrato de honorários gerado com sucesso!", "Contrato de honorários", MessageBoxButton.OK, MessageBoxImage.Information);                                        
                 }
             }
         }
