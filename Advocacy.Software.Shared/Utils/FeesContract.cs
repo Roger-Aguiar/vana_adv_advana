@@ -72,7 +72,7 @@
                 else
                 {
                     document.Add(format.SetBodyAsJustified($"CLÁUSULA V - Pelos serviços prestados e especificados neste contrato, o(a) advogado(a) receberá a título de honorários, o valor de {String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", contract.TotalServiceValue)}, devendo estes serem pagos da seguinte forma:"));
-                    document.Add(format.SetBodyAsJustified($"a) Entrada no valor {String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", contract.InitialValue)}"));
+                    document.Add(format.SetBodyAsJustified($"a) Entrada no valor de {String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", contract.InitialValue)}"));
                     decimal numberOfPayments = 0;
 
                     if(contract.InstallmentsNumber > 1)
