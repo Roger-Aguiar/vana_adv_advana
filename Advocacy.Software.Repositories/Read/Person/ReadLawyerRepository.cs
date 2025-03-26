@@ -19,19 +19,13 @@
                         {
                             IdLawyer = reader.GetInt32(0),
                             Name = reader.GetString(1),
-                            Nationality = reader.GetString(2),
-                            CivilStatus = reader.GetString(3),
                             Profession = reader.GetString(4),
-                            Phone = reader.GetString(5),
-                            Email = reader.GetString(6),
                             RegisterDate = reader.GetString(7).ToString(),
                             LastUpdate = reader.GetString(8).ToString(),
                             OabNumber = reader.GetString(9),
                             UfOab = reader.GetString(10),
                             Id = reader.GetString(11),
                             IdSignature = reader.GetInt32(12),
-                            IdAddress = reader.GetInt32(13),                           
-                            AppPassword = reader.GetString(14)
                         });
                     }
                 };

@@ -66,12 +66,7 @@
 
             directorAddress.Builder = addressBuilder;
 
-            address.Street = TextBoxAddress.Text;
-            address.Number = TextBoxNumber.Text;
-            address.Neighbourhood = TextBoxNeighbourhood.Text;
-            address.ZipCode = TextBoxZipCode.Text;
             address.Id = TextBoxGuidId.Text;
-            address.Complement = TextBoxComplement.Text == "" ? " " : TextBoxComplement.Text;
             address.IdSignature = signature.IdSignature;
 
             if (update == false)
@@ -106,7 +101,6 @@
 
         private void Update()
         {
-            lawyer.Phone = new string((from c in TextBoxPhoneNumber.Text where char.IsWhiteSpace(c) || char.IsLetterOrDigit(c) select c).ToArray());
             
             lawyer.LastUpdate = DateTime.Now.ToString("dd/MM/yyyy");
 
@@ -154,12 +148,7 @@
 
             directorAddress.Builder = addressBuilder;
 
-            address.Street = TextBoxAddress.Text;
-            address.Number = TextBoxNumber.Text;
-            address.Neighbourhood = TextBoxNeighbourhood.Text;
-            address.ZipCode = new string((from c in TextBoxZipCode.Text where char.IsWhiteSpace(c) || char.IsLetterOrDigit(c) select c).ToArray());
             address.Id = TextBoxGuidId.Text;
-            address.Complement = TextBoxComplement.Text == "" ? " " : TextBoxComplement.Text;
             address.IdSignature = signature.IdSignature;
 
             if (update == true)
@@ -174,20 +163,11 @@
             if (lawyers.Count > 0)
             {
                 TextBoxName.Text = lawyers[index].Name;
-                TextBoxNationality.Text = lawyers[index].Nationality;
-                TextBoxCivilStatus.Text = lawyers[index].CivilStatus;
                 TextBoxProfession.Text = lawyers[index].Profession;
                 TextBoxOabNumber.Text = lawyers[index].OabNumber;                
-                TextBoxEmail.Text = lawyers[index].Email;
-                TextBoxPhoneNumber.Text = lawyers[index].Phone?.Length == 11 ? Convert.ToInt64(lawyers[index].Phone).ToString(@"(00)00000-0000") : Convert.ToInt64(lawyers[index].Phone).ToString(@"(00)0000-0000");
                 TextBoxRegisterDate.Text = lawyers[index].RegisterDate;
                 TextBoxLastUpdate.Text = lawyers[index].LastUpdate;
                 TextBoxGuidId.Text = lawyers[index].Id;
-                TextBoxAddress.Text = address.Street;
-                TextBoxNumber.Text = address.Number;
-                TextBoxNeighbourhood.Text = address.Neighbourhood;
-                TextBoxComplement.Text = address.Complement;
-                TextBoxZipCode.Text = Convert.ToInt64(address.ZipCode).ToString(@"00000-000");
 
                 ComboBoxUfOab.Items.Insert(0, lawyers[index].UfOab);
                 ComboBoxUfOab.Text = lawyers[index].UfOab.ToString();                 
@@ -224,27 +204,18 @@
         private void FillFields()
         {
             lawyer.Name = ValidateFields("Nome", TextBoxName.Text) == false ? null : TextBoxName.Text;
-            lawyer.Nationality = ValidateFields("Nacionalidade", TextBoxNationality.Text) == false ? null : TextBoxNationality.Text;
-            lawyer.CivilStatus = ValidateFields("Estado civil", TextBoxCivilStatus.Text) == false ? null : TextBoxCivilStatus.Text;
             lawyer.Profession = ValidateFields("Profissão", TextBoxProfession.Text) == false ? null : TextBoxProfession.Text;
             lawyer.OabNumber = ValidateFields("Número da OAB", TextBoxOabNumber.Text) == false ? null : TextBoxOabNumber.Text;
             lawyer.UfOab = ValidateFields("UF da OAB", ComboBoxUfOab.SelectedItem.ToString()) == false ? null : ComboBoxUfOab.SelectedItem.ToString();
-            lawyer.Email = ValidateFields("Email", TextBoxEmail.Text) == false ? null : TextBoxEmail.Text;
-            lawyer.Phone = ValidateFields("Telefone", TextBoxPhoneNumber.Text) == false ? null : TextBoxPhoneNumber.Text;            
             lawyer.RegisterDate = TextBoxRegisterDate.Text;
             lawyer.LastUpdate = TextBoxLastUpdate.Text;
             lawyer.Id = TextBoxGuidId.Text;
             lawyer.IdSignature = this.signature.IdSignature;
-            lawyer.AppPassword = "";
 
             state.State = ValidateFields("UF", ComboBoxUf.SelectedItem.ToString()) == false ? null : ComboBoxUf.SelectedItem.ToString();
 
             city.City = ValidateFields("Cidade", ComboBoxCities.SelectedItem.ToString()) == false ? null : ComboBoxCities.SelectedItem.ToString();
-            address.Street = ValidateFields("Endereço", TextBoxAddress.Text) == false ? null : TextBoxAddress.Text;
-            address.Number = ValidateFields("Número", TextBoxNumber.Text) == false ? null : TextBoxNumber.Text;
-            address.Neighbourhood = ValidateFields("Bairro", TextBoxNeighbourhood.Text) == false ? null : TextBoxNeighbourhood.Text;
-            address.Complement = TextBoxComplement.Text == " " ? "" : TextBoxComplement.Text;
-            address.ZipCode = ValidateFields("CEP", TextBoxZipCode.Text) == false ? null : TextBoxZipCode.Text;            
+                     
         }
 
         private bool ValidateFields(string field, string control)
@@ -264,20 +235,11 @@
         private void PrepareControlsForNewInput()
         {
             TextBoxName.Clear();
-            TextBoxNationality.Clear();
-            TextBoxEmail.Clear();
-            TextBoxCivilStatus.Clear();
             TextBoxProfession.Clear();
-            TextBoxAddress.Clear();
-            TextBoxNumber.Clear();
-            TextBoxNeighbourhood.Clear();
-            TextBoxZipCode.Clear();
-            TextBoxPhoneNumber.Clear();
             TextBoxGuidId.Clear();
             TextBoxName.Focus();
             TextBoxGuidId.Text = Guid.NewGuid().ToString();
             TextBoxOabNumber.Clear();
-            TextBoxComplement.Clear();
 
             ComboBoxCities.Items.Clear();            
             ComboBoxUf.SelectedItem = null;
