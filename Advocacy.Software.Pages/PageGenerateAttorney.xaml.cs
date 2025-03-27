@@ -38,8 +38,8 @@
             directorLawyer.Builder = lawyerBuilder;
             directorLawyer.Read(LawyerSqlCommands.Read(signature.IdSignature));
             lawyerList = lawyerBuilder.Lawyers;
-            if(lawyerList.Count > 0)
-                TextBoxLawyer.Text = lawyerList[0].Name;        
+            foreach (Lawyer lawyer in lawyerList)
+                ComboBoxLawyers.Items.Add(lawyer.Name);
         }
 
         #endregion
@@ -50,7 +50,7 @@
         {
             attorney.Signature = signature;
             attorney.SpecificPowers = TextBoxSpecificPowers.Text;
-            lawyer.Name = TextBoxLawyer.Text;
+            lawyer.Name = ComboBoxLawyers.SelectedItem.ToString();
             lawyer.IdSignature = signature.IdSignature;
             directorCity.Builder = cityBuilder;
             directorAddress.Builder = addressBuilder;
@@ -99,5 +99,15 @@
         }
 
         #endregion
+
+        private void ButtonAddLawyers_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ComboBoxLawyers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

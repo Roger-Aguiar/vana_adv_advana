@@ -17,14 +17,15 @@
         <Border Background="Black" BorderBrush="Black" BorderThickness="1">
             <Label Foreground="Lavender"  Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold">Gerador de procuração</Label>
         </Border>
-        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25">Digite o CPF ou CNPJ do cliente:</Label>
-        <Label Grid.Row="1" Content="Advogado responsável:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="0,96,0,0"></Label>
-        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="0,179,0,0" Content="Poderes específicos:"/>
-        <TextBox x:Name="TextBoxCpfOrCnpj" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" Width="390" Margin="370,8,40,0"/>
-        <TextBox x:Name="TextBoxSpecificPowers" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" Width="390" Margin="370,183,40,0"/>
+        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="10,0,0,0">Digite o CPF ou CNPJ do cliente:</Label>
+        <Label Grid.Row="1" Content="Advogado(a) responsável:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="10,83,0,0"></Label>
+        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Margin="10,170,0,0" Content="Poderes específicos:"/>
+        <TextBox x:Name="TextBoxCpfOrCnpj" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Width="588" Margin="10,43,0,0"/>
+        <TextBox x:Name="TextBoxSpecificPowers" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" Width="588" Margin="10,213,0,0"/>
 
 
-        <Button Grid.Row="1" x:Name="ButtonGenerateAttorney" Content="Gerar Procuração" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" Background="DarkGray" Click="ButtonGenerateAttorney_Click"/>
-        <TextBox x:Name="TextBoxLawyer" IsReadOnly="True" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" Width="390" Margin="371,100,39,0" />
+        <Button Grid.Row="1" x:Name="ButtonGenerateAttorney" Content="Gerar Procuração" FontSize="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="588" Background="DarkGray" Click="ButtonGenerateAttorney_Click" Margin="10,318,0,0"/>
+        <ComboBox x:Name="ComboBoxLawyers" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="25" Height="39" Width="588" SelectionChanged="ComboBoxLawyers_SelectionChanged" Margin="10,126,0,0"/>
+        <Button Grid.Row="1" x:Name="ButtonAddLawyers" Content="Adicionar advogado na procuração" FontSize="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="588" Background="DarkGray" Click="ButtonAddLawyers_Click" Margin="10,262,0,0"/>
     </Grid>
 </Page>
