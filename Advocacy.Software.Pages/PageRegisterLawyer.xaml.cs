@@ -53,32 +53,9 @@
             }            
         }
 
-        private void InsertAddress()
-        {
-            foreach (var item in cities)
-            {
-                if (item.City == ComboBoxCities.SelectedItem.ToString())
-                {
-                    address.IdCity = item.IdCity;
-                    break;
-                }
-            }
-
-            directorAddress.Builder = addressBuilder;
-
-            address.Id = TextBoxGuidId.Text;
-            address.IdSignature = signature.IdSignature;
-
-            if (update == false)
-                directorAddress.Create(address);
-
-            directorAddress.Read(AddressSqlCommands.Read(TextBoxGuidId.Text));
-            lawyer.IdAddress = addressBuilder.Address.IdAddress;                        
-        }
-
+        
         private void Create()
         {
-            InsertAddress();
             directorLawyer.Builder = lawyerBuilder;
             directorLawyer.Create(lawyer);
             LoadResources();
@@ -104,7 +81,6 @@
             
             lawyer.LastUpdate = DateTime.Now.ToString("dd/MM/yyyy");
 
-            UpdateAddress();
             directorLawyer.Builder = lawyerBuilder;
             directorLawyer.Read(LawyerSqlCommands.Read(lawyer.IdSignature));
             lawyer.IdLawyer = lawyerBuilder.Lawyers[0].IdLawyer;
@@ -123,7 +99,6 @@
                 directorLawyer.Builder = lawyerBuilder;
                 directorLawyer.Delete(LawyerSqlCommands.Delete(lawyers[index]));
                 directorAddress.Builder = addressBuilder;
-                directorAddress.Delete(AddressSqlCommands.Delete(lawyers[index].IdAddress, lawyers[index].IdSignature));
                 lawyers.Remove(lawyers[index]);
 
                 MessageBox.Show("Advogado removido do sistema de cadastro com sucesso!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -134,30 +109,7 @@
                 TextBoxLastUpdate.Clear();
             }
         }
-
-        private void UpdateAddress()
-        {
-            foreach (var item in cities)
-            {
-                if (item.City == ComboBoxCities.SelectedItem.ToString())
-                {
-                    address.IdCity = item.IdCity;
-                    break;
-                }
-            }
-
-            directorAddress.Builder = addressBuilder;
-
-            address.Id = TextBoxGuidId.Text;
-            address.IdSignature = signature.IdSignature;
-
-            if (update == true)
-                directorAddress.Update(address);
-
-            directorAddress.Read(AddressSqlCommands.Read(TextBoxGuidId.Text));
-            lawyer.IdAddress = addressBuilder.Address.IdAddress;
-        }
-
+                
         private void SyncFieldsWithDatabase()
         {
             if (lawyers.Count > 0)

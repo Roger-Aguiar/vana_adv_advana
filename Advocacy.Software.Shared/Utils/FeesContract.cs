@@ -142,10 +142,7 @@
 
         private string SetLawyerBody(FeesContractEntity contract)
         { 
-            string phone = contract.Lawyer[0].Phone?.Length == 11 ? Convert.ToInt64(contract.Lawyer[0].Phone).ToString(@"(00)00000-0000") : Convert.ToInt64(contract.Lawyer[0].Phone).ToString(@"(00)0000-0000");
-            string zipCode = Convert.ToInt64(contract.AddressLawyer.ZipCode).ToString(@"00000-000");
-
-            return $"{contract.Lawyer[0].Name.ToUpper()}, {contract.Lawyer[0].Nationality}, {contract.Lawyer[0].CivilStatus}, {contract.Lawyer[0].Profession}, inscrito(a) na Ordem dos Advogados do Brasil – SEÇÃO - {contract.Lawyer[0].UfOab} sob nº {contract.Lawyer[0].OabNumber}, email: {contract.Lawyer[0].Email}, com endereço profissional na {contract.AddressLawyer.Street}, {contract.AddressLawyer.Number}, {contract.AddressLawyer.Complement}, {contract.AddressLawyer.Neighbourhood}, {contract.CityLawyer[0].City}, {contract.UfLawyer}, CEP: {zipCode}, Telefone: {phone}, email: {contract.Lawyer[0].Email}, ";  
+            return $"{contract.Lawyer[0].Name.ToUpper()}, {contract.Lawyer[0].Profession}, inscrito(a) na Ordem dos Advogados do Brasil – SEÇÃO - {contract.Lawyer[0].UfOab} sob nº {contract.Lawyer[0].OabNumber}, {contract.CityLawyer[0].City}, {contract.UfLawyer}";  
         }
                 
         private static string SetBankAccountData(FeesContractEntity contract)

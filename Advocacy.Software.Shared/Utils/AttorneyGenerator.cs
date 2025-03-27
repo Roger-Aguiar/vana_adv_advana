@@ -89,7 +89,7 @@
             var zipCode = Convert.ToInt64(attorney.AddressLawyer.ZipCode).ToString(@"00000-000");
             var complement = attorney.AddressLawyer.Complement != " " ? attorney.AddressLawyer.Complement + ", " : "";
 
-            body = $"{attorney.Lawyer.Name.ToUpper()}, {attorney.Lawyer.Nationality}, {attorney.Lawyer.CivilStatus}, {attorney.Lawyer.Profession}, inscrito(a) na OAB - {attorney.Lawyer.UfOab} sob nº {attorney.Lawyer.OabNumber}, email: {attorney.Lawyer.Email}, com endereço profissional na {attorney.AddressLawyer.Street}, {attorney.AddressLawyer.Number}, {complement} {attorney.AddressLawyer.Neighbourhood}, {attorney.CityLawyer[0].City}, {attorney.UfLawyer}, {attorney.AddressLawyer.Complement}, CEP: {zipCode}, onde recebe intimação.";
+            body = $"{attorney.Lawyer.Name.ToUpper()}, {attorney.Lawyer.Profession}, inscrito(a) na OAB - {attorney.Lawyer.UfOab} sob nº {attorney.Lawyer.OabNumber}, com endereço profissional e informações de contato no rodapé deste documento, onde recebe intimação.";
             
             return body;
         }
