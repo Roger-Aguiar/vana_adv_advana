@@ -35,7 +35,7 @@
 
                 document.Add(format.SetBodyAsJustified(SetCustomerData(attorney)));
 
-                document.Add(format.SetTitle("OUTORGADO"));
+                document.Add(format.SetTitle("OUTORGADO(S)"));
 
                 document.Add(format.SetBodyAsJustified(SetLawyerData(attorney)));
 
@@ -83,15 +83,13 @@
             return body;
         }
 
-        private string SetLawyerData(AttorneyEntity attorney)
-        {
-            string body;
-            var zipCode = Convert.ToInt64(attorney.AddressLawyer.ZipCode).ToString(@"00000-000");
-            var complement = attorney.AddressLawyer.Complement != " " ? attorney.AddressLawyer.Complement + ", " : "";
-
-            body = $"{attorney.Lawyer.Name.ToUpper()}, {attorney.Lawyer.Profession}, inscrito(a) na OAB - {attorney.Lawyer.UfOab} sob nº {attorney.Lawyer.OabNumber}, com endereço profissional e informações de contato no rodapé deste documento, onde recebe intimação.";
-            
-            return body;
+        private static string SetLawyerData(AttorneyEntity attorney)
+        {            
+            return $"{attorney.Lawyer.Name.ToUpper()}, " +
+                $"{attorney.Lawyer.Profession}, inscrito(a) na OAB - " +
+                $"{attorney.Lawyer.UfOab} sob nº {attorney.Lawyer.OabNumber}, " +
+                $"com endereço profissional e informações de contato no rodapé deste documento, " +
+                $"onde recebe intimação.";
         }
     }
 }

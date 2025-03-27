@@ -142,7 +142,11 @@
 
         private string SetLawyerBody(FeesContractEntity contract)
         { 
-            return $"{contract.Lawyer[0].Name.ToUpper()}, {contract.Lawyer[0].Profession}, inscrito(a) na Ordem dos Advogados do Brasil – SEÇÃO - {contract.Lawyer[0].UfOab} sob nº {contract.Lawyer[0].OabNumber}, {contract.CityLawyer[0].City}, {contract.UfLawyer}";  
+            return $"{contract.Lawyer[0].Name.ToUpper()}, " +
+                $"{contract.Lawyer[0].Profession}, " +
+                $"inscrito(a) na Ordem dos Advogados do Brasil – SEÇÃO - " +
+                $"{contract.Lawyer[0].UfOab} sob nº {contract.Lawyer[0].OabNumber}, " +
+                $"{contract.CityLawyer[0].City}, {contract.UfLawyer}";  
         }
                 
         private static string SetBankAccountData(FeesContractEntity contract)
