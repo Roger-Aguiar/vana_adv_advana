@@ -153,7 +153,7 @@
                 $"{item.UfOab} sob nº {item.OabNumber}, ";
             }
 
-            lawyerData += contract.LawyerInFee.Count > 0 ?
+            lawyerData += contract.LawyerInFee.Count > 1 ?
                 "ambas com endereço profissional e informações de contato no rodapé deste documento." :
                 "com endereço profissional e informações de contato no rodapé deste documento.";
             
