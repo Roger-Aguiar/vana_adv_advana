@@ -222,6 +222,7 @@
             foreach (Lawyer item in lawyers)
                 ComboBoxLawyers.Items.Add(item.Name);
         }
+
         #endregion
 
         #region Events

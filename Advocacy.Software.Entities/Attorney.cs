@@ -7,8 +7,10 @@
         public DateTime RegisterDate { get; set; }
         public int IdCustomer { get; set; }
         public string? Id { get; set; }
+        public string? City { get; set; }
         public Customers Customer { get; set; }
-        public Lawyer Lawyer { get; set; }
+        public List<Lawyer> Lawyer { get; set; }
+        public List<Lawyer> LawyerInAttorney { get; set; }
         public List<Cities> CityLawyer { get; set; }
         public List<Cities> CityCustomer { get; set; }
         public int IdSignature { get; set; }

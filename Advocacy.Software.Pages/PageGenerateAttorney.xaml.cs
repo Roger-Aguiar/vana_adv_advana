@@ -20,6 +20,7 @@
 
         private Signatures signature = new();
         private List<Lawyer> lawyerList = new();
+        private List<Lawyer> lawyersInAttorney = new();
         private Lawyer lawyer = new();
         private AttorneyEntity attorney = new();
 
@@ -48,6 +49,8 @@
 
         private void ButtonGenerateAttorney_Click(object sender, RoutedEventArgs e)
         {
+            attorney.LawyerInAttorney = lawyersInAttorney;
+            attorney.City = TextBoxcity.Text;
             attorney.Signature = signature;
             attorney.SpecificPowers = TextBoxSpecificPowers.Text;
             lawyer.Name = ComboBoxLawyers.SelectedItem.ToString();
@@ -64,18 +67,13 @@
             if(customerBuilder.CustomersList.Count > 0)
             {
                 attorney.Customer = customerBuilder.CustomersList[0];
-                attorney.Lawyer = lawyerBuilder.Lawyers[0];
-                directorAddress.Read(AddressSqlCommands.Read(attorney.Lawyer.Id));
+                attorney.Lawyer = lawyerBuilder.Lawyers;
                 attorney.AddressLawyer = addressBuilder.Address;
                 directorAddress.Read(AddressSqlCommands.Read(attorney.Customer.Id));
                 attorney.AddressCustomer = addressBuilder.Address;
-                directorCity.Read(CitySqlCommands.Read(attorney.AddressLawyer.IdCity));
                 attorney.CityLawyer = cityBuilder.CitiesList;
                 directorCity.Read(CitySqlCommands.Read(attorney.AddressCustomer.IdCity));
                 attorney.CityCustomer = cityBuilder.CitiesList;
-
-                directorState.Read(StateSqlCommands.Select(attorney.CityLawyer[0].IdState));
-                attorney.UfLawyer = stateBuilder.State[0].State;
                 directorState.Read(StateSqlCommands.Select(attorney.CityCustomer[0].IdState));
                 attorney.UfCustomer = stateBuilder.State[0].State;
 
@@ -83,14 +81,12 @@
                 AttorneyGenerator attorneyGenerator = new();
                 attorneyGenerator.GenerateAttorney(attorney);
 
-                MessageBox.Show("Procuração gerada com sucesso!", "Procuração", MessageBoxButton.OK, MessageBoxImage.Information);
-                                
+                MessageBox.Show("Procuração gerada com sucesso!", "Procuração", MessageBoxButton.OK, MessageBoxImage.Information);            
             }
             else
             {
                 MessageBox.Show("CPF ou CNPJ inválido! Verifique os dados e tente novamente.", "Cliente não encontrado", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
 
         private void PageAttorneyGenerator_Loaded(object sender, RoutedEventArgs e)
@@ -99,15 +95,13 @@
         }
 
         #endregion
-
-        private void ButtonAddLawyers_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+                
         private void ComboBoxLawyers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            lawyersInAttorney.Add(lawyerList[ComboBoxLawyers.SelectedIndex]);
+            MessageBox.Show("Você adicionou um(a) advogado(a) na procuração, " +
+                "caso queira adicionar outro(a) advogado(a), basta selecionar na lista", 
+                "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

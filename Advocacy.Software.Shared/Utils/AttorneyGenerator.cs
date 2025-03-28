@@ -55,7 +55,7 @@
 
                 document.Add(format.SetBody("A presente procuração tem duração até o fim da ação.\n"));
 
-                document.Add(format.SetBody($"{attorney.CityLawyer[0].City}, {DateTime.Now.ToString("D", (new CultureInfo("pt-BR")))}"));
+                document.Add(format.SetBody($"{attorney.City}, {DateTime.Now.ToString("D", (new CultureInfo("pt-BR")))}"));
 
                 document.Add(new Paragraph("\n\n"));
 
@@ -84,12 +84,18 @@
         }
 
         private static string SetLawyerData(AttorneyEntity attorney)
-        {            
-            return $"{attorney.Lawyer.Name.ToUpper()}, " +
-                $"{attorney.Lawyer.Profession}, inscrito(a) na OAB - " +
-                $"{attorney.Lawyer.UfOab} sob nº {attorney.Lawyer.OabNumber}, " +
+        {
+            string lawyerData = string.Empty;
+            foreach (var item in attorney.LawyerInAttorney)
+            {
+                lawyerData += $"{item.Name.ToUpper()}, " +
+                $"{item.Profession}, inscrito(a) na OAB - " +
+                $"{item.UfOab} sob nº {item.OabNumber}, " +
                 $"com endereço profissional e informações de contato no rodapé deste documento, " +
-                $"onde recebe intimação.";
+                $"onde recebe intimação.\n";
+            }
+            
+            return lawyerData;
         }
     }
 }

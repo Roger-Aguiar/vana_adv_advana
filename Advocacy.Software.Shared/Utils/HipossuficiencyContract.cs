@@ -26,7 +26,7 @@
                 else
                 {
                     document.SetMargins(85, 50, 50, 50);
-                    pdfDocument.AddEventHandler(PdfDocumentEvent.END_PAGE, new EndPageEventHandler(document, pdfDocument, contract.Lawyer[0]));
+                    //pdfDocument.AddEventHandler(PdfDocumentEvent.END_PAGE, new EndPageEventHandler(document, pdfDocument, contract.Lawyer[0]));
                 }
 
                 document.Add(format.SetTitle("\n\nDECLARAÇÃO DE HIPOSSUFICIÊNCIA DE RENDA"));
