@@ -26,7 +26,7 @@
                 else
                 {
                     document.SetMargins(85, 50, 50, 50);
-                    //pdfDocument.AddEventHandler(PdfDocumentEvent.END_PAGE, new EndPageEventHandler(document, pdfDocument, contract.Lawyer[0]));
+                    pdfDocument.AddEventHandler(PdfDocumentEvent.END_PAGE, new EndPageEventHandler(document, pdfDocument, contract.LawyerInFee));
                 }
 
                 document.Add(format.SetTitle("\n\nDECLARAÇÃO DE HIPOSSUFICIÊNCIA DE RENDA"));
@@ -35,7 +35,7 @@
 
                 document.Add(new Paragraph("\n\n\n\n\n"));
 
-                document.Add(format.SetBody($"{contract.CityLawyer[0].City}, {DateTime.Now.ToString("D", new CultureInfo("pt-BR"))}"));
+                document.Add(format.SetBody($"{contract.CityOffice}, {DateTime.Now.ToString("D", new CultureInfo("pt-BR"))}"));
 
                 document.Add(format.SetTitle("\n\n\n\n\n___________________________________________________________"));
 

@@ -32,5 +32,23 @@ INSERT INTO states (IdState, State) VALUES
 (27, 'TO');
 
 SELECT * FROM states;
-
 SELECT * FROM cities;
+SELECT * FROM bankaccount;
+
+SELECT * FROM customers
+WHERE IdSignature = 7;
+
+UPDATE customers
+SET Phone = "11959237389"
+WHERE IdCustomer = 5;
+
+DESCRIBE lawyers;
+
+ALTER TABLE lawyers DROP FOREIGN KEY fk_Lawyers_Address1;
+ALTER TABLE lawyers 
+DROP COLUMN Nationality,
+DROP COLUMN CivilStatus,
+DROP COLUMN Phone,
+DROP COLUMN Email,
+DROP COLUMN IdAddress,
+DROP COLUMN AppPassword;

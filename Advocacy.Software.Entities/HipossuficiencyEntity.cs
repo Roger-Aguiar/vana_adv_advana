@@ -14,5 +14,7 @@
         public string? LawyerCity { get; set; }
         public string? PdfFile { get; set; }
         public string? Subject { get; set; }
+        public List<Lawyer> LawyerInFee { get; set; } = new();
+        public string CityOffice { get; set; }
     }
 }

@@ -6,14 +6,12 @@
     public partial class PageGenerateHipossuficiencyContract : Page
     {
         #region Variables
-
-        private Director directorLawyer = new();
+                
         private Director directorCustomer = new();
         private Director directorCity = new();
         private Director directorAddress = new();
         private Director directorState = new();
 
-        private ConcreteLawyerBuilder lawyerBuilder = new();
         private ConcreteCustomerBuilder customerBuilder = new();
         private ConcreteCityBuilder cityBuilder = new();
         private ConcreteAddressBuilder addressBuilder = new();
@@ -29,20 +27,7 @@
             this.signature = signature;
             InitializeComponent();
         }
-
-        #region Private methods
-
-        private void FillTextBoxLawyer()
-        {
-            directorLawyer.Builder = lawyerBuilder;
-            directorLawyer.Read(LawyerSqlCommands.Read(signature.IdSignature));
-            contract.Lawyer = lawyerBuilder.Lawyers;
-            if(contract.Lawyer.Count > 0)
-                TextBoxLawyer.Text = contract.Lawyer[0].Name;
-        }
-
-        #endregion
-
+               
         #region Events
 
         private void ButtonGenerateHipossuficiencyContract_Click(object sender, RoutedEventArgs e)
@@ -72,13 +57,8 @@
                     contract.City = cityBuilder.CitiesList;
                     directorState.Read(StateSqlCommands.Select(contract.City[0].IdState));
                     contract.UfCustomer = stateBuilder.State[0].State;
-
-                    directorAddress.Read(AddressSqlCommands.Read(contract.Lawyer[0].Id));
                     contract.AddressLawyer = addressBuilder.Address;
-                    directorCity.Read(CitySqlCommands.Read(contract.AddressLawyer.IdCity));
-                    contract.CityLawyer = cityBuilder.CitiesList;
-                    directorState.Read(StateSqlCommands.Select(contract.CityLawyer[0].IdState));
-                    contract.UfLawyer = stateBuilder.State[0].State;
+                    contract.CityOffice = TextBoxCity.Text;
 
                     contract.PdfFile = SaveFile.Save("Salvar contrato de hipossuficiência");
                     if (contract.PdfFile != null)
@@ -98,9 +78,10 @@
 
         private void PageAttorneyHipossuficiencyContract_Loaded(object sender, RoutedEventArgs e)
         {
-            FillTextBoxLawyer();
+            
         }
 
         #endregion
+                
     }
 }
