@@ -46,7 +46,7 @@
                 directorState.Builder = stateBuilder;
                 directorCustomer.Builder = customerBuilder;
 
-                directorCustomer.Read(CustomerSqlCommands.Read(TextBoxCpfOrCnpj.Text, signature.IdSignature));
+                directorCustomer.Read(CustomerSqlCommands.Read(CharacterOperations.RemoveEpecialCharacters(TextBoxCpfOrCnpj.Text), signature.IdSignature));
                 contract.Customer = customerBuilder.CustomersList;
                 
                 if(contract.Customer.Count > 0)

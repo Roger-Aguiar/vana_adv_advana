@@ -43,3 +43,4 @@ global using System.Net;
 global using System.Net.Mail;
 global using System.Threading.Tasks;
 global using Advocacy_Software.Advocacy.Software.Forms;
+global using System.Text.RegularExpressions;

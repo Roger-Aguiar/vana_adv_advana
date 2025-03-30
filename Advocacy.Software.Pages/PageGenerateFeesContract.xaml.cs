@@ -70,7 +70,7 @@
         private void FillFeesContractFields()
         {
             contract.Signature = Signature;
-            contract.CpfOrCnpj = ValidateFields("CPF ou CNPJ", TextBoxCpfOrCnpj.Text) == false ? null : TextBoxCpfOrCnpj.Text;
+            contract.CpfOrCnpj = ValidateFields("CPF ou CNPJ", CharacterOperations.RemoveEpecialCharacters(TextBoxCpfOrCnpj.Text)) == false ? null : TextBoxCpfOrCnpj.Text;
             contract.ActionName = ValidateFields("Nome da ação", TextBoxActionName.Text) == false ? null : TextBoxActionName.Text;
             contract.TotalServiceValue = ValidateFields("Valor total do serviço", TextBoxTotalValue.Text) == false ? 0 : Convert.ToDecimal(TextBoxTotalValue.Text);
             contract.SuccessFees = ValidateFields("Honorários de êxito", TextBoxSuccessFees.Text) == false ? null : TextBoxSuccessFees.Text;
@@ -85,7 +85,7 @@
             directorState.Builder = stateBuilder;
 
             directorCustomer.Builder = customerBuilder;
-            directorCustomer.Read(CustomerSqlCommands.Read(TextBoxCpfOrCnpj.Text, Signature.IdSignature));
+            directorCustomer.Read(CustomerSqlCommands.Read(CharacterOperations.RemoveEpecialCharacters(TextBoxCpfOrCnpj.Text), Signature.IdSignature));
             directorLawyer.Builder = lawyerBuilder;
             directorLawyer.Read(LawyerSqlCommands.Read(lawyer));
             contract.Customer = customerBuilder.CustomersList;

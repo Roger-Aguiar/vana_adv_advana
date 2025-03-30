@@ -42,7 +42,7 @@
             foreach (Lawyer lawyer in lawyerList)
                 ComboBoxLawyers.Items.Add(lawyer.Name);
         }
-
+                
         #endregion
 
         #region Events
@@ -60,7 +60,7 @@
             directorState.Builder = stateBuilder;
 
             directorCustomer.Builder = customerBuilder;
-            directorCustomer.Read(CustomerSqlCommands.Read(TextBoxCpfOrCnpj.Text, signature.IdSignature));
+            directorCustomer.Read(CustomerSqlCommands.Read(CharacterOperations.RemoveEpecialCharacters(TextBoxCpfOrCnpj.Text), signature.IdSignature));
             directorLawyer.Builder = lawyerBuilder;
             directorLawyer.Read(LawyerSqlCommands.Read(lawyer));
 
