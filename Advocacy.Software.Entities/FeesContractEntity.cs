@@ -4,6 +4,7 @@
     {
         public List<Customers> Customer { get; set; }
         public List<Lawyer> Lawyer { get; set; }
+        public List<Lawyer> LawyerInFee { get; set; } = new();
         public List<Cities> CityLawyer { get; set; }
         public List<Cities> CityCustomer { get; set; }
         public Signatures Signature { get; set; }
@@ -27,5 +28,6 @@
         public string? UfLawyer { get; set; }
         public string? Uf { get; set; }
         public string? CpfOrCnpj { get; set; }
+        public string? CityOffice { get; set; }
     }
 }

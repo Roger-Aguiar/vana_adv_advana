@@ -68,6 +68,22 @@
 
         private void FillComboBoxBankName()
         {
+            ComboBoxBankName.Items.Add("260 - Nubank");
+            ComboBoxBankName.Items.Add("077 - Banco Inter");
+            ComboBoxBankName.Items.Add("336 - C6 Bank");
+            ComboBoxBankName.Items.Add("212 - Banco Original");
+            ComboBoxBankName.Items.Add("735 - Neon Pagamentos");
+            ComboBoxBankName.Items.Add("290 - PagBank (PagSeguro Internet S.A.)");
+            ComboBoxBankName.Items.Add("218 - Banco BS2");
+            ComboBoxBankName.Items.Add("237 - Banco Next");
+            ComboBoxBankName.Items.Add("121 - Agibank");
+            ComboBoxBankName.Items.Add("746 - Banco Modal");
+            ComboBoxBankName.Items.Add("069 - Banco Crefisa");
+            ComboBoxBankName.Items.Add("637 - Banco Sofisa");
+            ComboBoxBankName.Items.Add("707 - Banco Daycoval");
+            ComboBoxBankName.Items.Add("318 - Banco BMG");
+            ComboBoxBankName.Items.Add("623 - Banco PAN");
+            ComboBoxBankName.Items.Add("335 - Banco Digio");
             ComboBoxBankName.Items.Add("001 – Banco do Brasil S.A.");
             ComboBoxBankName.Items.Add("033 – Banco Santander (Brasil) S.A.");
             ComboBoxBankName.Items.Add("104 – Caixa Econômica Federal");

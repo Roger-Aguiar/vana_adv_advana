@@ -44,46 +44,20 @@
                 
         private void LoadResources()
         {
-            FillComboBoxStates();
-            Read();
+            FillComboBoxStates();            
+            Read();            
             SyncFieldsWithDatabase();
-            if(lawyers.Count > 0) 
+            FillComboBoxLawyers();
+
+            if (lawyers.Count > 0) 
             {
                 LabelNumberOfLawyers.Content = $"{index + 1} de {lawyers.Count}";
             }            
         }
 
-        private void InsertAddress()
-        {
-            foreach (var item in cities)
-            {
-                if (item.City == ComboBoxCities.SelectedItem.ToString())
-                {
-                    address.IdCity = item.IdCity;
-                    break;
-                }
-            }
-
-            directorAddress.Builder = addressBuilder;
-
-            address.Street = TextBoxAddress.Text;
-            address.Number = TextBoxNumber.Text;
-            address.Neighbourhood = TextBoxNeighbourhood.Text;
-            address.ZipCode = TextBoxZipCode.Text;
-            address.Id = TextBoxGuidId.Text;
-            address.Complement = TextBoxComplement.Text == "" ? " " : TextBoxComplement.Text;
-            address.IdSignature = signature.IdSignature;
-
-            if (update == false)
-                directorAddress.Create(address);
-
-            directorAddress.Read(AddressSqlCommands.Read(TextBoxGuidId.Text));
-            lawyer.IdAddress = addressBuilder.Address.IdAddress;                        
-        }
-
+        
         private void Create()
         {
-            InsertAddress();
             directorLawyer.Builder = lawyerBuilder;
             directorLawyer.Create(lawyer);
             LoadResources();
@@ -96,21 +70,14 @@
             directorAddress.Builder = addressBuilder;
 
             directorLawyer.Read(LawyerSqlCommands.Read(signature.IdSignature));
-            lawyers = lawyerBuilder.Lawyers;
-            if(lawyers.Count > 0)
-            {
-                directorAddress.Read(AddressSqlCommands.Read(lawyers[index].Id));
-                address = addressBuilder.Address;
-            }            
+            lawyers = lawyerBuilder.Lawyers;                      
         }
 
         private void Update()
         {
-            lawyer.Phone = new string((from c in TextBoxPhoneNumber.Text where char.IsWhiteSpace(c) || char.IsLetterOrDigit(c) select c).ToArray());
             
             lawyer.LastUpdate = DateTime.Now.ToString("dd/MM/yyyy");
 
-            UpdateAddress();
             directorLawyer.Builder = lawyerBuilder;
             directorLawyer.Read(LawyerSqlCommands.Read(lawyer.IdSignature));
             lawyer.IdLawyer = lawyerBuilder.Lawyers[0].IdLawyer;
@@ -129,7 +96,6 @@
                 directorLawyer.Builder = lawyerBuilder;
                 directorLawyer.Delete(LawyerSqlCommands.Delete(lawyers[index]));
                 directorAddress.Builder = addressBuilder;
-                directorAddress.Delete(AddressSqlCommands.Delete(lawyers[index].IdAddress, lawyers[index].IdSignature));
                 lawyers.Remove(lawyers[index]);
 
                 MessageBox.Show("Advogado removido do sistema de cadastro com sucesso!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -140,59 +106,22 @@
                 TextBoxLastUpdate.Clear();
             }
         }
-
-        private void UpdateAddress()
-        {
-            foreach (var item in cities)
-            {
-                if (item.City == ComboBoxCities.SelectedItem.ToString())
-                {
-                    address.IdCity = item.IdCity;
-                    break;
-                }
-            }
-
-            directorAddress.Builder = addressBuilder;
-
-            address.Street = TextBoxAddress.Text;
-            address.Number = TextBoxNumber.Text;
-            address.Neighbourhood = TextBoxNeighbourhood.Text;
-            address.ZipCode = new string((from c in TextBoxZipCode.Text where char.IsWhiteSpace(c) || char.IsLetterOrDigit(c) select c).ToArray());
-            address.Id = TextBoxGuidId.Text;
-            address.Complement = TextBoxComplement.Text == "" ? " " : TextBoxComplement.Text;
-            address.IdSignature = signature.IdSignature;
-
-            if (update == true)
-                directorAddress.Update(address);
-
-            directorAddress.Read(AddressSqlCommands.Read(TextBoxGuidId.Text));
-            lawyer.IdAddress = addressBuilder.Address.IdAddress;
-        }
-
+                
         private void SyncFieldsWithDatabase()
         {
             if (lawyers.Count > 0)
             {
                 TextBoxName.Text = lawyers[index].Name;
-                TextBoxNationality.Text = lawyers[index].Nationality;
-                TextBoxCivilStatus.Text = lawyers[index].CivilStatus;
                 TextBoxProfession.Text = lawyers[index].Profession;
                 TextBoxOabNumber.Text = lawyers[index].OabNumber;                
-                TextBoxEmail.Text = lawyers[index].Email;
-                TextBoxPhoneNumber.Text = lawyers[index].Phone?.Length == 11 ? Convert.ToInt64(lawyers[index].Phone).ToString(@"(00)00000-0000") : Convert.ToInt64(lawyers[index].Phone).ToString(@"(00)0000-0000");
                 TextBoxRegisterDate.Text = lawyers[index].RegisterDate;
                 TextBoxLastUpdate.Text = lawyers[index].LastUpdate;
                 TextBoxGuidId.Text = lawyers[index].Id;
-                TextBoxAddress.Text = address.Street;
-                TextBoxNumber.Text = address.Number;
-                TextBoxNeighbourhood.Text = address.Neighbourhood;
-                TextBoxComplement.Text = address.Complement;
-                TextBoxZipCode.Text = Convert.ToInt64(address.ZipCode).ToString(@"00000-000");
 
                 ComboBoxUfOab.Items.Insert(0, lawyers[index].UfOab);
-                ComboBoxUfOab.Text = lawyers[index].UfOab.ToString();                 
+                ComboBoxUfOab.Text = lawyers[index].UfOab.ToString();
+                ComboBoxLawyers.Text = lawyers[index].Name;
 
-                SyncStateAndCityWithDatabase();
             }
             else
             {
@@ -200,51 +129,17 @@
                 ButtonSave.IsEnabled = false;
             }
         }
-
-        private List<Cities> SelectCity()
-        {            
-            directorCity.Builder = cityBuilder;
-            directorCity.Read(CitySqlCommands.Read(address.IdCity));
-            return cityBuilder.CitiesList;
-        }
-
-        private void SyncStateAndCityWithDatabase()
-        {
-            var city = SelectCity();
-            directorState.Builder = stateBuilder;
-            directorState.Read(StateSqlCommands.Select(city[0].IdState));
-            states = stateBuilder.State;
-
-            ComboBoxUf.Items.Insert(0, states[0].State);
-            ComboBoxUf.Text = states[0].State;
-            ComboBoxCities.Items.Insert(0, city[0].City);
-            ComboBoxCities.Text = city[0].City;
-        }
-
+                                
         private void FillFields()
         {
             lawyer.Name = ValidateFields("Nome", TextBoxName.Text) == false ? null : TextBoxName.Text;
-            lawyer.Nationality = ValidateFields("Nacionalidade", TextBoxNationality.Text) == false ? null : TextBoxNationality.Text;
-            lawyer.CivilStatus = ValidateFields("Estado civil", TextBoxCivilStatus.Text) == false ? null : TextBoxCivilStatus.Text;
             lawyer.Profession = ValidateFields("Profissão", TextBoxProfession.Text) == false ? null : TextBoxProfession.Text;
             lawyer.OabNumber = ValidateFields("Número da OAB", TextBoxOabNumber.Text) == false ? null : TextBoxOabNumber.Text;
             lawyer.UfOab = ValidateFields("UF da OAB", ComboBoxUfOab.SelectedItem.ToString()) == false ? null : ComboBoxUfOab.SelectedItem.ToString();
-            lawyer.Email = ValidateFields("Email", TextBoxEmail.Text) == false ? null : TextBoxEmail.Text;
-            lawyer.Phone = ValidateFields("Telefone", TextBoxPhoneNumber.Text) == false ? null : TextBoxPhoneNumber.Text;            
             lawyer.RegisterDate = TextBoxRegisterDate.Text;
             lawyer.LastUpdate = TextBoxLastUpdate.Text;
             lawyer.Id = TextBoxGuidId.Text;
-            lawyer.IdSignature = this.signature.IdSignature;
-            lawyer.AppPassword = "";
-
-            state.State = ValidateFields("UF", ComboBoxUf.SelectedItem.ToString()) == false ? null : ComboBoxUf.SelectedItem.ToString();
-
-            city.City = ValidateFields("Cidade", ComboBoxCities.SelectedItem.ToString()) == false ? null : ComboBoxCities.SelectedItem.ToString();
-            address.Street = ValidateFields("Endereço", TextBoxAddress.Text) == false ? null : TextBoxAddress.Text;
-            address.Number = ValidateFields("Número", TextBoxNumber.Text) == false ? null : TextBoxNumber.Text;
-            address.Neighbourhood = ValidateFields("Bairro", TextBoxNeighbourhood.Text) == false ? null : TextBoxNeighbourhood.Text;
-            address.Complement = TextBoxComplement.Text == " " ? "" : TextBoxComplement.Text;
-            address.ZipCode = ValidateFields("CEP", TextBoxZipCode.Text) == false ? null : TextBoxZipCode.Text;            
+            lawyer.IdSignature = this.signature.IdSignature;                                
         }
 
         private bool ValidateFields(string field, string control)
@@ -264,28 +159,14 @@
         private void PrepareControlsForNewInput()
         {
             TextBoxName.Clear();
-            TextBoxNationality.Clear();
-            TextBoxEmail.Clear();
-            TextBoxCivilStatus.Clear();
             TextBoxProfession.Clear();
-            TextBoxAddress.Clear();
-            TextBoxNumber.Clear();
-            TextBoxNeighbourhood.Clear();
-            TextBoxZipCode.Clear();
-            TextBoxPhoneNumber.Clear();
             TextBoxGuidId.Clear();
             TextBoxName.Focus();
             TextBoxGuidId.Text = Guid.NewGuid().ToString();
             TextBoxOabNumber.Clear();
-            TextBoxComplement.Clear();
-
-            ComboBoxCities.Items.Clear();            
-            ComboBoxUf.SelectedItem = null;
-            ComboBoxCities.SelectedItem = null;
+                        
             ComboBoxUfOab.SelectedItem = null;
-            ComboBoxUf.SelectedValue = null;
             ComboBoxUfOab.SelectedValue = null;
-            ComboBoxCities.SelectedValue = null;
             
             TextBoxRegisterDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
             TextBoxLastUpdate.Text = DateTime.Now.ToString("dd/MM/yyyy");
@@ -325,45 +206,21 @@
                 new States() { State = "TO" }
             };
 
-            ComboBoxUf.Items.Clear();
             ComboBoxUfOab.Items.Clear();
 
             foreach (var state in states)
-            {
-                ComboBoxUf.Items.Add(state.State);
+            {                
                 ComboBoxUfOab.Items.Add(state.State);
             }
         }
-
-        private void FillComboBoxCities()
+                
+        private void FillComboBoxLawyers()
         {
-            this.states.Clear();
-            this.cities.Clear();
-            ComboBoxCities.Items.Clear();
+            if (ComboBoxLawyers.Items.Count > 0)
+                ComboBoxLawyers.Items.Clear();
 
-            directorCity.Builder = cityBuilder;
-            directorState.Builder = stateBuilder;            
-
-            if(ComboBoxUf.SelectedValue != null)
-            {
-                directorState.Read(StateSqlCommands.GetIdState(ComboBoxUf.SelectedItem.ToString()));
-                this.states = stateBuilder.State;
-            }
-            
-            if(states.Count > 0)
-            {
-                directorCity.Read(CitySqlCommands.GetCitiesById(states[0].IdState));
-                this.cities = cityBuilder.CitiesList;
-            }
-            
-                       
-            if (cities.Count > 0)
-            {
-                foreach (var city in cities)
-                {
-                    ComboBoxCities.Items.Add(city.City);
-                }
-            }
+            foreach (Lawyer item in lawyers)
+                ComboBoxLawyers.Items.Add(item.Name);
         }
 
         #endregion
@@ -407,17 +264,22 @@
         {
             Delete();
         }
-
-        private void ComboBoxUf_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            FillComboBoxCities();
-        }
-
+               
         private void PageRegisterLawyers_Loaded(object sender, RoutedEventArgs e)
         {
             LoadResources();
         }
 
         #endregion
+
+        private void ComboBoxLawyers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboBoxLawyers.SelectedIndex >= 0)
+            {
+                index = ComboBoxLawyers.SelectedIndex;
+                ComboBoxLawyers.Text = ComboBoxLawyers.Items[index].ToString();                
+                LoadResources();
+            }
+        }
     }
 }

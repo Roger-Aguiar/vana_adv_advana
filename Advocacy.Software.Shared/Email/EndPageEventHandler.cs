@@ -2,13 +2,13 @@
 {
     protected Document document;
     protected PdfDocument pdfDocument;
-    protected Lawyer lawyer;
+    protected List<Lawyer> lawyers;
 
-    public EndPageEventHandler(Document document, PdfDocument pdfDocument, Lawyer lawyer)
+    public EndPageEventHandler(Document document, PdfDocument pdfDocument, List<Lawyer> lawyers)
     {
         this.document = document;
         this.pdfDocument = pdfDocument;
-        this.lawyer = lawyer;
+        this.lawyers = lawyers;
     }
 
     public void HandleEvent(Event currentEvent)
@@ -36,11 +36,18 @@
         float footerY = document.GetBottomMargin() - 15;
 
         Canvas canva = new Canvas(pdfDocumentEvent.GetPage(), pageSize);
+
+        //Header
+        foreach (var lawyer in lawyers)
+        {
+            canva.SetFont(font).SetFontSize(18).ShowTextAligned($"Dr(a). {lawyer.Name}\n{lawyer.Profession?.ToUpper()}", centerX, headerY, iText.Layout.Properties.TextAlignment.CENTER);
         
-        //Header                
-        canva.SetFont(font).SetFontSize(18).ShowTextAligned($"Dr(a). {lawyer.Name}\n{lawyer.Profession?.ToUpper()}", centerX, headerY, iText.Layout.Properties.TextAlignment.CENTER);
+        }
 
         //Footer
-        canva.SetFont(font).SetFontSize(10).ShowTextAligned($"Dr(a). {lawyer.Name} - OAB-{lawyer.UfOab} nº{lawyer.OabNumber}", leftX, footerY, iText.Layout.Properties.TextAlignment.LEFT);
+        foreach (var lawyer in lawyers)
+        {
+            canva.SetFont(font).SetFontSize(10).ShowTextAligned($"Dr(a). {lawyer.Name} - OAB-{lawyer.UfOab} nº{lawyer.OabNumber}", leftX, footerY, iText.Layout.Properties.TextAlignment.LEFT);
+        }
     }    
 }

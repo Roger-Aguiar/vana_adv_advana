@@ -18,41 +18,41 @@
             <Label Foreground="Lavender"  Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold">Cadastro de clientes</Label>
         </Border>
         <Label Content="Nome: " FontSize="15" Margin="12,11,613,54" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxName" TabIndex="0" Height="25" FontSize="15" Margin="223,11,10,0" Grid.Row="1" VerticalAlignment="Top" />
+        <TextBox x:Name="TextBoxName" TabIndex="0" Height="25" FontSize="15" Margin="256,11,10,0" Grid.Row="1" VerticalAlignment="Top" />
         <Label Content="Nacionalidade: " FontSize="15" Margin="12,38,610,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxNationality" TextWrapping="Wrap" Height="25" FontSize="15" Margin="223,41,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxNationality" TextWrapping="Wrap" Height="25" FontSize="15" Margin="256,41,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="Identidade: " FontSize="15" Margin="12,68,610,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxIdentityCustomer" TextWrapping="Wrap" Height="25" FontSize="15" Margin="223,71,378,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxCpfOrCnpj" TextWrapping="Wrap" Height="25" FontSize="15" Margin="223,101,378,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="CPF ou CNPJ: " FontSize="15" Margin="12,98,624,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxIdentityCustomer" TextWrapping="Wrap" Height="25" FontSize="15" Margin="256,71,345,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxCpfOrCnpj" TextWrapping="Wrap" Height="25" FontSize="15" Margin="256,101,345,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="CPF ou CNPJ: (somente números)" FontSize="15" Margin="12,98,549,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="Estado civil: " FontSize="15" Margin="12,128,624,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxCivilStatus" TextWrapping="Wrap" Height="25" FontSize="15" Margin="223,131,378,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxCivilStatus" TextWrapping="Wrap" Height="26" FontSize="15" Margin="256,130,345,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="Profissão: " FontSize="15" Margin="12,158,624,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxProfession" TextWrapping="Wrap" Height="25" FontSize="15" Margin="223,161,378,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxProfession" TextWrapping="Wrap" Height="26" FontSize="15" Margin="256,160,345,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="Email: " FontSize="15" Margin="12,188,610,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxEmail" TextWrapping="Wrap" Height="25" FontSize="15" Margin="223,191,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxEmail" TextWrapping="Wrap" Height="25" FontSize="15" Margin="256,191,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="UF: " FontSize="15" Margin="12,218,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <ComboBox x:Name="ComboBoxUf" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="223,221,0,0" FontSize="15" Height="25" Width="199" SelectionChanged="ComboBoxUf_SelectionChanged"/>
+        <ComboBox x:Name="ComboBoxUf" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="256,221,0,0" FontSize="15" Height="25" Width="199" SelectionChanged="ComboBoxUf_SelectionChanged"/>
         <Label Content="Cidade: " FontSize="15" Margin="10,249,708,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <ComboBox x:Name="ComboBoxCities" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="223,251,0,0" FontSize="15" Height="25" Width="567"/>
+        <ComboBox x:Name="ComboBoxCities" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="256,251,0,0" FontSize="15" Height="25" Width="534"/>
         <Label Content="Endereço: " FontSize="15" Margin="9,279,613,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxAddress" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,282,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxAddress" TextWrapping="Wrap" Height="26" FontSize="15" Margin="256,282,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="Número: " FontSize="15" Margin="10,311,584,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxNumber" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,313,378,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxNumber" TextWrapping="Wrap" Height="26" FontSize="15" Margin="256,313,345,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="Bairro: " FontSize="15" Margin="12,342,610,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxNeighbourhood" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,344,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxNeighbourhood" TextWrapping="Wrap" Height="26" FontSize="15" Margin="256,344,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="Complemento: " FontSize="15" Margin="12,372,610,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxComplement" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,375,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxComplement" TextWrapping="Wrap" Height="26" FontSize="15" Margin="256,375,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="CEP: " FontSize="15" Margin="12,404,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxZipCode" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,406,378,0" Grid.Row="1" VerticalAlignment="Top" MaxLength="8"/>
-        <Label Content="Telefone: " FontSize="15" Margin="12,435,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxPhoneNumber" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,437,378,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxZipCode" TextWrapping="Wrap" Height="26" FontSize="15" Margin="256,408,345,0" Grid.Row="1" VerticalAlignment="Top" MaxLength="8"/>
+        <Label Content="Telefone: (somente números) " FontSize="15" Margin="12,435,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxPhoneNumber" TextWrapping="Wrap" Height="26" FontSize="15" Margin="256,439,345,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="Data de cadastro: " FontSize="15" Margin="12,466,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxRegisterDate" IsReadOnly="True" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,468,378,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxRegisterDate" IsReadOnly="True" TextWrapping="Wrap" Height="26" FontSize="15" Margin="256,470,345,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="Última atualização: " FontSize="15" Margin="12,497,582,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxLastUpdate" IsReadOnly="True" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,499,378,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxLastUpdate" IsReadOnly="True" TextWrapping="Wrap" Height="26" FontSize="15" Margin="256,501,345,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Content="Número de registro: " FontSize="15" Margin="10,528,584,0" Height="30" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxGuidId" IsReadOnly="True" TextWrapping="Wrap" Height="26" FontSize="15" Margin="223,530,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxGuidId" IsReadOnly="True" TextWrapping="Wrap" Height="26" FontSize="15" Margin="256,530,10,0" Grid.Row="1" VerticalAlignment="Top"/>
 
         <Border Grid.Row="2" Background="DarkGray"></Border>
 
