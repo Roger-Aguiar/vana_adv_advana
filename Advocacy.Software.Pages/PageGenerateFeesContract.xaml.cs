@@ -38,13 +38,19 @@
 
         #region Private methods
 
+        private void FillComboBoxLawyers()
+        {
+            directorLawyer.Builder = lawyerBuilder;
+            directorLawyer.Read(LawyerSqlCommands.Read(Signature.IdSignature));
+            contract.Lawyer = lawyerBuilder.Lawyers;
+            foreach (Lawyer lawyer in contract.Lawyer)
+                ComboBoxLawyers.Items.Add(lawyer.Name);
+        }
         private void SelectLawyer()
         {
             directorLawyer.Builder = lawyerBuilder;
             directorLawyer.Read(LawyerSqlCommands.Read(Signature.IdSignature));
             contract.Lawyer = lawyerBuilder.Lawyers;
-            if(contract.Lawyer.Count > 0)
-                TextBoxLawyer.Text = contract.Lawyer[0].Name;
         }
 
         private bool ValidateFields(string field, string control)
@@ -64,40 +70,33 @@
         private void FillFeesContractFields()
         {
             contract.Signature = Signature;
-            contract.CpfOrCnpj = ValidateFields("CPF ou CNPJ", TextBoxCpfOrCnpj.Text) == false ? null : TextBoxCpfOrCnpj.Text;
+            contract.CpfOrCnpj = ValidateFields("CPF ou CNPJ", CharacterOperations.RemoveEpecialCharacters(TextBoxCpfOrCnpj.Text)) == false ? null : TextBoxCpfOrCnpj.Text;
             contract.ActionName = ValidateFields("Nome da ação", TextBoxActionName.Text) == false ? null : TextBoxActionName.Text;
             contract.TotalServiceValue = ValidateFields("Valor total do serviço", TextBoxTotalValue.Text) == false ? 0 : Convert.ToDecimal(TextBoxTotalValue.Text);
             contract.SuccessFees = ValidateFields("Honorários de êxito", TextBoxSuccessFees.Text) == false ? null : TextBoxSuccessFees.Text;
             contract.InstallmentsNumber = TextBoxInstallmentsNumber.Text == "" ? 1 : Convert.ToInt32(TextBoxInstallmentsNumber.Text);
-            contract.InitialValue = TextBoxInitialValue.Text == "" ? contract.TotalServiceValue : Convert.ToDecimal(TextBoxInitialValue.Text);
+            contract.InitialValue = TextBoxInitialValue.Text == "" ? 0 : Convert.ToDecimal(TextBoxInitialValue.Text);
             contract.Uf = ValidateFields("Selecione um estado", ComboBoxStates.Text) == false ? null : ComboBoxStates.Text;
             contract.City = ValidateFields("Selecione uma cidade", ComboBoxCities.Text) == false ? null : ComboBoxCities.Text;
             contract.PaymentType = ValidateFields("Selecione uma forma de pagamento", ComboBoxPaymentType.SelectedItem.ToString()) == false ? null : ComboBoxPaymentType.SelectedItem.ToString();
-
-            lawyer.Name = TextBoxLawyer.Text;
             lawyer.IdSignature = Signature.IdSignature;
             directorCity.Builder = cityBuilder;
             directorAddress.Builder = addressBuilder;
             directorState.Builder = stateBuilder;
 
             directorCustomer.Builder = customerBuilder;
-            directorCustomer.Read(CustomerSqlCommands.Read(TextBoxCpfOrCnpj.Text, Signature.IdSignature));
+            directorCustomer.Read(CustomerSqlCommands.Read(CharacterOperations.RemoveEpecialCharacters(TextBoxCpfOrCnpj.Text), Signature.IdSignature));
             directorLawyer.Builder = lawyerBuilder;
             directorLawyer.Read(LawyerSqlCommands.Read(lawyer));
             contract.Customer = customerBuilder.CustomersList;
             if(contract.Customer.Count > 0)
             {
                 contract.Lawyer = lawyerBuilder.Lawyers;
-                directorAddress.Read(AddressSqlCommands.Read(contract.Lawyer[0].Id));
-                contract.AddressLawyer = addressBuilder.Address;
                 directorAddress.Read(AddressSqlCommands.Read(contract.Customer[0].Id));
                 contract.AddressCustomer = addressBuilder.Address;
-                directorCity.Read(CitySqlCommands.Read(contract.AddressLawyer.IdCity));
                 contract.CityLawyer = cityBuilder.CitiesList;
                 directorCity.Read(CitySqlCommands.Read(contract.AddressCustomer.IdCity));
                 contract.CityCustomer = cityBuilder.CitiesList;
-
-                directorState.Read(StateSqlCommands.Select(contract.CityLawyer[0].IdState));
                 contract.UfLawyer = stateBuilder.State[0].State;
                 directorState.Read(StateSqlCommands.Select(contract.CityCustomer[0].IdState));
                 contract.UfCustomer = stateBuilder.State[0].State;
@@ -154,6 +153,7 @@
         {
             FillComboBoxStates();
             SelectLawyer();
+            FillComboBoxLawyers();
             FillComboBoxPaymentType();
             FillComboBoxBankAccount();
         }
@@ -231,5 +231,18 @@
             FillComboBoxCities();
         }
         #endregion
+
+        private void ComboBoxLawyers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            contract.LawyerInFee.Add(contract.Lawyer[ComboBoxLawyers.SelectedIndex]);
+            MessageBox.Show("Você adicionou um(a) advogado(a) no contrato, " +
+                "caso queira adicionar outro(a) advogado(a), basta selecionar na lista",
+                "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void ComboBoxCities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            contract.City = ComboBoxCities.SelectedItem.ToString();
+        }
     }
 }

@@ -183,12 +183,20 @@
                 TextBoxName.Text = customers[index].Name;
                 TextBoxNationality.Text = customers[index].Nationality;
                 TextBoxIdentityCustomer.Text = customers[index].IdentityCustomer;
-                TextBoxCpfOrCnpj.Text = customers[index].CpfOrCnpj?.Length == 11 ? Convert.ToInt64(customers[index].CpfOrCnpj).ToString(@"000\.000\.000-00") : Convert.ToInt64(customers[index].CpfOrCnpj).ToString(@"00\.000\.000/0000-00");
+                TextBoxCpfOrCnpj.Text = CharacterOperations.RemoveEpecialCharacters(customers[index].CpfOrCnpj)?
+                    .Length == 11 ? Convert.ToInt64(CharacterOperations.RemoveEpecialCharacters(customers[index].CpfOrCnpj))
+                    .ToString(@"000\.000\.000-00") : 
+                    Convert.ToInt64(CharacterOperations.RemoveEpecialCharacters(customers[index].CpfOrCnpj))
+                    .ToString(@"00\.000\.000/0000-00");
                 TextBoxCivilStatus.Text = customers[index].CivilStatus;
                 TextBoxProfession.Text = customers[index].Profession;
                 TextBoxEmail.Text = customers[index].Email;
-                TextBoxPhoneNumber.Text = customers[index].Phone?.Length == 11 ? Convert.ToInt64(customers[index].Phone).ToString(@"(00)00000-0000") : Convert.ToInt64(customers[index].Phone).ToString(@"(00)0000-0000");
-                TextBoxRegisterDate.Text = customers[index].RegisterDate;
+                TextBoxPhoneNumber.Text = CharacterOperations.RemoveEpecialCharacters(customers[index].Phone)?.Length == 11 ? 
+                    Convert.ToInt64(CharacterOperations.RemoveEpecialCharacters(customers[index].Phone))
+                    .ToString(@"(00)00000-0000") : 
+                    Convert.ToInt64(CharacterOperations.RemoveEpecialCharacters(customers[index].Phone))
+                    .ToString(@"(00)0000-0000");
+                 TextBoxRegisterDate.Text = customers[index].RegisterDate;
                 TextBoxLastUpdate.Text = customers[index].LastUpdate;
                 TextBoxGuidId.Text = customers[index].Id;
                 TextBoxAddress.Text = address.Street;

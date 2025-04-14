@@ -1,6 +1,4 @@
-﻿using Advocacy_Software.Advocacy.Software.Entities;
-
-namespace Advocacy_Software.Advocacy.Software.Shared.SqlCommands
+﻿namespace Advocacy_Software.Advocacy.Software.Shared.SqlCommands
 {
     public static class CustomerSqlCommands
     {

@@ -35,7 +35,7 @@
 
                 document.Add(format.SetBodyAsJustified(SetCustomerData(attorney)));
 
-                document.Add(format.SetTitle("OUTORGADO"));
+                document.Add(format.SetTitle("OUTORGADO(S)"));
 
                 document.Add(format.SetBodyAsJustified(SetLawyerData(attorney)));
 
@@ -55,7 +55,7 @@
 
                 document.Add(format.SetBody("A presente procuração tem duração até o fim da ação.\n"));
 
-                document.Add(format.SetBody($"{attorney.CityLawyer[0].City}, {DateTime.Now.ToString("D", (new CultureInfo("pt-BR")))}"));
+                document.Add(format.SetBody($"{attorney.City}, {DateTime.Now.ToString("D", (new CultureInfo("pt-BR")))}"));
 
                 document.Add(new Paragraph("\n\n"));
 
@@ -83,15 +83,19 @@
             return body;
         }
 
-        private string SetLawyerData(AttorneyEntity attorney)
+        private static string SetLawyerData(AttorneyEntity attorney)
         {
-            string body;
-            var zipCode = Convert.ToInt64(attorney.AddressLawyer.ZipCode).ToString(@"00000-000");
-            var complement = attorney.AddressLawyer.Complement != " " ? attorney.AddressLawyer.Complement + ", " : "";
-
-            body = $"{attorney.Lawyer.Name.ToUpper()}, {attorney.Lawyer.Nationality}, {attorney.Lawyer.CivilStatus}, {attorney.Lawyer.Profession}, inscrito(a) na OAB - {attorney.Lawyer.UfOab} sob nº {attorney.Lawyer.OabNumber}, email: {attorney.Lawyer.Email}, com endereço profissional na {attorney.AddressLawyer.Street}, {attorney.AddressLawyer.Number}, {complement} {attorney.AddressLawyer.Neighbourhood}, {attorney.CityLawyer[0].City}, {attorney.UfLawyer}, {attorney.AddressLawyer.Complement}, CEP: {zipCode}, onde recebe intimação.";
+            string lawyerData = string.Empty;
+            foreach (var item in attorney.LawyerInAttorney)
+            {
+                lawyerData += $"{item.Name.ToUpper()}, " +
+                $"{item.Profession}, inscrito(a) na OAB - " +
+                $"{item.UfOab} sob nº {item.OabNumber}, " +
+                $"com endereço profissional e informações de contato no rodapé deste documento, " +
+                $"onde recebe intimação.\n";
+            }
             
-            return body;
+            return lawyerData;
         }
     }
 }

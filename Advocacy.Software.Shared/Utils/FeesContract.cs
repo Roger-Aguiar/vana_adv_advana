@@ -28,14 +28,14 @@
                 else
                 {
                     document.SetMargins(85, 50, 50, 50);
-                    pdfDocument.AddEventHandler(PdfDocumentEvent.END_PAGE, new EndPageEventHandler(document, pdfDocument, contract.Lawyer[0]));
+                    pdfDocument.AddEventHandler(PdfDocumentEvent.END_PAGE, new EndPageEventHandler(document, pdfDocument, contract.LawyerInFee));
                 }
 
                 document.Add(format.SetTitle("CONTRATO DE HONORÁRIOS ADVOCATÍCIOS"));
                 
                 document.Add(format.SetBodyAsJustified($"Pelo presente instrumento particular de contrato de prestação de serviços advocatícios e na melhor forma de direito, {SetCustomerBody(contract)}, "));
 
-                document.Add(format.SetBodyAsJustified($"Convenciona e contrata com Dr(a). {SetLawyerBody(contract)} o que mutuamente aceitam e outorgam, mediante as cláusulas e condições seguintes:"));
+                document.Add(format.SetBodyAsJustified($"Convenciona e contrata:{SetLawyerBody(contract)} o que mutuamente aceitam e outorgam, mediante as cláusulas e condições seguintes:"));
 
                 document.Add(format.SetTitle("DO OBJETO DO CONTRATO"));
 
@@ -72,7 +72,7 @@
                 else
                 {
                     document.Add(format.SetBodyAsJustified($"CLÁUSULA V - Pelos serviços prestados e especificados neste contrato, o(a) advogado(a) receberá a título de honorários, o valor de {String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", contract.TotalServiceValue)}, devendo estes serem pagos da seguinte forma:"));
-                    document.Add(format.SetBodyAsJustified($"a) Entrada no valor {String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", contract.InitialValue)}"));
+                    document.Add(format.SetBodyAsJustified($"a) Entrada no valor de {String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", contract.InitialValue)}"));
                     decimal numberOfPayments = 0;
 
                     if(contract.InstallmentsNumber > 1)
@@ -114,11 +114,14 @@
 
                 document.Add(new Paragraph("\n"));
 
-                document.Add(format.SetBody($"{contract.CityLawyer[0].City}, {DateTime.Now.ToString("D", (new CultureInfo("pt-BR")))}"));
+                document.Add(format.SetBody($"{contract.City}, {DateTime.Now.ToString("D", (new CultureInfo("pt-BR")))}"));
+                                               
+                foreach (var item in contract.LawyerInFee)
+                {
+                    document.Add(format.SetTitle("\n\n_________________________________________________________"));
+                    document.Add(format.SetBody($"{item.Name}\nOAB/{item.UfOab} nº {item.OabNumber}\n\n"));    
+                }
 
-                document.Add(format.SetTitle("\n\n_________________________________________________________"));
-
-                document.Add(format.SetBody($"{contract.Lawyer[0].Name}\nOAB/{contract.Lawyer[0].UfOab} nº {contract.Lawyer[0].OabNumber}"));
 
                 document.Add(format.SetTitle("\n\n_________________________________________________________"));
 
@@ -140,14 +143,23 @@
             return $"{contract.Customer[0].Name.ToUpper()}, {contract.Customer[0].Nationality}, {contract.Customer[0].CivilStatus}, {contract.Customer[0].Profession}, portador(a) do RG: {contract.Customer[0].IdentityCustomer}, {CpfOrCnpj}, residente na {contract.AddressCustomer.Street}, {contract.AddressCustomer.Number}, {contract.AddressCustomer.Neighbourhood}, {contract.CityCustomer[0].City} - {contract.UfCustomer}, {complement} CEP: {zipCode}, Telefone: {phone}, email: {contract.Customer[0].Email}";
         }
 
-        private string SetLawyerBody(FeesContractEntity contract)
-        { 
-            string phone = contract.Lawyer[0].Phone?.Length == 11 ? Convert.ToInt64(contract.Lawyer[0].Phone).ToString(@"(00)00000-0000") : Convert.ToInt64(contract.Lawyer[0].Phone).ToString(@"(00)0000-0000");
-            string zipCode = Convert.ToInt64(contract.AddressLawyer.ZipCode).ToString(@"00000-000");
+        private static string SetLawyerBody(FeesContractEntity contract)
+        {
+            string lawyerData = string.Empty;
+            foreach (var item in contract.LawyerInFee)
+            {
+                lawyerData += $"\n Dr(a). {item.Name.ToUpper()}, " +
+                $"{item.Profession}, inscrito(a) na Ordem dos Advogados do Brasil – SEÇÃO - " +
+                $"{item.UfOab} sob nº {item.OabNumber}, ";
+            }
 
-            return $"{contract.Lawyer[0].Name.ToUpper()}, {contract.Lawyer[0].Nationality}, {contract.Lawyer[0].CivilStatus}, {contract.Lawyer[0].Profession}, inscrito(a) na Ordem dos Advogados do Brasil – SEÇÃO - {contract.Lawyer[0].UfOab} sob nº {contract.Lawyer[0].OabNumber}, email: {contract.Lawyer[0].Email}, com endereço profissional na {contract.AddressLawyer.Street}, {contract.AddressLawyer.Number}, {contract.AddressLawyer.Complement}, {contract.AddressLawyer.Neighbourhood}, {contract.CityLawyer[0].City}, {contract.UfLawyer}, CEP: {zipCode}, Telefone: {phone}, email: {contract.Lawyer[0].Email}, ";  
+            lawyerData += contract.LawyerInFee.Count > 1 ?
+                "ambas com endereço profissional e informações de contato no rodapé deste documento." :
+                "com endereço profissional e informações de contato no rodapé deste documento.";
+            
+            return lawyerData;
         }
-                
+
         private static string SetBankAccountData(FeesContractEntity contract)
         {
             string paymentDetails = "";
